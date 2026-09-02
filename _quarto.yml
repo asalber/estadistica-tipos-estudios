@@ -2,7 +2,7 @@ project:
   type: book
   output-dir: "docs"
   preview:
-    port: 1314
+    port: 1313
 
 execute:
   freeze: auto
@@ -12,6 +12,9 @@ execute:
 website:
   favicon: img/logos/favicon.ico
   reader-mode: true
+  search:
+    location: sidebar
+    type: overlay
   comments: 
     hypothesis:
       theme: clean
@@ -22,6 +25,8 @@ book:
   subtitle: "Diseño, análisis e implementación con R"
   author: "Alfredo Sánchez Alberca"
   date: "2/9/2026"
+  image: img/logos/sticker.png
+  cover-image: img/logos/sticker.png
   output-file: "estadistica-tipos-estudios"
   sharing: [twitter, linkedin]
   downloads: [pdf, epub]
