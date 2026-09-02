@@ -1,0 +1,220 @@
+---
+title: Contrastes para más de dos poblaciones independientes
+lang: es
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+library(tidyverse)
+df <- read_csv("datos/datos-curso.csv")
+```
+
+El [capítulo anterior](12-contrastes-dos-poblaciones-independientes.qmd) trató el caso de dos poblaciones independientes. Sin embargo, en muchas ocasiones no se comparan dos grupos, sino tres o más, formados por individuos distintos entre sí. Este capítulo generaliza los contrastes anteriores a esa situación: cómo comparar una variable, cuantitativa o cualitativa, entre más de dos poblaciones independientes. En el conjunto de datos de ejemplo, la variable independiente natural para esta situación es `grupo`, que clasifica a los 120 alumnos en tres grupos de clase (A, B y C), formados por alumnos distintos: nadie pertenece a la vez a dos grupos, por lo que las tres poblaciones son independientes entre sí.
+
+## Estadísticos descriptivos por grupo
+
+Antes de aplicar ningún contraste, conviene describir la variable cuantitativa de interés en cada uno de los grupos. Se utiliza aquí la variable `notaC`, que es la que muestra diferencias más claras entre los tres grupos de clase.
+
+```{r descriptivos}
+library(moments)
+
+df |>
+  group_by(grupo) |>
+  summarise(
+    n = sum(!is.na(notaC)),
+    media = mean(notaC, na.rm = TRUE),
+    de = sd(notaC, na.rm = TRUE),
+    minimo = min(notaC, na.rm = TRUE),
+    q1 = quantile(notaC, 0.25, na.rm = TRUE),
+    mediana = median(notaC, na.rm = TRUE),
+    q3 = quantile(notaC, 0.75, na.rm = TRUE),
+    maximo = max(notaC, na.rm = TRUE),
+    asimetria = skewness(notaC, na.rm = TRUE),
+    apuntamiento = kurtosis(notaC, na.rm = TRUE)
+  )
+```
+
+El grupo C presenta la media más baja (4.07) y los grupos A y B medias parecidas y más altas (5.52 y 5.95, respectivamente), lo que ya sugiere que podría existir una diferencia real entre C y los otros dos grupos. Las tres distribuciones tienen una asimetría cercana a 0 y un apuntamiento próximo a 3, lo que es compatible con una distribución aproximadamente normal en los tres grupos.
+
+**Gráficos.** Un diagrama de cajas y bigotes y un diagrama de violín permiten visualizar de un vistazo estas diferencias:
+
+```{r boxplot, fig.cap="Diagrama de cajas y bigotes de la nota C por grupo."}
+ggplot(df, aes(x = grupo, y = notaC, fill = grupo)) +
+  geom_boxplot() +
+  labs(x = "Grupo", y = "Nota C") +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
+
+```{r violin, fig.cap="Diagrama de violín de la nota C por grupo."}
+ggplot(df, aes(x = grupo, y = notaC, fill = grupo)) +
+  geom_violin() +
+  labs(x = "Grupo", y = "Nota C") +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
+
+En ambos gráficos se aprecia que el grupo C tiene una posición más baja que A y B, y que las cajas de A y B se solapan bastante, mientras que la de C apenas se solapa con ellas.
+
+**Normalidad por grupo.** Antes de decidir qué contraste aplicar (paramétrico o no paramétrico), es necesario comprobar si `notaC` sigue una distribución normal en cada uno de los tres grupos, mediante el test de Shapiro-Wilk:
+
+```{r shapiro-grupo}
+df |>
+  filter(!is.na(notaC)) |>
+  group_by(grupo) |>
+  summarise(
+    estadistico = shapiro.test(notaC)$statistic,
+    p.valor = shapiro.test(notaC)$p.value
+  )
+```
+
+En los tres grupos el p-valor es muy superior a 0.05 (0.9614 en A, 0.3432 en B y 0.4420 en C), por lo que no hay evidencia para rechazar la normalidad de `notaC` en ninguno de ellos. Se cumple, por tanto, el requisito de normalidad necesario para aplicar los contrastes paramétricos que siguen.
+
+### Test de Levene de comparación de varianzas
+
+:::{#def-masdosindep-levene}
+## Test de Levene de comparación de varianzas
+El _test de Levene_ tiene como objetivo contrastar si las varianzas de una variable cuantitativa son iguales en más de dos poblaciones independientes. Es la generalización a más de dos grupos del test F de Fisher visto en el capítulo anterior. Las hipótesis del contraste son
+
+$$H_0: \sigma_1^2=\sigma_2^2=\cdots=\sigma_k^2 \quad \text{frente a} \quad H_1: \text{algún } \sigma_i^2 \text{ es distinto de los demás},$$
+
+donde $k$ es el número de poblaciones comparadas.
+:::
+
+:::{.callout-note title=Interpretación}
+- Si el p-valor del contraste es mayor que el nivel de significación (habitualmente 0.05), no se rechaza $H_0$ y se concluye que las varianzas de los $k$ grupos pueden considerarse homogéneas.
+- Si el p-valor es menor que el nivel de significación, se rechaza $H_0$ y se concluye que al menos uno de los grupos tiene una varianza distinta de las demás.
+- Comprobar la homogeneidad de varianzas es un paso previo necesario para poder aplicar después el ANOVA de un factor, ya que este último asume que las varianzas de los grupos son iguales.
+:::
+
+**Requisitos**:
+
+- La variable comparada debe ser cuantitativa.
+- Las poblaciones comparadas deben ser independientes entre sí (individuos distintos en cada grupo).
+- La variable debe seguir una distribución normal en todos los grupos, o bien el tamaño de cada grupo debe ser igual o superior a 30 (en cuyo caso el teorema central del límite garantiza una aproximación razonable).
+
+Comprobada la normalidad de `notaC` en los tres grupos, se puede aplicar el test de Levene con la función `leveneTest()` del paquete `car` para contrastar si las tres poblaciones tienen la misma varianza.
+
+:::{#exm-masdosindep-levene}
+```{r levene}
+library(car)
+
+df <- df |> mutate(grupo = factor(grupo))
+leveneTest(notaC ~ grupo, data = df)
+```
+
+El p-valor del contraste es 0.7278, muy superior a 0.05, por lo que no se rechaza $H_0$: no hay evidencia de que las varianzas de `notaC` difieran entre los tres grupos de clase. Se cumple, por tanto, el requisito de homogeneidad de varianzas necesario para aplicar el ANOVA de un factor.
+:::
+
+### ANOVA de un factor
+
+:::{#def-masdosindep-anova}
+## ANOVA de un factor
+El _análisis de varianza (ANOVA) de un factor_ tiene como objetivo contrastar si existen diferencias entre las medias de una variable cuantitativa en más de dos poblaciones independientes. Las hipótesis del contraste son
+
+$$H_0: \mu_1=\mu_2=\cdots=\mu_k \quad \text{frente a} \quad H_1: \text{alguna } \mu_i \text{ es distinta de las demás},$$
+
+donde $k$ es el número de poblaciones comparadas.
+:::
+
+:::{.callout-note title=Interpretación}
+- Si el p-valor del contraste es mayor que 0.05, no se rechaza $H_0$ y se concluye que no hay evidencia de diferencias entre las medias de los $k$ grupos.
+- Si el p-valor es menor que 0.05, se rechaza $H_0$ y se concluye que al menos una de las medias difiere de las demás, aunque el ANOVA por sí solo no indica cuál o cuáles.
+- El ANOVA de un factor es la generalización a más de dos grupos del test t de comparación de medias visto en el capítulo anterior: de hecho, cuando $k=2$, ambos contrastes son equivalentes.
+:::
+
+**Requisitos**:
+
+- La variable dependiente debe ser cuantitativa.
+- Las poblaciones comparadas deben ser independientes entre sí.
+- La variable debe seguir una distribución normal en cada uno de los grupos, o los grupos deben tener un tamaño igual o superior a 30.
+- Las varianzas de los grupos deben ser homogéneas, requisito que se comprueba previamente con el test de Levene.
+
+Como se cumplen los requisitos de normalidad y homogeneidad de varianzas, se puede aplicar el ANOVA de un factor con la función `aov()` para contrastar si existen diferencias entre las medias de `notaC` en los tres grupos.
+
+:::{#exm-masdosindep-anova}
+```{r anova}
+modelo_anova <- aov(notaC ~ grupo, data = df)
+summary(modelo_anova)
+```
+
+El p-valor del contraste (`Pr(>F)`) es 3.32e-08, muy inferior a 0.05, por lo que se rechaza $H_0$: existen diferencias significativas entre las medias de `notaC` en al menos dos de los tres grupos de clase.
+:::
+
+Cuando, como en este caso, el ANOVA resulta significativo, este solo informa de que existe alguna diferencia entre los grupos, pero no indica entre cuáles. Es necesario entonces aplicar un **test de comparación múltiple por pares** que compare las medias de los grupos dos a dos, controlando el error global de realizar varias comparaciones simultáneas. El más habitual es el **test de Tukey** (`TukeyHSD()`), aunque también se utiliza, de forma algo más conservadora, la corrección de **Bonferroni**, que simplemente divide el nivel de significación entre el número de comparaciones realizadas.
+
+```{r tukey}
+TukeyHSD(modelo_anova)
+```
+
+Los resultados muestran que la diferencia entre B y A no es significativa (p-valor 0.4048), mientras que las diferencias entre C y A (p-valor 0.0000241) y entre C y B (p-valor 0.0000001) sí lo son. Es decir, el grupo C tiene una nota media en `notaC` significativamente inferior a la de los otros dos grupos, mientras que A y B no difieren significativamente entre sí.
+
+Un diagrama de medias con sus intervalos de confianza al 95% permite visualizar estas mismas conclusiones:
+
+```{r medias-ic, fig.cap="Medias de la nota C por grupo con intervalos de confianza al 95%."}
+mean_ci <- function(x) {
+  x <- x[!is.na(x)]
+  m <- mean(x)
+  se <- sd(x) / sqrt(length(x))
+  ic <- se * qt(0.975, length(x) - 1)
+  data.frame(y = m, ymin = m - ic, ymax = m + ic)
+}
+
+ggplot(df, aes(x = grupo, y = notaC, color = grupo)) +
+  stat_summary(fun.data = mean_ci, geom = "errorbar", width = 0.2) +
+  stat_summary(fun = mean, geom = "point", size = 3) +
+  labs(x = "Grupo", y = "Nota C media") +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
+
+En el gráfico se aprecia que los intervalos de confianza de A y B se solapan ampliamente, mientras que el de C queda claramente por debajo y no se solapa con los de los otros dos grupos, en consonancia con el resultado del test de Tukey.
+
+### Test de Kruskal-Wallis (no paramétrico)
+
+:::{#def-masdosindep-kruskal}
+## Test de Kruskal-Wallis
+El _test de Kruskal-Wallis_ es la alternativa no paramétrica al ANOVA de un factor. Tiene como objetivo contrastar si las distribuciones de una variable cuantitativa u ordinal son iguales en más de dos poblaciones independientes, sin necesidad de asumir normalidad. Las hipótesis del contraste son
+
+$$H_0: \text{las distribuciones (medianas) son iguales en las } k \text{ poblaciones} \quad \text{frente a} \quad H_1: \text{alguna difiere de las demás}.$$
+:::
+
+:::{.callout-note title=Interpretación}
+- Si el p-valor del contraste es mayor que 0.05, no se rechaza $H_0$ y se concluye que no hay evidencia de diferencias entre las distribuciones de los $k$ grupos.
+- Si el p-valor es menor que 0.05, se rechaza $H_0$ y se concluye que al menos una de las distribuciones difiere de las demás.
+- El test de Kruskal-Wallis es la generalización a más de dos grupos del test U de Mann-Whitney visto en el capítulo anterior, del mismo modo que el ANOVA generaliza al test t.
+:::
+
+**Requisitos**:
+
+- La variable comparada debe ser, al menos, ordinal (cuantitativa o cualitativa ordinal).
+- Las poblaciones comparadas deben ser independientes entre sí.
+- A diferencia del ANOVA, no exige que la variable siga una distribución normal en los grupos, lo que lo convierte en la alternativa natural cuando no se cumple ese requisito o cuando la variable es solo ordinal.
+
+Cuando no se cumple el requisito de normalidad del ANOVA (o directamente se quiere evitar esa suposición), se recurre al test de Kruskal-Wallis. A modo de ejemplo, se aplica ahora a la variable `notaA`, que no se ha comprobado que sea normal en los tres grupos:
+
+:::{#exm-masdosindep-kruskal}
+```{r kruskal}
+kruskal.test(notaA ~ grupo, data = df)
+```
+
+El p-valor del contraste es 3.087e-14, muy inferior a 0.05, por lo que se rechaza $H_0$: existen diferencias significativas entre las distribuciones de `notaA` en al menos dos de los tres grupos.
+:::
+
+Igual que ocurre con el ANOVA, un resultado significativo en el test de Kruskal-Wallis no indica entre qué grupos concretos hay diferencias. El test de comparación múltiple por pares equivalente es el **test de Wilcoxon por pares**, aplicando una corrección (aquí, el método de Benjamini-Hochberg, `"BH"`) para controlar el error acumulado al hacer varias comparaciones:
+
+```{r wilcox-pares}
+pairwise.wilcox.test(df$notaA, df$grupo, p.adjust.method = "BH")
+```
+
+La diferencia entre A y B no es significativa (p-valor 0.19), mientras que las diferencias entre A y C (p-valor 4.2e-10) y entre B y C (p-valor 1.3e-11) sí lo son. La conclusión es, por tanto, coherente con la obtenida antes para `notaC`: el grupo C se diferencia claramente de los otros dos, que no difieren significativamente entre sí.
+
+## Variable dependiente cualitativa
+
+Cuando la variable dependiente es cualitativa y se compara entre más de dos poblaciones independientes, el contraste apropiado sigue siendo el **test Chi-cuadrado de independencia**, ya presentado en el capítulo de [Contrastes para dos poblaciones independientes](12-contrastes-dos-poblaciones-independientes.qmd). Allí se aplicaba a una tabla de contingencia $2\times2$, construida cruzando una variable independiente con dos categorías y una variable dependiente también con dos categorías; aquí la única diferencia es que la tabla de contingencia tiene más de dos filas (o más de dos columnas), al tener `grupo` tres categorías en lugar de dos.
+
+Así, para contrastar si existe relación entre el grupo de clase y el resultado (aprobado o suspenso) en la asignatura A, bastaría con construir la tabla de contingencia `table(df$grupo, df$calificacionA)`, de dimensión $3\times2$, y aplicar sobre ella `chisq.test()` exactamente igual que en el caso de dos grupos. El estadístico de contraste, sus grados de libertad (que ahora dependen del número de filas y columnas de la tabla) y la interpretación del p-valor obtenido no cambian en absoluto respecto al procedimiento ya descrito para dos poblaciones independientes.
+
+## Cierre
+
+Este capítulo ha mostrado cómo comparar más de dos poblaciones independientes, tanto cuando la variable dependiente es cuantitativa (Levene, ANOVA y Tukey, o su alternativa no paramétrica, Kruskal-Wallis con comparaciones de Wilcoxon por pares) como cuando es cualitativa (Chi-cuadrado de independencia). El siguiente capítulo, [Contrastes para más de dos poblaciones relacionadas](15-contrastes-medidas-repetidas.qmd), trata la situación análoga pero cuando los más de dos grupos comparados no están formados por individuos distintos, sino que son medidas repetidas tomadas sobre los mismos sujetos.

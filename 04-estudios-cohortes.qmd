@@ -1,0 +1,250 @@
+---
+title: Estudios de cohortes
+lang: es
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+library(tidyverse)
+library(survival)
+```
+
+Un _estudio de cohortes_ es un estudio observacional, analítico y longitudinal en el que se parte de un grupo de individuos expuestos a un determinado factor y de un grupo de individuos no expuestos a él, todos ellos libres de la enfermedad o el resultado de interés en el momento inicial, y se les sigue en el tiempo para comprobar quiénes desarrollan dicho resultado. A diferencia del estudio transversal, en el que exposición y resultado se observan en un único instante, en el estudio de cohortes la secuencia temporal entre exposición y resultado queda garantizada por diseño, lo que lo convierte en uno de los diseños observacionales con mayor capacidad para sugerir relaciones causales. Los conceptos generales de estudio observacional, analítico y longitudinal se presentaron en el [capítulo de introducción](01-introduccion.qmd).
+
+## Definición y características
+
+:::{#def-cohortes-estudio-cohortes}
+## Estudio de cohortes
+Un _estudio de cohortes_ es un estudio observacional en el que se identifican dos o más grupos (cohortes) de individuos libres del resultado de interés, definidos según su nivel de exposición a un factor de estudio, y se les sigue durante un periodo de tiempo para comparar la frecuencia con la que desarrollan dicho resultado.
+:::
+
+La característica esencial de este diseño es que la formación de los grupos se realiza en función de la exposición, no del resultado: primero se clasifica a los individuos en expuestos y no expuestos, y después se observa la aparición de la enfermedad o evento de interés. Esto contrasta con el estudio de casos y controles, en el que ocurre justo lo contrario.
+
+Según el momento en que se recogen los datos respecto al momento en que se realiza el análisis, se distinguen dos variantes:
+
+:::{#def-cohortes-cohorte-prospectiva}
+## Cohorte prospectiva
+Una _cohorte prospectiva_ es aquella en la que la exposición se determina en el momento presente y el seguimiento de los individuos se realiza hacia adelante en el tiempo, recogiendo los datos del resultado a medida que van ocurriendo.
+:::
+
+:::{#def-cohortes-cohorte-retrospectiva}
+## Cohorte retrospectiva o histórica
+Una _cohorte retrospectiva_ o _histórica_ es aquella en la que tanto la exposición como el seguimiento y la aparición del resultado ya han ocurrido en el pasado en el momento en que se inicia el estudio, de modo que el investigador reconstruye la historia de exposición y resultado a partir de registros u otras fuentes de información existentes.
+:::
+
+:::{.callout-note title=Interpretación}
+La diferencia entre una cohorte prospectiva y una retrospectiva no está en la lógica del diseño, que es idéntica en ambos casos (de la exposición hacia el resultado), sino en el momento en que se sitúa el investigador respecto al calendario de los hechos. En la cohorte prospectiva el investigador espera a que ocurran los eventos; en la retrospectiva, los eventos ya ocurrieron y se reconstruyen a partir de historiales clínicos, registros administrativos u otras fuentes documentales.
+:::
+
+## Ventajas e inconvenientes
+
+El diseño de cohortes presenta una serie de ventajas frente a otros estudios observacionales:
+
+- Permite calcular directamente la incidencia de la enfermedad, tanto en expuestos como en no expuestos, ya que se parte de individuos libres de la enfermedad y se observa su aparición a lo largo del tiempo.
+- Es especialmente adecuado para el estudio de exposiciones poco frecuentes, ya que permite seleccionar deliberadamente un número suficiente de individuos expuestos.
+- Al hacer un seguimiento de los individuos, permite estudiar simultáneamente varios resultados o enfermedades asociados a una misma exposición.
+- Al respetar la secuencia temporal exposición-resultado, reduce algunos sesgos que afectan a los estudios transversales y facilita la interpretación causal.
+
+Frente a estas ventajas, el diseño también presenta importantes inconvenientes:
+
+- Suele requerir un coste económico y una duración elevados, sobre todo en su variante prospectiva, ya que hay que esperar a que se acumulen suficientes casos.
+- Las pérdidas de seguimiento (individuos que abandonan el estudio antes de que finalice) pueden introducir sesgos si no son aleatorias respecto a la exposición o al resultado.
+- No resulta eficiente para el estudio de enfermedades raras, pues sería necesario seguir a un número muy elevado de individuos para observar un número suficiente de casos.
+
+## Medidas propias de este diseño
+
+El objetivo central de un estudio de cohortes es comparar la frecuencia con la que aparece el resultado de interés en el grupo de expuestos frente al grupo de no expuestos. Para ello se emplean tres medidas: la incidencia acumulada, el riesgo relativo y el riesgo atribuible.
+
+### Incidencia acumulada
+
+:::{#def-cohortes-incidencia-acumulada}
+## Incidencia acumulada
+La _incidencia acumulada_ o _riesgo_ de un grupo es la proporción de individuos que, estando libres de la enfermedad al inicio del seguimiento, la desarrollan a lo largo de un periodo de tiempo fijo. Si $a$ es el número de casos nuevos que aparecen en un grupo de $n$ individuos seguidos durante dicho periodo, la incidencia acumulada se define como
+
+$$IA = \frac{a}{n}$$
+:::
+
+:::{.callout-important}
+Al ser una proporción, la incidencia acumulada cumple
+
+$$0\leq IA \leq 1,$$
+
+y suele expresarse también en tanto por ciento o por cada 1000, 10000, etc. individuos, según la frecuencia del resultado.
+:::
+
+### Riesgo relativo
+
+:::{#def-cohortes-riesgo-relativo}
+## Riesgo relativo
+El _riesgo relativo_ (RR) es el cociente entre la incidencia acumulada en el grupo de expuestos ($IA_E$) y la incidencia acumulada en el grupo de no expuestos ($IA_{\bar E}$):
+
+$$RR = \frac{IA_E}{IA_{\bar E}}$$
+:::
+
+:::{.callout-important}
+El riesgo relativo es un cociente de dos proporciones, por lo que
+
+$$RR \geq 0.$$
+:::
+
+:::{.callout-note title=Interpretación}
+- Si $RR=1$, la incidencia es igual en expuestos y no expuestos, por lo que no existe asociación entre la exposición y el resultado.
+- Si $RR>1$, la incidencia es mayor en expuestos, por lo que la exposición se comporta como un _factor de riesgo_. Un $RR=3$ indica que el riesgo de desarrollar el resultado es tres veces mayor en expuestos que en no expuestos.
+- Si $RR<1$, la incidencia es menor en expuestos, por lo que la exposición se comporta como un _factor protector_.
+:::
+
+### Riesgo atribuible
+
+:::{#def-cohortes-riesgo-atribuible}
+## Riesgo atribuible
+El _riesgo atribuible_ (RA) es la diferencia entre la incidencia acumulada en el grupo de expuestos y la incidencia acumulada en el grupo de no expuestos:
+
+$$RA = IA_E - IA_{\bar E}$$
+
+El riesgo atribuible mide, en términos absolutos, el exceso de incidencia del resultado que puede achacarse a la exposición. Cuando además se calcula la proporción que ese exceso representa sobre la incidencia total de los expuestos, se obtiene la _fracción atribuible en expuestos_,
+
+$$FAE = \frac{RA}{IA_E} = \frac{IA_E - IA_{\bar E}}{IA_E},$$
+
+que indica qué proporción de los casos que ocurren entre los expuestos se podrían evitar eliminando la exposición.
+:::
+
+:::{.callout-note title=Interpretación}
+Mientras que el riesgo relativo informa sobre la fuerza de la asociación (en términos multiplicativos), el riesgo atribuible informa sobre el impacto en salud pública de la exposición: dos exposiciones pueden tener el mismo $RR$ pero un $RA$ muy distinto si las incidencias de base son muy diferentes.
+:::
+
+### Ejemplo numérico
+
+:::{#exm-cohortes-riesgo-relativo-atribuible}
+Se lleva a cabo un estudio de cohortes prospectivo para investigar la relación entre el hábito de fumar y la aparición de bronquitis crónica. Se reclutan 600 individuos libres de bronquitis crónica, de los cuales 200 son fumadores y 400 no fumadores, y se les sigue durante 10 años. Al finalizar el seguimiento se obtiene la siguiente tabla de frecuencias:
+
+$$
+\begin{array}{lrrr}
+\hline
+ & \mbox{Bronquitis} & \mbox{No bronquitis} & \mbox{Total}\\
+\hline
+\mbox{Fumadores} & 40 & 160 & 200\\
+\mbox{No fumadores} & 20 & 380 & 400\\
+\hline
+\end{array}
+$$
+
+**Incidencias acumuladas.** La incidencia acumulada en fumadores es
+
+$$IA_E = \frac{40}{200} = 0.2 = 20\%,$$
+
+y la incidencia acumulada en no fumadores es
+
+$$IA_{\bar E} = \frac{20}{400} = 0.05 = 5\%.$$
+
+**Riesgo relativo.**
+
+$$RR = \frac{IA_E}{IA_{\bar E}} = \frac{0.2}{0.05} = 4.$$
+
+El riesgo de desarrollar bronquitis crónica en los fumadores es 4 veces el riesgo en los no fumadores, por lo que el tabaco se comporta como un claro factor de riesgo.
+
+**Riesgo atribuible.**
+
+$$RA = IA_E - IA_{\bar E} = 0.2 - 0.05 = 0.15 = 15\%.$$
+
+De cada 100 fumadores, 15 desarrollan bronquitis crónica como consecuencia directa de fumar (los otros 5 de los 20 casos por 100 se habrían producido igualmente por otras causas). La fracción atribuible en expuestos es
+
+$$FAE = \frac{RA}{IA_E} = \frac{0.15}{0.2} = 0.75 = 75\%,$$
+
+es decir, el 75% de los casos de bronquitis crónica que aparecen entre los fumadores podrían evitarse si dejaran de fumar.
+:::
+
+## Realización con R
+
+### Cálculo de las medidas a partir de la tabla de contingencia
+
+El primer paso es reproducir con R el cálculo manual del ejemplo anterior, construyendo la tabla de contingencia como una matriz y calculando a partir de ella las incidencias acumuladas, el riesgo relativo y el riesgo atribuible.
+
+```{r}
+# Tabla de contingencia: filas = exposición, columnas = resultado (bronquitis, no bronquitis)
+tabla <- matrix(c(40, 160, 20, 380),
+                 nrow = 2, byrow = TRUE,
+                 dimnames = list(Exposicion = c("Fumadores", "No fumadores"),
+                                  Resultado = c("Bronquitis", "No bronquitis")))
+tabla
+```
+
+```{r}
+# Incidencias acumuladas
+ia_expuestos <- tabla["Fumadores", "Bronquitis"] / sum(tabla["Fumadores", ])
+ia_no_expuestos <- tabla["No fumadores", "Bronquitis"] / sum(tabla["No fumadores", ])
+c(IA_expuestos = ia_expuestos, IA_no_expuestos = ia_no_expuestos)
+```
+
+```{r}
+# Riesgo relativo
+rr <- ia_expuestos / ia_no_expuestos
+rr
+```
+
+```{r}
+# Riesgo atribuible y fracción atribuible en expuestos
+ra <- ia_expuestos - ia_no_expuestos
+fae <- ra / ia_expuestos
+c(RA = ra, FAE = fae)
+```
+
+Los resultados, $IA_E=0.2$, $IA_{\bar E}=0.05$, $RR=4$ y $RA=0.15$, coinciden exactamente con los obtenidos a mano.
+
+### Análisis del tiempo hasta el evento con datos de seguimiento
+
+En muchos estudios de cohortes no todos los individuos completan el mismo periodo de seguimiento: algunos abandonan el estudio antes de que termine y otros lo finalizan sin haber desarrollado el resultado. En ambos casos se dice que su tiempo de seguimiento está _censurado_. El análisis de supervivencia, implementado en el paquete `survival`, permite tener en cuenta esta censura al comparar la incidencia acumulada entre grupos.
+
+En el siguiente ejemplo se simula una cohorte de 150 individuos, 75 expuestos y 75 no expuestos, con tiempos hasta el evento generados a partir de una distribución exponencial (los expuestos tienen, en promedio, un tiempo hasta el evento menor) y con un tiempo máximo de seguimiento de 10 años que censura a los individuos que no han presentado el evento antes de esa fecha.
+
+```{r}
+set.seed(123)
+
+n_grupo <- 75
+
+cohorte <- tibble(
+  id = 1:(2 * n_grupo),
+  grupo = rep(c("Expuesto", "No expuesto"), each = n_grupo),
+  # Tiempo hasta el evento: mayor tasa (menor tiempo medio) en expuestos
+  tiempo_evento = c(rexp(n_grupo, rate = 0.15),
+                     rexp(n_grupo, rate = 0.06)),
+  tiempo_max = 10,
+  tiempo = pmin(tiempo_evento, tiempo_max),
+  evento = as.numeric(tiempo_evento <= tiempo_max)
+)
+
+cohorte %>%
+  group_by(grupo) %>%
+  summarise(n = n(),
+            casos = sum(evento),
+            incidencia_acumulada = mean(evento))
+```
+
+Con los tiempos y el indicador de evento se construye un objeto de superviviencia con `Surv()` y se ajusta una curva de Kaplan-Meier por grupo con `survfit()`:
+
+```{r}
+ajuste <- survfit(Surv(tiempo, evento) ~ grupo, data = cohorte)
+summary(ajuste)$table
+```
+
+Para representar gráficamente las curvas se extraen los datos del ajuste con `broom::tidy()`, que devuelve un data frame con la probabilidad de supervivencia estimada en cada instante y grupo, y se dibuja con `ggplot2`. La incidencia acumulada de cada grupo es el complementario de la probabilidad de supervivencia ($1 - S(t)$):
+
+```{r}
+ajuste_df <- broom::tidy(ajuste) %>%
+  mutate(grupo = str_remove(strata, "grupo="),
+         incidencia_acumulada = 1 - estimate)
+
+ggplot(ajuste_df, aes(x = time, y = incidencia_acumulada, color = grupo)) +
+  geom_step(linewidth = 1) +
+  labs(x = "Tiempo de seguimiento (años)",
+       y = "Incidencia acumulada estimada",
+       color = "Grupo",
+       title = "Incidencia acumulada de bronquitis crónica según exposición") +
+  scale_y_continuous(labels = scales::percent) +
+  theme_minimal()
+```
+
+Las curvas muestran cómo la incidencia acumulada crece más deprisa y alcanza un nivel más alto en el grupo de expuestos que en el de no expuestos a lo largo de todo el periodo de seguimiento, lo que es coherente con un factor de riesgo. A diferencia del cálculo directo de incidencias con una tabla de contingencia, este enfoque aprovecha toda la información disponible de cada individuo, incluida la de quienes son censurados antes de que finalice el seguimiento, en lugar de descartarlos o tratarlos como si no hubieran desarrollado el resultado.
+
+## Cuándo utilizar este diseño
+
+El estudio de cohortes es la opción preferible cuando se dispone de tiempo y recursos suficientes, la exposición de interés es poco frecuente, o se quiere estudiar el efecto de una exposición sobre varios resultados a la vez, ya que permite calcular directamente incidencias, riesgos relativos y riesgos atribuibles. Cuando el resultado de interés es una enfermedad rara, con periodos de latencia muy largos o cuando se necesita una respuesta rápida y con un coste reducido, resulta más eficiente recurrir a un [estudio de casos y controles](05-estudios-casos-controles.qmd), que parte del resultado en lugar de la exposición. Y cuando ni siquiera se necesita establecer una secuencia temporal entre exposición y resultado, sino simplemente describir su asociación en un momento dado, puede bastar con un [estudio transversal](03-estudios-transversales.qmd), mucho más rápido y barato de ejecutar aunque no permita calcular incidencias ni establecer con claridad la dirección de la relación.

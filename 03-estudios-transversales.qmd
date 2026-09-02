@@ -1,0 +1,222 @@
+---
+title: Estudios transversales
+lang: es
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+library(tidyverse)
+```
+
+Como se adelantó en el [capítulo de introducción](01-introduccion.qmd), un estudio transversal es un tipo de estudio observacional en el que la exposición y el resultado se miden en un único momento del tiempo sobre los mismos individuos. A diferencia de los diseños longitudinales, que siguen a los sujetos a lo largo del tiempo, el estudio transversal puede entenderse como una "fotografía" de la población: se toma una muestra en un instante concreto y se registra simultáneamente el estado de todas las variables de interés.
+
+## Definición y características
+
+:::{#def-transversales-estudio-transversal}
+## Estudio transversal
+Un _estudio transversal_ (también llamado _estudio de prevalencia_ o, en inglés, _cross-sectional study_) es un estudio observacional en el que se selecciona una muestra de la población general, sin tener en cuenta ni la exposición ni el resultado de los individuos, y se miden todas las variables de interés en un único momento del tiempo.
+:::
+
+La característica que define a este diseño es la forma de seleccionar la muestra: los individuos se eligen de la población general (por ejemplo, mediante un muestreo aleatorio), sin condicionar la selección al hecho de estar expuestos o no, ni al hecho de presentar o no el resultado de interés. Esto lo distingue tanto del [estudio de cohortes](04-estudios-cohortes.qmd), que selecciona la muestra según la exposición, como del [estudio de casos y controles](05-estudios-casos-controles.qmd), que la selecciona según el resultado.
+
+Un estudio transversal puede tener dos finalidades distintas, que a menudo se combinan en la práctica:
+
+- **Uso descriptivo**: estimar la prevalencia de una enfermedad, una opinión, un hábito o cualquier otro fenómeno en la población, sin comparar grupos. Este es el uso más habitual y el que da nombre alternativo al diseño (estudio de prevalencia).
+- **Uso analítico**: comparar la prevalencia del resultado entre distintos subgrupos definidos por una variable de exposición, con el fin de detectar posibles asociaciones. Sin embargo, como la exposición y el resultado se miden al mismo tiempo, no es posible establecer con certeza cuál precedió a cuál, por lo que las asociaciones observadas deben interpretarse con cautela.
+
+## Ventajas e inconvenientes
+
+- **Rapidez y bajo coste**: al no requerir seguimiento de los individuos, los estudios transversales suelen ejecutarse en mucho menos tiempo y con muchos menos recursos que los diseños longitudinales.
+- **Sencillez**: no es necesario localizar y mantener el contacto con los participantes durante un periodo prolongado, por lo que las pérdidas de seguimiento no son un problema.
+- **Utilidad para la planificación sanitaria**: al estimar la prevalencia de un problema de salud, son la herramienta natural para dimensionar recursos y priorizar políticas públicas.
+- **Imposibilidad de establecer causalidad**: al medirse la exposición y el resultado en el mismo momento, no se puede determinar la secuencia temporal entre ambas, lo que impide concluir que la exposición precede (y por tanto puede causar) al resultado.
+- **Sesgo de prevalencia-incidencia (o sesgo de Neyman)**: la muestra solo incluye a los individuos que en ese momento tienen la enfermedad, es decir, a los supervivientes o casos de duración suficiente para ser detectados en el corte transversal. Los casos que se curan rápidamente o que fallecen pronto tienden a quedar excluidos, sesgando las estimaciones.
+- **Poco adecuado para enfermedades raras o de corta duración**: si la prevalencia es muy baja o el episodio es muy breve, la probabilidad de capturar casos en un único corte temporal es pequeña, por lo que se necesitarían muestras enormes para obtener estimaciones precisas.
+
+## Medidas propias de este diseño
+
+### Prevalencia
+
+La medida más característica del estudio transversal es la prevalencia, que cuantifica qué proporción de la población presenta el resultado de interés en el momento del corte.
+
+:::{#def-transversales-prevalencia}
+## Prevalencia
+Dada una muestra de $n$ individuos representativa de una población, de los cuales $a$ presentan el resultado de interés (casos) en el momento del estudio, la _prevalencia_ (puntual) se define como
+
+$$P = \frac{a}{n}$$
+
+Habitualmente se expresa como porcentaje (multiplicando por 100) o como número de casos por cada 1000, 10 000 o 100 000 habitantes, según la frecuencia del fenómeno estudiado.
+:::
+
+:::{.callout-important}
+Como la prevalencia es una proporción, se cumple que
+
+$$0 \leq P \leq 1,$$
+
+siendo $0$ cuando ningún individuo de la muestra presenta el resultado y $1$ (o el 100%) cuando todos lo presentan.
+:::
+
+:::{.callout-note title=Interpretación}
+- Cuanto más próxima esté $P$ a $0$, menos extendido está el fenómeno en la población.
+- Cuanto más próxima esté $P$ a $1$, más extendido está el fenómeno en la población.
+- La prevalencia depende tanto de la frecuencia con la que aparecen los casos nuevos (incidencia) como de la duración media del episodio: una enfermedad crónica de larga duración puede tener una prevalencia alta aunque su incidencia sea baja.
+:::
+
+:::{#exm-transversales-prevalencia}
+En un estudio transversal se seleccionó una muestra aleatoria de $n=500$ habitantes de una ciudad y se midió su presión arterial en una única visita. De ellos, $a=45$ presentaban hipertensión arterial en el momento de la medición. La prevalencia puntual de hipertensión en esta muestra es
+
+$$P = \frac{a}{n} = \frac{45}{500} = 0.09.$$
+
+Es decir, la prevalencia estimada de hipertensión en esta población es del $9\%$, o dicho de otra forma, de aproximadamente 90 casos por cada 1000 habitantes.
+:::
+
+### Razón de prevalencias
+
+Cuando el estudio transversal se emplea con finalidad analítica, comparando la prevalencia del resultado entre expuestos y no expuestos, la medida de asociación habitual es la razón de prevalencias.
+
+:::{#def-transversales-razon-prevalencias}
+## Razón de prevalencias
+Dada una tabla de contingencia que cruza una variable de exposición binaria con un resultado binario,
+
+$$
+\begin{array}{lccc}
+\hline
+ & \mbox{Resultado} & \mbox{No resultado} & \mbox{Total}\\
+\hline
+\mbox{Expuestos} & a & b & a+b\\
+\mbox{No expuestos} & c & d & c+d\\
+\hline
+\end{array}
+$$
+
+la _razón de prevalencias_ ($RP$) se define como el cociente entre la prevalencia del resultado en el grupo de expuestos, $P_1 = \dfrac{a}{a+b}$, y la prevalencia del resultado en el grupo de no expuestos, $P_0 = \dfrac{c}{c+d}$,
+
+$$RP = \frac{P_1}{P_0}.$$
+:::
+
+:::{.callout-important}
+La razón de prevalencias es siempre un número no negativo,
+
+$$RP \geq 0,$$
+
+sin límite superior.
+:::
+
+:::{.callout-note title=Interpretación}
+- Si $RP=1$, la prevalencia del resultado es igual en expuestos y no expuestos, por lo que no hay asociación (en el corte estudiado) entre la exposición y el resultado.
+- Si $RP>1$, la prevalencia del resultado es mayor entre los expuestos, lo que sugiere una asociación positiva entre exposición y resultado.
+- Si $RP<1$, la prevalencia del resultado es menor entre los expuestos, lo que sugiere que la exposición podría ser un factor protector.
+- Al tratarse de un diseño transversal, esta asociación no permite concluir causalidad: no se puede descartar que sea el resultado el que influya sobre la exposición, o que ambos estén influidos por un tercer factor.
+:::
+
+:::{#exm-transversales-razon-prevalencias}
+En el mismo estudio transversal sobre 1000 personas, se registró además si cada individuo era fumador. La tabla de contingencia entre el hábito tabáquico y la presencia de bronquitis crónica en el momento de la encuesta fue la siguiente:
+
+$$
+\begin{array}{lccc}
+\hline
+ & \mbox{Bronquitis} & \mbox{Sin bronquitis} & \mbox{Total}\\
+\hline
+\mbox{Fumadores} & 60 & 240 & 300\\
+\mbox{No fumadores} & 35 & 665 & 700\\
+\hline
+\end{array}
+$$
+
+La prevalencia de bronquitis crónica en fumadores es $P_1 = \dfrac{60}{300} = 0.20$, y en no fumadores es $P_0 = \dfrac{35}{700} = 0.05$. La razón de prevalencias es por tanto
+
+$$RP = \frac{P_1}{P_0} = \frac{0.20}{0.05} = 4.$$
+
+Es decir, en el momento del corte, la prevalencia de bronquitis crónica entre los fumadores es 4 veces la de los no fumadores.
+:::
+
+## Realización con R
+
+A continuación se simula un estudio transversal sobre $n=180$ individuos, en el que se mide una variable de exposición binaria (exposición a un contaminante ambiental) y una variable de resultado binaria (presencia de una afección respiratoria), ambas registradas en el mismo momento del tiempo.
+
+```{r simulacion-datos}
+set.seed(123)
+n <- 180
+
+# Exposición: el 40% de la muestra está expuesta al contaminante
+exposicion <- rbinom(n, size = 1, prob = 0.4)
+
+# La probabilidad de presentar la afección depende de la exposición
+p_afeccion <- ifelse(exposicion == 1, 0.30, 0.12)
+resultado <- rbinom(n, size = 1, prob = p_afeccion)
+
+datos <- tibble(
+  id = 1:n,
+  exposicion = factor(exposicion, levels = c(0, 1), labels = c("No expuesto", "Expuesto")),
+  resultado = factor(resultado, levels = c(0, 1), labels = c("Sin afección", "Con afección"))
+)
+
+datos
+```
+
+En primer lugar se calcula la prevalencia global de la afección en toda la muestra:
+
+```{r prevalencia-global}
+prevalencia_global <- mean(datos$resultado == "Con afección")
+prevalencia_global
+```
+
+A continuación se calcula la prevalencia por grupo de exposición, junto con el número de casos y el tamaño de cada grupo:
+
+```{r prevalencia-por-grupo}
+tabla_prevalencias <- datos |>
+  group_by(exposicion) |>
+  summarise(
+    casos = sum(resultado == "Con afección"),
+    n = n(),
+    prevalencia = casos / n
+  )
+
+tabla_prevalencias
+```
+
+Con estas dos prevalencias se obtiene la razón de prevalencias, comparando el grupo expuesto con el grupo no expuesto:
+
+```{r razon-prevalencias}
+rp <- tabla_prevalencias$prevalencia[tabla_prevalencias$exposicion == "Expuesto"] /
+  tabla_prevalencias$prevalencia[tabla_prevalencias$exposicion == "No expuesto"]
+
+rp
+```
+
+La prevalencia de la afección entre los expuestos al contaminante es, en esta muestra, aproximadamente `r round(rp, 1)` veces la de los no expuestos, lo que apunta a una posible asociación entre la exposición y el resultado (que, tratándose de un diseño transversal, no puede interpretarse como causal).
+
+Por último, se calcula un intervalo de confianza al 95% para la prevalencia de cada grupo mediante `prop.test()`, y se representan gráficamente las prevalencias con sus intervalos de confianza:
+
+```{r intervalos-confianza}
+intervalos <- tabla_prevalencias |>
+  rowwise() |>
+  mutate(
+    ic = list(broom::tidy(prop.test(casos, n)))
+  ) |>
+  unnest(ic) |>
+  select(exposicion, casos, n, prevalencia, conf.low, conf.high)
+
+intervalos
+```
+
+```{r grafico-prevalencias, fig.cap="Prevalencia de la afección respiratoria según la exposición al contaminante, con intervalos de confianza al 95%."}
+ggplot(intervalos, aes(x = exposicion, y = prevalencia, fill = exposicion)) +
+  geom_col(width = 0.6) +
+  geom_errorbar(aes(ymin = conf.low, ymax = conf.high), width = 0.15) +
+  scale_y_continuous(labels = scales::percent_format()) +
+  scale_fill_brewer(palette = "Set2") +
+  labs(
+    x = "Grupo de exposición",
+    y = "Prevalencia",
+    title = "Prevalencia de la afección respiratoria según exposición"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
+
+El gráfico confirma que la prevalencia estimada en el grupo expuesto es notablemente superior a la del grupo no expuesto, y que los intervalos de confianza de ambos grupos no se solapan, lo que refuerza la idea de que la diferencia observada difícilmente se debe solo al azar. No obstante, al tratarse de un corte transversal, esta asociación debería confirmarse con un diseño longitudinal, como un [estudio de cohortes](04-estudios-cohortes.qmd), antes de extraer conclusiones sobre causalidad.
+
+## Cuándo utilizar este diseño
+
+El estudio transversal es la herramienta de elección cuando el objetivo principal es estimar la prevalencia de un fenómeno en un momento dado, por ejemplo para planificar recursos sanitarios o describir el estado de salud de una población. También resulta útil como paso previo, exploratorio y económico, para generar hipótesis sobre posibles asociaciones que después se pondrán a prueba con diseños más robustos. Sin embargo, cuando el objetivo es establecer la secuencia temporal entre una exposición y un resultado, o argumentar una posible relación de causalidad, el estudio transversal no es el diseño adecuado: conviene recurrir entonces a un [estudio de cohortes](04-estudios-cohortes.qmd), que sigue a los individuos desde la exposición hacia el resultado, o a un [estudio de casos y controles](05-estudios-casos-controles.qmd), que parte del resultado para indagar retrospectivamente en la exposición. La elección entre estas alternativas dependerá de la frecuencia del resultado, del tiempo y los recursos disponibles, y de si interesa priorizar la rapidez o la solidez causal de las conclusiones.

@@ -1,0 +1,1586 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>12&nbsp; Contrastes para dos poblaciones independientes – Tipos de Estudios Estadísticos</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./13-contrastes-dos-poblaciones-pareadas.html" rel="next">
+<link href="./11-contrastes-una-poblacion.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-33269adcf1721b81efc5ea7fcfe7f0ee.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-5a2acb6f4ed5aeb23a104ba421924b87.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-b050db56f2b97c639b7ebc2cf71c06d7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-5e50218c20039713403b52e69b91eb5d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="12&nbsp; Contrastes para dos poblaciones independientes – Tipos de Estudios Estadísticos">
+<meta property="og:description" content="">
+<meta property="og:image" content="12-contrastes-dos-poblaciones-independientes_files/figure-html/boxplot-notaA-sexo-1.png">
+<meta property="og:site_name" content="Tipos de Estudios Estadísticos">
+<meta name="twitter:title" content="12&nbsp; Contrastes para dos poblaciones independientes – Tipos de Estudios Estadísticos">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="12-contrastes-dos-poblaciones-independientes_files/figure-html/boxplot-notaA-sexo-1.png">
+<meta name="twitter:site" content="@aprendeconalf">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-sidebar floating quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./10-seleccion-contraste.html">Selección del contraste estadístico</a></li><li class="breadcrumb-item"><a href="./12-contrastes-dos-poblaciones-independientes.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Contrastes para dos poblaciones independientes</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Tipos de Estudios Estadísticos</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://aprendeconalf.es" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-house-fill"></i></a>
+    <a href="https://github.com/asalber/estadistica-tipos-estudios" title="Ejecutar el código" class="quarto-navigation-tool px-1" aria-label="Ejecutar el código"><i class="bi bi-github"></i></a>
+    <a href="./estadistica-tipos-estudios.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
+              <i class="bi bi-linkedin pe-1"></i>
+            LinkedIn
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefacio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-introduccion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción a los tipos de estudios estadísticos</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Diseños de estudio</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-estudios-descriptivos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Estudios descriptivos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-estudios-transversales.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Estudios transversales</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-estudios-cohortes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Estudios de cohortes</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-estudios-casos-controles.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Estudios de casos y controles</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-estudios-ecologicos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Estudios ecológicos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-estudios-experimentales.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Estudios experimentales</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-estudios-cuasiexperimentales.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Estudios cuasiexperimentales</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-encuestas-muestreo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Encuestas y diseño de muestreo</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Selección del contraste estadístico</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-seleccion-contraste.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Selección del contraste estadístico</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-contrastes-una-poblacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Contrastes para una población</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12-contrastes-dos-poblaciones-independientes.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Contrastes para dos poblaciones independientes</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13-contrastes-dos-poblaciones-pareadas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Contrastes para dos poblaciones pareadas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./14-contrastes-mas-dos-poblaciones-independientes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Contrastes para más de dos poblaciones independientes</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./15-contrastes-medidas-repetidas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Contrastes para más de dos poblaciones relacionadas (medidas repetidas)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./16-relacion-entre-variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Relación y predicción entre dos variables</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Indice de contenidos</h2>
+   
+  <ul>
+  <li><a href="#variable-dependiente-cuantitativa" id="toc-variable-dependiente-cuantitativa" class="nav-link active" data-scroll-target="#variable-dependiente-cuantitativa"><span class="header-section-number">12.1</span> Variable dependiente cuantitativa</a>
+  <ul class="collapse">
+  <li><a href="#estadísticos-descriptivos-por-grupo" id="toc-estadísticos-descriptivos-por-grupo" class="nav-link" data-scroll-target="#estadísticos-descriptivos-por-grupo"><span class="header-section-number">12.1.1</span> Estadísticos descriptivos por grupo</a></li>
+  <li><a href="#representación-gráfica" id="toc-representación-gráfica" class="nav-link" data-scroll-target="#representación-gráfica"><span class="header-section-number">12.1.2</span> Representación gráfica</a></li>
+  <li><a href="#comprobación-de-la-normalidad" id="toc-comprobación-de-la-normalidad" class="nav-link" data-scroll-target="#comprobación-de-la-normalidad"><span class="header-section-number">12.1.3</span> Comprobación de la normalidad</a></li>
+  <li><a href="#test-f-de-fisher-de-comparación-de-varianzas" id="toc-test-f-de-fisher-de-comparación-de-varianzas" class="nav-link" data-scroll-target="#test-f-de-fisher-de-comparación-de-varianzas"><span class="header-section-number">12.1.4</span> Test F de Fisher de comparación de varianzas</a></li>
+  <li><a href="#test-t-de-comparación-de-medias-de-poblaciones-independientes" id="toc-test-t-de-comparación-de-medias-de-poblaciones-independientes" class="nav-link" data-scroll-target="#test-t-de-comparación-de-medias-de-poblaciones-independientes"><span class="header-section-number">12.1.5</span> Test t de comparación de medias de poblaciones independientes</a></li>
+  <li><a href="#test-u-de-mann-whitney" id="toc-test-u-de-mann-whitney" class="nav-link" data-scroll-target="#test-u-de-mann-whitney"><span class="header-section-number">12.1.6</span> Test U de Mann-Whitney</a></li>
+  </ul></li>
+  <li><a href="#variable-dependiente-cualitativa" id="toc-variable-dependiente-cualitativa" class="nav-link" data-scroll-target="#variable-dependiente-cualitativa"><span class="header-section-number">12.2</span> Variable dependiente cualitativa</a>
+  <ul class="collapse">
+  <li><a href="#test-chi-cuadrado-de-independencia" id="toc-test-chi-cuadrado-de-independencia" class="nav-link" data-scroll-target="#test-chi-cuadrado-de-independencia"><span class="header-section-number">12.2.1</span> Test Chi-cuadrado de independencia</a></li>
+  <li><a href="#test-exacto-de-fisher" id="toc-test-exacto-de-fisher" class="nav-link" data-scroll-target="#test-exacto-de-fisher"><span class="header-section-number">12.2.2</span> Test exacto de Fisher</a></li>
+  </ul></li>
+  <li><a href="#resumen" id="toc-resumen" class="nav-link" data-scroll-target="#resumen"><span class="header-section-number">12.3</span> Resumen</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/asalber/estadistica-tipos-estudios/edit/main/12-contrastes-dos-poblaciones-independientes.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/asalber/estadistica-tipos-estudios/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./10-seleccion-contraste.html">Selección del contraste estadístico</a></li><li class="breadcrumb-item"><a href="./12-contrastes-dos-poblaciones-independientes.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Contrastes para dos poblaciones independientes</span></a></li></ol></nav>
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Contrastes para dos poblaciones independientes</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Código</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Enseñar el código</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Esconder el código</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">Ver el código</a></li></ul></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Este capítulo desarrolla la primera fila de la <a href="./10-seleccion-contraste.html">tabla de decisión</a> que involucra a dos variables: aquella en la que la variable independiente es cualitativa con dos categorías, cada una correspondiente a un grupo de individuos <strong>distintos</strong> (poblaciones independientes), y se quiere contrastar si existen diferencias entre esos dos grupos en una variable dependiente, ya sea esta cuantitativa o cualitativa. Los ejemplos utilizan el conjunto de datos <code>datos-curso.csv</code> presentado en el <a href="./10-seleccion-contraste.html">capítulo anterior</a>, comparando a los alumnos según su <code>sexo</code> (Hombre / Mujer), dos grupos formados por alumnos diferentes y por tanto independientes entre sí.</p>
+<section id="variable-dependiente-cuantitativa" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="variable-dependiente-cuantitativa"><span class="header-section-number">12.1</span> Variable dependiente cuantitativa</h2>
+<p>Cuando la variable dependiente es cuantitativa, el objetivo habitual es comparar la nota obtenida en la primera prueba, <code>notaA</code>, entre los alumnos y las alumnas. Antes de aplicar ningún contraste conviene describir y representar gráficamente los datos, y comprobar si es razonable asumir que <code>notaA</code> sigue una distribución normal dentro de cada grupo, ya que de ello depende qué contraste es el más apropiado.</p>
+<section id="estadísticos-descriptivos-por-grupo" class="level3" data-number="12.1.1">
+<h3 data-number="12.1.1" class="anchored" data-anchor-id="estadísticos-descriptivos-por-grupo"><span class="header-section-number">12.1.1</span> Estadísticos descriptivos por grupo</h3>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moments)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sexo) <span class="sc">%&gt;%</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">media =</span> <span class="fu">mean</span>(notaA),</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">de =</span> <span class="fu">sd</span>(notaA),</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">minimo =</span> <span class="fu">min</span>(notaA),</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">Q1 =</span> <span class="fu">quantile</span>(notaA, <span class="fl">0.25</span>),</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">mediana =</span> <span class="fu">median</span>(notaA),</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">Q3 =</span> <span class="fu">quantile</span>(notaA, <span class="fl">0.75</span>),</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">maximo =</span> <span class="fu">max</span>(notaA),</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">asimetria =</span> <span class="fu">skewness</span>(notaA),</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">apuntamiento =</span> <span class="fu">kurtosis</span>(notaA)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 11
+  sexo       n media    de minimo    Q1 mediana    Q3 maximo asimetria
+  &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;
+1 Hombre    71  6.12  1.23    3.5   5.3     6.1  6.85    9.3     0.249
+2 Mujer     49  5.89  1.49    2.5   5       5.7  6.8     9.3     0.135
+# ℹ 1 more variable: apuntamiento &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p>Los dos grupos tienen un tamaño razonable (71 hombres y 49 mujeres), medias muy parecidas (6.12 frente a 5.89) y coeficientes de asimetría y apuntamiento próximos a los valores 0 y 3 propios de la distribución normal, lo que sugiere que ninguno de los dos grupos se aparta mucho de la normalidad.</p>
+</section>
+<section id="representación-gráfica" class="level3" data-number="12.1.2">
+<h3 data-number="12.1.2" class="anchored" data-anchor-id="representación-gráfica"><span class="header-section-number">12.1.2</span> Representación gráfica</h3>
+<p>El diagrama de cajas y bigotes y el diagrama de violín permiten comparar visualmente la posición, la dispersión y la forma de la distribución de <code>notaA</code> en ambos grupos.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> sexo, <span class="at">y =</span> notaA, <span class="at">fill =</span> sexo)) <span class="sc">+</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"Set2"</span>) <span class="sc">+</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Sexo"</span>, <span class="at">y =</span> <span class="st">"Nota A"</span>) <span class="sc">+</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="12-contrastes-dos-poblaciones-independientes_files/figure-html/boxplot-notaA-sexo-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Diagrama de cajas y bigotes de la nota A según el sexo.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> sexo, <span class="at">y =</span> notaA, <span class="at">fill =</span> sexo)) <span class="sc">+</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"Set2"</span>) <span class="sc">+</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Sexo"</span>, <span class="at">y =</span> <span class="st">"Nota A"</span>) <span class="sc">+</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="12-contrastes-dos-poblaciones-independientes_files/figure-html/violin-notaA-sexo-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Diagrama de violín de la nota A según el sexo.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Ambos gráficos muestran cajas y formas muy similares en los dos grupos, sin apenas solapamiento asimétrico ni valores atípicos destacados, lo que anticipa que es poco probable encontrar diferencias relevantes entre ambos grupos.</p>
+</section>
+<section id="comprobación-de-la-normalidad" class="level3" data-number="12.1.3">
+<h3 data-number="12.1.3" class="anchored" data-anchor-id="comprobación-de-la-normalidad"><span class="header-section-number">12.1.3</span> Comprobación de la normalidad</h3>
+<p>Antes de decidir entre un contraste paramétrico (test t) o no paramétrico (test U de Mann-Whitney) hay que comprobar la normalidad de <code>notaA</code> <strong>en cada grupo por separado</strong>, con el test de Shapiro-Wilk visto en el capítulo de <a href="./11-contrastes-una-poblacion.html">contrastes para una población</a>:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sexo) <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">p-valor</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">shapiro.test</span>(notaA)<span class="sc">$</span>p.value</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 3
+  sexo       n `p-valor`
+  &lt;chr&gt;  &lt;int&gt;     &lt;dbl&gt;
+1 Hombre    71     0.872
+2 Mujer     49     0.942</code></pre>
+</div>
+</div>
+<p>En ambos grupos el p-valor del test de Shapiro-Wilk es muy superior a 0.05 (0.872 en hombres y 0.942 en mujeres), por lo que no hay evidencia para rechazar la normalidad de <code>notaA</code> en ninguno de los dos grupos. Se cumple, por tanto, el requisito para aplicar los contrastes paramétricos (test F y test t) que se muestran a continuación.</p>
+</section>
+<section id="test-f-de-fisher-de-comparación-de-varianzas" class="level3" data-number="12.1.4">
+<h3 data-number="12.1.4" class="anchored" data-anchor-id="test-f-de-fisher-de-comparación-de-varianzas"><span class="header-section-number">12.1.4</span> Test F de Fisher de comparación de varianzas</h3>
+<div id="def-dosindep-test-f" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 12.1 (Test F de Fisher de comparación de varianzas)</strong></span> El <em>test F de Fisher</em> contrasta si las varianzas de una variable cuantitativa son iguales en dos poblaciones independientes. La hipótesis nula es</p>
+<p><span class="math display">\[H_0: \sigma_1^2 = \sigma_2^2\]</span></p>
+<p>frente a la hipótesis alternativa <span class="math inline">\(H_1: \sigma_1^2 \neq \sigma_2^2\)</span>.</p>
+</div>
+<p><strong>Requisitos</strong>: la variable dependiente debe ser cuantitativa y seguir una distribución normal en ambas poblaciones (o, alternativamente, cada grupo debe tener un tamaño muestral <span class="math inline">\(n \geq 30\)</span>).</p>
+<p>Comprobada la normalidad de <code>notaA</code> en ambos grupos, puede aplicarse el test F para decidir si, a la hora de comparar las medias, debe asumirse o no que las varianzas poblacionales son iguales.</p>
+<div id="exm-dosindep-test-f" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 12.1</strong></span> &nbsp;</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var.test</span>(notaA <span class="sc">~</span> sexo, <span class="at">data =</span> df)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    F test to compare two variances
+
+data:  notaA by sexo
+F = 0.6769, num df = 70, denom df = 48, p-value = 0.1347
+alternative hypothesis: true ratio of variances is not equal to 1
+95 percent confidence interval:
+ 0.3953421 1.1293155
+sample estimates:
+ratio of variances 
+         0.6769032 </code></pre>
+</div>
+</div>
+<p>El p-valor del contraste es 0.1347, superior a 0.05, por lo que no se rechaza la hipótesis nula: no hay evidencia de que las varianzas de <code>notaA</code> difieran entre hombres y mujeres, y puede asumirse la igualdad de varianzas al aplicar el test t de comparación de medias.</p>
+</div>
+</section>
+<section id="test-t-de-comparación-de-medias-de-poblaciones-independientes" class="level3" data-number="12.1.5">
+<h3 data-number="12.1.5" class="anchored" data-anchor-id="test-t-de-comparación-de-medias-de-poblaciones-independientes"><span class="header-section-number">12.1.5</span> Test t de comparación de medias de poblaciones independientes</h3>
+<div id="def-dosindep-test-t" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 12.2 (Test t de comparación de medias de poblaciones independientes)</strong></span> El <em>test t de comparación de medias de poblaciones independientes</em> contrasta si las medias de una variable cuantitativa normal son iguales en dos poblaciones independientes. La hipótesis nula es</p>
+<p><span class="math display">\[H_0: \mu_1 = \mu_2\]</span></p>
+<p>frente a la hipótesis alternativa <span class="math inline">\(H_1: \mu_1 \neq \mu_2\)</span> (o una alternativa unilateral, si procede).</p>
+</div>
+<p><strong>Requisitos</strong>: la variable dependiente debe ser cuantitativa y seguir una distribución normal en ambas poblaciones (o cada grupo debe tener <span class="math inline">\(n \geq 30\)</span>). El cálculo del estadístico del contraste depende, además, de si las varianzas poblacionales pueden considerarse iguales o no, lo que se determina con el test F anterior: si las varianzas son homogéneas se emplea la versión clásica del test t (<code>var.equal = TRUE</code>); si no lo son, se emplea la corrección de Welch (<code>var.equal = FALSE</code>), que es además la opción por defecto en R y una elección razonable siempre que exista alguna duda sobre la igualdad de varianzas.</p>
+<p>Como el test F no ha encontrado diferencias significativas entre las varianzas, cabría esperar que ambas versiones del test t den resultados muy parecidos. Se aplica el test t con la corrección de Welch, más conservadora y por tanto más segura como opción por defecto:</p>
+<div id="exm-dosindep-test-t" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 12.2</strong></span> &nbsp;</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(notaA <span class="sc">~</span> sexo, <span class="at">data =</span> df, <span class="at">alternative =</span> <span class="st">"two.sided"</span>, <span class="at">var.equal =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  notaA by sexo
+t = 0.89364, df = 89.873, p-value = 0.3739
+alternative hypothesis: true difference in means between group Hombre and group Mujer is not equal to 0
+95 percent confidence interval:
+ -0.2821809  0.7435779
+sample estimates:
+mean in group Hombre  mean in group Mujer 
+            6.122535             5.891837 </code></pre>
+</div>
+</div>
+<p>El p-valor es 0.3739, muy superior a 0.05, por lo que no se rechaza <span class="math inline">\(H_0\)</span>: no hay evidencia de que la nota media de la primera prueba difiera entre hombres y mujeres. Si se repite el contraste asumiendo varianzas iguales (<code>var.equal = TRUE</code>), el resultado es prácticamente idéntico (t = 0.926, p = 0.3563), como cabía esperar tras el resultado del test F.</p>
+</div>
+<p>El siguiente diagrama de medias, con el intervalo de confianza al 95% de la media en cada grupo, ilustra gráficamente la conclusión del contraste: los dos intervalos se solapan ampliamente, coherente con la ausencia de diferencias significativas.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>media_ic <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  m <span class="ot">&lt;-</span> <span class="fu">mean</span>(x)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  error <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="at">df =</span> <span class="fu">length</span>(x) <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> <span class="fu">sd</span>(x) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fu">length</span>(x))</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">y =</span> m, <span class="at">ymin =</span> m <span class="sc">-</span> error, <span class="at">ymax =</span> m <span class="sc">+</span> error)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> sexo, <span class="at">y =</span> notaA, <span class="at">color =</span> sexo)) <span class="sc">+</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun =</span> <span class="st">"mean"</span>, <span class="at">geom =</span> <span class="st">"point"</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> media_ic, <span class="at">geom =</span> <span class="st">"pointrange"</span>) <span class="sc">+</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Sexo"</span>, <span class="at">y =</span> <span class="st">"Nota A media"</span>) <span class="sc">+</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="12-contrastes-dos-poblaciones-independientes_files/figure-html/diagrama-medias-notaA-sexo-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Media de la nota A por sexo, con su intervalo de confianza al 95%.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="test-u-de-mann-whitney" class="level3" data-number="12.1.6">
+<h3 data-number="12.1.6" class="anchored" data-anchor-id="test-u-de-mann-whitney"><span class="header-section-number">12.1.6</span> Test U de Mann-Whitney</h3>
+<div id="def-dosindep-test-u-mann-whitney" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 12.3 (Test U de Mann-Whitney)</strong></span> El <em>test U de Mann-Whitney</em> (también llamado test de la suma de rangos de Wilcoxon) contrasta si las distribuciones de una variable cuantitativa o cualitativa ordinal son iguales en dos poblaciones independientes, sin necesidad de asumir normalidad. Cuando las dos distribuciones tienen la misma forma y dispersión, el contraste equivale a comparar sus medianas. La hipótesis nula es</p>
+<p><span class="math display">\[H_0: \mbox{las distribuciones de las dos poblaciones son iguales}\]</span></p>
+<p>frente a la alternativa de que una de las poblaciones tiende a presentar valores sistemáticamente más altos (o más bajos) que la otra.</p>
+</div>
+<p><strong>Requisitos</strong>: la variable dependiente debe ser, al menos, cualitativa ordinal (o cuantitativa), y las dos poblaciones deben ser independientes. No exige que la variable siga una distribución normal, por lo que es la alternativa natural al test t cuando no se cumple ese requisito.</p>
+<p>Aunque en este caso <code>notaA</code> es normal en ambos grupos y el test t es aplicable, se muestra también el test U de Mann-Whitney a modo ilustrativo, ya que sería la opción adecuada si la normalidad no se hubiera cumplido:</p>
+<div id="exm-dosindep-test-u-mann-whitney" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 12.3</strong></span> &nbsp;</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(notaA <span class="sc">~</span> sexo, <span class="at">data =</span> df, <span class="at">alternative =</span> <span class="st">"two.sided"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Wilcoxon rank sum test with continuity correction
+
+data:  notaA by sexo
+W = 1917, p-value = 0.3445
+alternative hypothesis: true location shift is not equal to 0</code></pre>
+</div>
+</div>
+<p>El p-valor es 0.3445, superior a 0.05, por lo que tampoco con este contraste no paramétrico se rechaza la hipótesis nula: la distribución de <code>notaA</code> no difiere significativamente entre hombres y mujeres, confirmando la conclusión alcanzada con el test t.</p>
+</div>
+</section>
+</section>
+<section id="variable-dependiente-cualitativa" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="variable-dependiente-cualitativa"><span class="header-section-number">12.2</span> Variable dependiente cualitativa</h2>
+<p>Cuando la variable dependiente es cualitativa, el interés no está en comparar medias sino en comparar <strong>proporciones</strong>, o, de forma equivalente, en contrastar si existe <strong>asociación</strong> entre las dos variables cualitativas. Como ejemplo se compara el resultado (Aprobado / Suspenso) de la primera prueba, <code>calificacionA</code>, entre hombres y mujeres.</p>
+<p>La tabla de contingencia entre <code>sexo</code> y <code>calificacionA</code>, y las proporciones de aprobados dentro de cada sexo, son las siguientes:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>tabla <span class="ot">&lt;-</span> <span class="fu">table</span>(df<span class="sc">$</span>sexo, df<span class="sc">$</span>calificacionA)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>tabla</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>        
+         Aprobado Suspenso
+  Hombre       58       13
+  Mujer        36       13</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(tabla, <span class="at">margin =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>        
+          Aprobado  Suspenso
+  Hombre 0.8169014 0.1830986
+  Mujer  0.7346939 0.2653061</code></pre>
+</div>
+</div>
+<p>El 81.7% de los hombres aprueba la primera prueba, frente al 73.5% de las mujeres. La pregunta que responden los contrastes de esta sección es si esa diferencia de casi 8 puntos porcentuales es lo bastante grande como para no poder explicarse por el azar del muestreo, o si, por el contrario, es compatible con que en la población no exista ninguna diferencia real entre sexos.</p>
+<section id="test-chi-cuadrado-de-independencia" class="level3" data-number="12.2.1">
+<h3 data-number="12.2.1" class="anchored" data-anchor-id="test-chi-cuadrado-de-independencia"><span class="header-section-number">12.2.1</span> Test Chi-cuadrado de independencia</h3>
+<div id="def-dosindep-test-chi-cuadrado" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 12.4 (Test Chi-cuadrado de independencia)</strong></span> El <em>test Chi-cuadrado de independencia</em> contrasta si existe relación (asociación) entre dos variables cualitativas, o, de forma equivalente cuando una de ellas define dos poblaciones, si las proporciones de las categorías de la otra variable son iguales en ambas poblaciones. La hipótesis nula es</p>
+<p><span class="math display">\[H_0: \mbox{las dos variables son independientes (no hay asociación entre ellas)}\]</span></p>
+</div>
+<p><strong>Requisitos</strong>: las dos variables deben ser cualitativas, y no más del 20% de las frecuencias esperadas de la tabla de contingencia debe ser inferior a 5 (ninguna frecuencia esperada debe ser, además, inferior a 1).</p>
+<div id="exm-dosindep-test-chi-cuadrado" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 12.4</strong></span> &nbsp;</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>chi <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(tabla)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>chi</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's Chi-squared test with Yates' continuity correction
+
+data:  tabla
+X-squared = 0.72085, df = 1, p-value = 0.3959</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>chi<span class="sc">$</span>expected</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>        
+         Aprobado Suspenso
+  Hombre 55.61667 15.38333
+  Mujer  38.38333 10.61667</code></pre>
+</div>
+</div>
+<p>Las cuatro frecuencias esperadas de la tabla (55.6, 15.4, 38.4 y 10.6) son todas superiores a 5, por lo que se cumple el requisito de aplicación del test. El p-valor obtenido, con la corrección de continuidad de Yates propia de las tablas 2x2, es 0.3959, muy superior a 0.05, por lo que no se rechaza la hipótesis nula: no hay evidencia de asociación entre el sexo y el resultado de la primera prueba, es decir, la proporción de aprobados no difiere significativamente entre hombres y mujeres.</p>
+</div>
+</section>
+<section id="test-exacto-de-fisher" class="level3" data-number="12.2.2">
+<h3 data-number="12.2.2" class="anchored" data-anchor-id="test-exacto-de-fisher"><span class="header-section-number">12.2.2</span> Test exacto de Fisher</h3>
+<div id="def-dosindep-test-fisher" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 12.5 (Test exacto de Fisher)</strong></span> El <em>test exacto de Fisher</em> contrasta la misma hipótesis de independencia que el test Chi-cuadrado, pero calculando de forma exacta (sin aproximación asintótica) la probabilidad de las tablas de contingencia al menos tan extremas como la observada. La hipótesis nula es la misma que la del test Chi-cuadrado:</p>
+<p><span class="math display">\[H_0: \mbox{las dos variables son independientes (no hay asociación entre ellas)}\]</span></p>
+<p>Es la alternativa recomendada, especialmente en tablas 2x2, cuando no se cumple el requisito de frecuencias esperadas del test Chi-cuadrado (muestras pequeñas).</p>
+</div>
+<p><strong>Requisitos</strong>: las dos variables deben ser cualitativas. A diferencia del test Chi-cuadrado, no exige ninguna condición sobre las frecuencias esperadas, por lo que es válido con cualquier tamaño muestral.</p>
+<div id="exm-dosindep-test-fisher" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 12.5</strong></span> &nbsp;</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fisher.test</span>(tabla)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Fisher's Exact Test for Count Data
+
+data:  tabla
+p-value = 0.3677
+alternative hypothesis: true odds ratio is not equal to 1
+95 percent confidence interval:
+ 0.609684 4.234633
+sample estimates:
+odds ratio 
+  1.604498 </code></pre>
+</div>
+</div>
+<p>El p-valor del test exacto de Fisher es 0.3677, muy similar al obtenido con el test Chi-cuadrado (0.3959) y, de nuevo, muy superior a 0.05: no se rechaza la hipótesis nula de independencia. Este parecido entre ambos resultados es el esperable, ya que las frecuencias esperadas de la tabla de contingencia eran, como se comprobó antes, suficientemente grandes para que el test Chi-cuadrado fuera fiable; el test exacto de Fisher habría sido la opción obligada, en cambio, de haber tenido frecuencias esperadas por debajo de 5.</p>
+</div>
+</section>
+</section>
+<section id="resumen" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="resumen"><span class="header-section-number">12.3</span> Resumen</h2>
+<p>En los cinco contrastes de este capítulo, ninguno ha encontrado diferencias estadísticamente significativas entre hombres y mujeres, ni en la nota media de la primera prueba ni en la proporción de aprobados, lo que es coherente con lo observado en las descriptivas y los gráficos iniciales: los dos grupos se comportan, en esta asignatura, de forma muy similar.</p>
+<p>Todos los contrastes anteriores exigen que las dos poblaciones comparadas estén formadas por individuos distintos, es decir, que sean independientes. Cuando en cambio se comparan los mismos individuos medidos en dos ocasiones (por ejemplo, la nota de un mismo alumno en dos pruebas distintas, <code>notaA</code> y <code>notaB</code>), las poblaciones están pareadas y los contrastes anteriores dejan de ser válidos, siendo necesario recurrir a sus versiones para datos pareados, que se desarrollan en el capítulo de <a href="./13-contrastes-dos-poblaciones-pareadas.html">Contrastes para dos poblaciones pareadas</a>. Y cuando la variable independiente tiene más de dos categorías (por ejemplo, comparar la nota media entre los tres grupos de clase, A, B y C), es necesario recurrir a los contrastes que se desarrollan en el capítulo de <a href="./14-contrastes-mas-dos-poblaciones-independientes.html">Contrastes para más de dos poblaciones independientes</a>.</p>
+
+
+<!-- -->
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiada");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiada");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./11-contrastes-una-poblacion.html" class="pagination-link" aria-label="Contrastes para una población">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Contrastes para una población</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./13-contrastes-dos-poblaciones-pareadas.html" class="pagination-link" aria-label="Contrastes para dos poblaciones pareadas">
+        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Contrastes para dos poblaciones pareadas</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Ejecutar el código</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Contrastes para dos poblaciones independientes</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="an">lang:</span><span class="co"> es</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup, include=FALSE}</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo =</span> <span class="cn">TRUE</span>, <span class="at">message =</span> <span class="cn">FALSE</span>, <span class="at">warning =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"datos/datos-curso.csv"</span>)</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>Este capítulo desarrolla la primera fila de la <span class="co">[</span><span class="ot">tabla de decisión</span><span class="co">](10-seleccion-contraste.qmd)</span> que involucra a dos variables: aquella en la que la variable independiente es cualitativa con dos categorías, cada una correspondiente a un grupo de individuos **distintos** (poblaciones independientes), y se quiere contrastar si existen diferencias entre esos dos grupos en una variable dependiente, ya sea esta cuantitativa o cualitativa. Los ejemplos utilizan el conjunto de datos <span class="in">`datos-curso.csv`</span> presentado en el <span class="co">[</span><span class="ot">capítulo anterior</span><span class="co">](10-seleccion-contraste.qmd)</span>, comparando a los alumnos según su <span class="in">`sexo`</span> (Hombre / Mujer), dos grupos formados por alumnos diferentes y por tanto independientes entre sí.</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a><span class="fu">## Variable dependiente cuantitativa</span></span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>Cuando la variable dependiente es cuantitativa, el objetivo habitual es comparar la nota obtenida en la primera prueba, <span class="in">`notaA`</span>, entre los alumnos y las alumnas. Antes de aplicar ningún contraste conviene describir y representar gráficamente los datos, y comprobar si es razonable asumir que <span class="in">`notaA`</span> sigue una distribución normal dentro de cada grupo, ya que de ello depende qué contraste es el más apropiado.</span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a><span class="fu">### Estadísticos descriptivos por grupo</span></span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a><span class="in">```{r descriptivos-notaA-sexo}</span></span>
+<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moments)</span>
+<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sexo) <span class="sc">%&gt;%</span></span>
+<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb24-27"><a href="#cb24-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">media =</span> <span class="fu">mean</span>(notaA),</span>
+<span id="cb24-28"><a href="#cb24-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">de =</span> <span class="fu">sd</span>(notaA),</span>
+<span id="cb24-29"><a href="#cb24-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">minimo =</span> <span class="fu">min</span>(notaA),</span>
+<span id="cb24-30"><a href="#cb24-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">Q1 =</span> <span class="fu">quantile</span>(notaA, <span class="fl">0.25</span>),</span>
+<span id="cb24-31"><a href="#cb24-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">mediana =</span> <span class="fu">median</span>(notaA),</span>
+<span id="cb24-32"><a href="#cb24-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">Q3 =</span> <span class="fu">quantile</span>(notaA, <span class="fl">0.75</span>),</span>
+<span id="cb24-33"><a href="#cb24-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">maximo =</span> <span class="fu">max</span>(notaA),</span>
+<span id="cb24-34"><a href="#cb24-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">asimetria =</span> <span class="fu">skewness</span>(notaA),</span>
+<span id="cb24-35"><a href="#cb24-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">apuntamiento =</span> <span class="fu">kurtosis</span>(notaA)</span>
+<span id="cb24-36"><a href="#cb24-36" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb24-37"><a href="#cb24-37" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb24-38"><a href="#cb24-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-39"><a href="#cb24-39" aria-hidden="true" tabindex="-1"></a>Los dos grupos tienen un tamaño razonable (71 hombres y 49 mujeres), medias muy parecidas (6.12 frente a 5.89) y coeficientes de asimetría y apuntamiento próximos a los valores 0 y 3 propios de la distribución normal, lo que sugiere que ninguno de los dos grupos se aparta mucho de la normalidad.</span>
+<span id="cb24-40"><a href="#cb24-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-41"><a href="#cb24-41" aria-hidden="true" tabindex="-1"></a><span class="fu">### Representación gráfica</span></span>
+<span id="cb24-42"><a href="#cb24-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-43"><a href="#cb24-43" aria-hidden="true" tabindex="-1"></a>El diagrama de cajas y bigotes y el diagrama de violín permiten comparar visualmente la posición, la dispersión y la forma de la distribución de <span class="in">`notaA`</span> en ambos grupos.</span>
+<span id="cb24-44"><a href="#cb24-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-45"><a href="#cb24-45" aria-hidden="true" tabindex="-1"></a><span class="in">```{r boxplot-notaA-sexo, fig.cap="Diagrama de cajas y bigotes de la nota A según el sexo."}</span></span>
+<span id="cb24-46"><a href="#cb24-46" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> sexo, <span class="at">y =</span> notaA, <span class="at">fill =</span> sexo)) <span class="sc">+</span></span>
+<span id="cb24-47"><a href="#cb24-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb24-48"><a href="#cb24-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"Set2"</span>) <span class="sc">+</span></span>
+<span id="cb24-49"><a href="#cb24-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Sexo"</span>, <span class="at">y =</span> <span class="st">"Nota A"</span>) <span class="sc">+</span></span>
+<span id="cb24-50"><a href="#cb24-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb24-51"><a href="#cb24-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
+<span id="cb24-52"><a href="#cb24-52" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb24-53"><a href="#cb24-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-54"><a href="#cb24-54" aria-hidden="true" tabindex="-1"></a><span class="in">```{r violin-notaA-sexo, fig.cap="Diagrama de violín de la nota A según el sexo."}</span></span>
+<span id="cb24-55"><a href="#cb24-55" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> sexo, <span class="at">y =</span> notaA, <span class="at">fill =</span> sexo)) <span class="sc">+</span></span>
+<span id="cb24-56"><a href="#cb24-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
+<span id="cb24-57"><a href="#cb24-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"Set2"</span>) <span class="sc">+</span></span>
+<span id="cb24-58"><a href="#cb24-58" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Sexo"</span>, <span class="at">y =</span> <span class="st">"Nota A"</span>) <span class="sc">+</span></span>
+<span id="cb24-59"><a href="#cb24-59" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb24-60"><a href="#cb24-60" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
+<span id="cb24-61"><a href="#cb24-61" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb24-62"><a href="#cb24-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-63"><a href="#cb24-63" aria-hidden="true" tabindex="-1"></a>Ambos gráficos muestran cajas y formas muy similares en los dos grupos, sin apenas solapamiento asimétrico ni valores atípicos destacados, lo que anticipa que es poco probable encontrar diferencias relevantes entre ambos grupos.</span>
+<span id="cb24-64"><a href="#cb24-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-65"><a href="#cb24-65" aria-hidden="true" tabindex="-1"></a><span class="fu">### Comprobación de la normalidad</span></span>
+<span id="cb24-66"><a href="#cb24-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-67"><a href="#cb24-67" aria-hidden="true" tabindex="-1"></a>Antes de decidir entre un contraste paramétrico (test t) o no paramétrico (test U de Mann-Whitney) hay que comprobar la normalidad de <span class="in">`notaA`</span> **en cada grupo por separado**, con el test de Shapiro-Wilk visto en el capítulo de <span class="co">[</span><span class="ot">contrastes para una población</span><span class="co">](11-contrastes-una-poblacion.qmd)</span>:</span>
+<span id="cb24-68"><a href="#cb24-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-69"><a href="#cb24-69" aria-hidden="true" tabindex="-1"></a><span class="in">```{r shapiro-notaA-sexo}</span></span>
+<span id="cb24-70"><a href="#cb24-70" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb24-71"><a href="#cb24-71" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sexo) <span class="sc">%&gt;%</span></span>
+<span id="cb24-72"><a href="#cb24-72" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb24-73"><a href="#cb24-73" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb24-74"><a href="#cb24-74" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">p-valor</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">shapiro.test</span>(notaA)<span class="sc">$</span>p.value</span>
+<span id="cb24-75"><a href="#cb24-75" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb24-76"><a href="#cb24-76" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb24-77"><a href="#cb24-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-78"><a href="#cb24-78" aria-hidden="true" tabindex="-1"></a>En ambos grupos el p-valor del test de Shapiro-Wilk es muy superior a 0.05 (0.872 en hombres y 0.942 en mujeres), por lo que no hay evidencia para rechazar la normalidad de <span class="in">`notaA`</span> en ninguno de los dos grupos. Se cumple, por tanto, el requisito para aplicar los contrastes paramétricos (test F y test t) que se muestran a continuación.</span>
+<span id="cb24-79"><a href="#cb24-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-80"><a href="#cb24-80" aria-hidden="true" tabindex="-1"></a><span class="fu">### Test F de Fisher de comparación de varianzas</span></span>
+<span id="cb24-81"><a href="#cb24-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-82"><a href="#cb24-82" aria-hidden="true" tabindex="-1"></a>:::{#def-dosindep-test-f}</span>
+<span id="cb24-83"><a href="#cb24-83" aria-hidden="true" tabindex="-1"></a><span class="fu">## Test F de Fisher de comparación de varianzas</span></span>
+<span id="cb24-84"><a href="#cb24-84" aria-hidden="true" tabindex="-1"></a>El _test F de Fisher_ contrasta si las varianzas de una variable cuantitativa son iguales en dos poblaciones independientes. La hipótesis nula es</span>
+<span id="cb24-85"><a href="#cb24-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-86"><a href="#cb24-86" aria-hidden="true" tabindex="-1"></a>$$H_0: \sigma_1^2 = \sigma_2^2$$</span>
+<span id="cb24-87"><a href="#cb24-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-88"><a href="#cb24-88" aria-hidden="true" tabindex="-1"></a>frente a la hipótesis alternativa $H_1: \sigma_1^2 \neq \sigma_2^2$.</span>
+<span id="cb24-89"><a href="#cb24-89" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb24-90"><a href="#cb24-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-91"><a href="#cb24-91" aria-hidden="true" tabindex="-1"></a>**Requisitos**: la variable dependiente debe ser cuantitativa y seguir una distribución normal en ambas poblaciones (o, alternativamente, cada grupo debe tener un tamaño muestral $n \geq 30$).</span>
+<span id="cb24-92"><a href="#cb24-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-93"><a href="#cb24-93" aria-hidden="true" tabindex="-1"></a>Comprobada la normalidad de <span class="in">`notaA`</span> en ambos grupos, puede aplicarse el test F para decidir si, a la hora de comparar las medias, debe asumirse o no que las varianzas poblacionales son iguales.</span>
+<span id="cb24-94"><a href="#cb24-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-95"><a href="#cb24-95" aria-hidden="true" tabindex="-1"></a>:::{#exm-dosindep-test-f}</span>
+<span id="cb24-96"><a href="#cb24-96" aria-hidden="true" tabindex="-1"></a><span class="in">```{r test-f-notaA-sexo}</span></span>
+<span id="cb24-97"><a href="#cb24-97" aria-hidden="true" tabindex="-1"></a><span class="fu">var.test</span>(notaA <span class="sc">~</span> sexo, <span class="at">data =</span> df)</span>
+<span id="cb24-98"><a href="#cb24-98" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb24-99"><a href="#cb24-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-100"><a href="#cb24-100" aria-hidden="true" tabindex="-1"></a>El p-valor del contraste es 0.1347, superior a 0.05, por lo que no se rechaza la hipótesis nula: no hay evidencia de que las varianzas de <span class="in">`notaA`</span> difieran entre hombres y mujeres, y puede asumirse la igualdad de varianzas al aplicar el test t de comparación de medias.</span>
+<span id="cb24-101"><a href="#cb24-101" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb24-102"><a href="#cb24-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-103"><a href="#cb24-103" aria-hidden="true" tabindex="-1"></a><span class="fu">### Test t de comparación de medias de poblaciones independientes</span></span>
+<span id="cb24-104"><a href="#cb24-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-105"><a href="#cb24-105" aria-hidden="true" tabindex="-1"></a>:::{#def-dosindep-test-t}</span>
+<span id="cb24-106"><a href="#cb24-106" aria-hidden="true" tabindex="-1"></a><span class="fu">## Test t de comparación de medias de poblaciones independientes</span></span>
+<span id="cb24-107"><a href="#cb24-107" aria-hidden="true" tabindex="-1"></a>El _test t de comparación de medias de poblaciones independientes_ contrasta si las medias de una variable cuantitativa normal son iguales en dos poblaciones independientes. La hipótesis nula es</span>
+<span id="cb24-108"><a href="#cb24-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-109"><a href="#cb24-109" aria-hidden="true" tabindex="-1"></a>$$H_0: \mu_1 = \mu_2$$</span>
+<span id="cb24-110"><a href="#cb24-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-111"><a href="#cb24-111" aria-hidden="true" tabindex="-1"></a>frente a la hipótesis alternativa $H_1: \mu_1 \neq \mu_2$ (o una alternativa unilateral, si procede).</span>
+<span id="cb24-112"><a href="#cb24-112" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb24-113"><a href="#cb24-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-114"><a href="#cb24-114" aria-hidden="true" tabindex="-1"></a>**Requisitos**: la variable dependiente debe ser cuantitativa y seguir una distribución normal en ambas poblaciones (o cada grupo debe tener $n \geq 30$). El cálculo del estadístico del contraste depende, además, de si las varianzas poblacionales pueden considerarse iguales o no, lo que se determina con el test F anterior: si las varianzas son homogéneas se emplea la versión clásica del test t (<span class="in">`var.equal = TRUE`</span>); si no lo son, se emplea la corrección de Welch (<span class="in">`var.equal = FALSE`</span>), que es además la opción por defecto en R y una elección razonable siempre que exista alguna duda sobre la igualdad de varianzas.</span>
+<span id="cb24-115"><a href="#cb24-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-116"><a href="#cb24-116" aria-hidden="true" tabindex="-1"></a>Como el test F no ha encontrado diferencias significativas entre las varianzas, cabría esperar que ambas versiones del test t den resultados muy parecidos. Se aplica el test t con la corrección de Welch, más conservadora y por tanto más segura como opción por defecto:</span>
+<span id="cb24-117"><a href="#cb24-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-118"><a href="#cb24-118" aria-hidden="true" tabindex="-1"></a>:::{#exm-dosindep-test-t}</span>
+<span id="cb24-119"><a href="#cb24-119" aria-hidden="true" tabindex="-1"></a><span class="in">```{r test-t-notaA-sexo}</span></span>
+<span id="cb24-120"><a href="#cb24-120" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(notaA <span class="sc">~</span> sexo, <span class="at">data =</span> df, <span class="at">alternative =</span> <span class="st">"two.sided"</span>, <span class="at">var.equal =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb24-121"><a href="#cb24-121" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb24-122"><a href="#cb24-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-123"><a href="#cb24-123" aria-hidden="true" tabindex="-1"></a>El p-valor es 0.3739, muy superior a 0.05, por lo que no se rechaza $H_0$: no hay evidencia de que la nota media de la primera prueba difiera entre hombres y mujeres. Si se repite el contraste asumiendo varianzas iguales (<span class="in">`var.equal = TRUE`</span>), el resultado es prácticamente idéntico (t = 0.926, p = 0.3563), como cabía esperar tras el resultado del test F.</span>
+<span id="cb24-124"><a href="#cb24-124" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb24-125"><a href="#cb24-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-126"><a href="#cb24-126" aria-hidden="true" tabindex="-1"></a>El siguiente diagrama de medias, con el intervalo de confianza al 95% de la media en cada grupo, ilustra gráficamente la conclusión del contraste: los dos intervalos se solapan ampliamente, coherente con la ausencia de diferencias significativas.</span>
+<span id="cb24-127"><a href="#cb24-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-128"><a href="#cb24-128" aria-hidden="true" tabindex="-1"></a><span class="in">```{r diagrama-medias-notaA-sexo, fig.cap="Media de la nota A por sexo, con su intervalo de confianza al 95%."}</span></span>
+<span id="cb24-129"><a href="#cb24-129" aria-hidden="true" tabindex="-1"></a>media_ic <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb24-130"><a href="#cb24-130" aria-hidden="true" tabindex="-1"></a>  m <span class="ot">&lt;-</span> <span class="fu">mean</span>(x)</span>
+<span id="cb24-131"><a href="#cb24-131" aria-hidden="true" tabindex="-1"></a>  error <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="at">df =</span> <span class="fu">length</span>(x) <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> <span class="fu">sd</span>(x) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fu">length</span>(x))</span>
+<span id="cb24-132"><a href="#cb24-132" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">y =</span> m, <span class="at">ymin =</span> m <span class="sc">-</span> error, <span class="at">ymax =</span> m <span class="sc">+</span> error)</span>
+<span id="cb24-133"><a href="#cb24-133" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb24-134"><a href="#cb24-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-135"><a href="#cb24-135" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> sexo, <span class="at">y =</span> notaA, <span class="at">color =</span> sexo)) <span class="sc">+</span></span>
+<span id="cb24-136"><a href="#cb24-136" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun =</span> <span class="st">"mean"</span>, <span class="at">geom =</span> <span class="st">"point"</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb24-137"><a href="#cb24-137" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> media_ic, <span class="at">geom =</span> <span class="st">"pointrange"</span>) <span class="sc">+</span></span>
+<span id="cb24-138"><a href="#cb24-138" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Sexo"</span>, <span class="at">y =</span> <span class="st">"Nota A media"</span>) <span class="sc">+</span></span>
+<span id="cb24-139"><a href="#cb24-139" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb24-140"><a href="#cb24-140" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
+<span id="cb24-141"><a href="#cb24-141" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb24-142"><a href="#cb24-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-143"><a href="#cb24-143" aria-hidden="true" tabindex="-1"></a><span class="fu">### Test U de Mann-Whitney</span></span>
+<span id="cb24-144"><a href="#cb24-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-145"><a href="#cb24-145" aria-hidden="true" tabindex="-1"></a>:::{#def-dosindep-test-u-mann-whitney}</span>
+<span id="cb24-146"><a href="#cb24-146" aria-hidden="true" tabindex="-1"></a><span class="fu">## Test U de Mann-Whitney</span></span>
+<span id="cb24-147"><a href="#cb24-147" aria-hidden="true" tabindex="-1"></a>El _test U de Mann-Whitney_ (también llamado test de la suma de rangos de Wilcoxon) contrasta si las distribuciones de una variable cuantitativa o cualitativa ordinal son iguales en dos poblaciones independientes, sin necesidad de asumir normalidad. Cuando las dos distribuciones tienen la misma forma y dispersión, el contraste equivale a comparar sus medianas. La hipótesis nula es</span>
+<span id="cb24-148"><a href="#cb24-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-149"><a href="#cb24-149" aria-hidden="true" tabindex="-1"></a>$$H_0: \mbox{las distribuciones de las dos poblaciones son iguales}$$</span>
+<span id="cb24-150"><a href="#cb24-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-151"><a href="#cb24-151" aria-hidden="true" tabindex="-1"></a>frente a la alternativa de que una de las poblaciones tiende a presentar valores sistemáticamente más altos (o más bajos) que la otra.</span>
+<span id="cb24-152"><a href="#cb24-152" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb24-153"><a href="#cb24-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-154"><a href="#cb24-154" aria-hidden="true" tabindex="-1"></a>**Requisitos**: la variable dependiente debe ser, al menos, cualitativa ordinal (o cuantitativa), y las dos poblaciones deben ser independientes. No exige que la variable siga una distribución normal, por lo que es la alternativa natural al test t cuando no se cumple ese requisito.</span>
+<span id="cb24-155"><a href="#cb24-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-156"><a href="#cb24-156" aria-hidden="true" tabindex="-1"></a>Aunque en este caso <span class="in">`notaA`</span> es normal en ambos grupos y el test t es aplicable, se muestra también el test U de Mann-Whitney a modo ilustrativo, ya que sería la opción adecuada si la normalidad no se hubiera cumplido:</span>
+<span id="cb24-157"><a href="#cb24-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-158"><a href="#cb24-158" aria-hidden="true" tabindex="-1"></a>:::{#exm-dosindep-test-u-mann-whitney}</span>
+<span id="cb24-159"><a href="#cb24-159" aria-hidden="true" tabindex="-1"></a><span class="in">```{r test-u-notaA-sexo}</span></span>
+<span id="cb24-160"><a href="#cb24-160" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(notaA <span class="sc">~</span> sexo, <span class="at">data =</span> df, <span class="at">alternative =</span> <span class="st">"two.sided"</span>)</span>
+<span id="cb24-161"><a href="#cb24-161" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb24-162"><a href="#cb24-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-163"><a href="#cb24-163" aria-hidden="true" tabindex="-1"></a>El p-valor es 0.3445, superior a 0.05, por lo que tampoco con este contraste no paramétrico se rechaza la hipótesis nula: la distribución de <span class="in">`notaA`</span> no difiere significativamente entre hombres y mujeres, confirmando la conclusión alcanzada con el test t.</span>
+<span id="cb24-164"><a href="#cb24-164" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb24-165"><a href="#cb24-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-166"><a href="#cb24-166" aria-hidden="true" tabindex="-1"></a><span class="fu">## Variable dependiente cualitativa</span></span>
+<span id="cb24-167"><a href="#cb24-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-168"><a href="#cb24-168" aria-hidden="true" tabindex="-1"></a>Cuando la variable dependiente es cualitativa, el interés no está en comparar medias sino en comparar **proporciones**, o, de forma equivalente, en contrastar si existe **asociación** entre las dos variables cualitativas. Como ejemplo se compara el resultado (Aprobado / Suspenso) de la primera prueba, <span class="in">`calificacionA`</span>, entre hombres y mujeres.</span>
+<span id="cb24-169"><a href="#cb24-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-170"><a href="#cb24-170" aria-hidden="true" tabindex="-1"></a>La tabla de contingencia entre <span class="in">`sexo`</span> y <span class="in">`calificacionA`</span>, y las proporciones de aprobados dentro de cada sexo, son las siguientes:</span>
+<span id="cb24-171"><a href="#cb24-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-172"><a href="#cb24-172" aria-hidden="true" tabindex="-1"></a><span class="in">```{r tabla-contingencia-sexo-calificacionA}</span></span>
+<span id="cb24-173"><a href="#cb24-173" aria-hidden="true" tabindex="-1"></a>tabla <span class="ot">&lt;-</span> <span class="fu">table</span>(df<span class="sc">$</span>sexo, df<span class="sc">$</span>calificacionA)</span>
+<span id="cb24-174"><a href="#cb24-174" aria-hidden="true" tabindex="-1"></a>tabla</span>
+<span id="cb24-175"><a href="#cb24-175" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(tabla, <span class="at">margin =</span> <span class="dv">1</span>)</span>
+<span id="cb24-176"><a href="#cb24-176" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb24-177"><a href="#cb24-177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-178"><a href="#cb24-178" aria-hidden="true" tabindex="-1"></a>El 81.7% de los hombres aprueba la primera prueba, frente al 73.5% de las mujeres. La pregunta que responden los contrastes de esta sección es si esa diferencia de casi 8 puntos porcentuales es lo bastante grande como para no poder explicarse por el azar del muestreo, o si, por el contrario, es compatible con que en la población no exista ninguna diferencia real entre sexos.</span>
+<span id="cb24-179"><a href="#cb24-179" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-180"><a href="#cb24-180" aria-hidden="true" tabindex="-1"></a><span class="fu">### Test Chi-cuadrado de independencia</span></span>
+<span id="cb24-181"><a href="#cb24-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-182"><a href="#cb24-182" aria-hidden="true" tabindex="-1"></a>:::{#def-dosindep-test-chi-cuadrado}</span>
+<span id="cb24-183"><a href="#cb24-183" aria-hidden="true" tabindex="-1"></a><span class="fu">## Test Chi-cuadrado de independencia</span></span>
+<span id="cb24-184"><a href="#cb24-184" aria-hidden="true" tabindex="-1"></a>El _test Chi-cuadrado de independencia_ contrasta si existe relación (asociación) entre dos variables cualitativas, o, de forma equivalente cuando una de ellas define dos poblaciones, si las proporciones de las categorías de la otra variable son iguales en ambas poblaciones. La hipótesis nula es</span>
+<span id="cb24-185"><a href="#cb24-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-186"><a href="#cb24-186" aria-hidden="true" tabindex="-1"></a>$$H_0: \mbox{las dos variables son independientes (no hay asociación entre ellas)}$$</span>
+<span id="cb24-187"><a href="#cb24-187" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb24-188"><a href="#cb24-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-189"><a href="#cb24-189" aria-hidden="true" tabindex="-1"></a>**Requisitos**: las dos variables deben ser cualitativas, y no más del 20% de las frecuencias esperadas de la tabla de contingencia debe ser inferior a 5 (ninguna frecuencia esperada debe ser, además, inferior a 1).</span>
+<span id="cb24-190"><a href="#cb24-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-191"><a href="#cb24-191" aria-hidden="true" tabindex="-1"></a>:::{#exm-dosindep-test-chi-cuadrado}</span>
+<span id="cb24-192"><a href="#cb24-192" aria-hidden="true" tabindex="-1"></a><span class="in">```{r chi-cuadrado-sexo-calificacionA}</span></span>
+<span id="cb24-193"><a href="#cb24-193" aria-hidden="true" tabindex="-1"></a>chi <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(tabla)</span>
+<span id="cb24-194"><a href="#cb24-194" aria-hidden="true" tabindex="-1"></a>chi</span>
+<span id="cb24-195"><a href="#cb24-195" aria-hidden="true" tabindex="-1"></a>chi<span class="sc">$</span>expected</span>
+<span id="cb24-196"><a href="#cb24-196" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb24-197"><a href="#cb24-197" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-198"><a href="#cb24-198" aria-hidden="true" tabindex="-1"></a>Las cuatro frecuencias esperadas de la tabla (55.6, 15.4, 38.4 y 10.6) son todas superiores a 5, por lo que se cumple el requisito de aplicación del test. El p-valor obtenido, con la corrección de continuidad de Yates propia de las tablas 2x2, es 0.3959, muy superior a 0.05, por lo que no se rechaza la hipótesis nula: no hay evidencia de asociación entre el sexo y el resultado de la primera prueba, es decir, la proporción de aprobados no difiere significativamente entre hombres y mujeres.</span>
+<span id="cb24-199"><a href="#cb24-199" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb24-200"><a href="#cb24-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-201"><a href="#cb24-201" aria-hidden="true" tabindex="-1"></a><span class="fu">### Test exacto de Fisher</span></span>
+<span id="cb24-202"><a href="#cb24-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-203"><a href="#cb24-203" aria-hidden="true" tabindex="-1"></a>:::{#def-dosindep-test-fisher}</span>
+<span id="cb24-204"><a href="#cb24-204" aria-hidden="true" tabindex="-1"></a><span class="fu">## Test exacto de Fisher</span></span>
+<span id="cb24-205"><a href="#cb24-205" aria-hidden="true" tabindex="-1"></a>El _test exacto de Fisher_ contrasta la misma hipótesis de independencia que el test Chi-cuadrado, pero calculando de forma exacta (sin aproximación asintótica) la probabilidad de las tablas de contingencia al menos tan extremas como la observada. La hipótesis nula es la misma que la del test Chi-cuadrado:</span>
+<span id="cb24-206"><a href="#cb24-206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-207"><a href="#cb24-207" aria-hidden="true" tabindex="-1"></a>$$H_0: \mbox{las dos variables son independientes (no hay asociación entre ellas)}$$</span>
+<span id="cb24-208"><a href="#cb24-208" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-209"><a href="#cb24-209" aria-hidden="true" tabindex="-1"></a>Es la alternativa recomendada, especialmente en tablas 2x2, cuando no se cumple el requisito de frecuencias esperadas del test Chi-cuadrado (muestras pequeñas).</span>
+<span id="cb24-210"><a href="#cb24-210" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb24-211"><a href="#cb24-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-212"><a href="#cb24-212" aria-hidden="true" tabindex="-1"></a>**Requisitos**: las dos variables deben ser cualitativas. A diferencia del test Chi-cuadrado, no exige ninguna condición sobre las frecuencias esperadas, por lo que es válido con cualquier tamaño muestral.</span>
+<span id="cb24-213"><a href="#cb24-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-214"><a href="#cb24-214" aria-hidden="true" tabindex="-1"></a>:::{#exm-dosindep-test-fisher}</span>
+<span id="cb24-215"><a href="#cb24-215" aria-hidden="true" tabindex="-1"></a><span class="in">```{r fisher-sexo-calificacionA}</span></span>
+<span id="cb24-216"><a href="#cb24-216" aria-hidden="true" tabindex="-1"></a><span class="fu">fisher.test</span>(tabla)</span>
+<span id="cb24-217"><a href="#cb24-217" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb24-218"><a href="#cb24-218" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-219"><a href="#cb24-219" aria-hidden="true" tabindex="-1"></a>El p-valor del test exacto de Fisher es 0.3677, muy similar al obtenido con el test Chi-cuadrado (0.3959) y, de nuevo, muy superior a 0.05: no se rechaza la hipótesis nula de independencia. Este parecido entre ambos resultados es el esperable, ya que las frecuencias esperadas de la tabla de contingencia eran, como se comprobó antes, suficientemente grandes para que el test Chi-cuadrado fuera fiable; el test exacto de Fisher habría sido la opción obligada, en cambio, de haber tenido frecuencias esperadas por debajo de 5.</span>
+<span id="cb24-220"><a href="#cb24-220" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb24-221"><a href="#cb24-221" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-222"><a href="#cb24-222" aria-hidden="true" tabindex="-1"></a><span class="fu">## Resumen</span></span>
+<span id="cb24-223"><a href="#cb24-223" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-224"><a href="#cb24-224" aria-hidden="true" tabindex="-1"></a>En los cinco contrastes de este capítulo, ninguno ha encontrado diferencias estadísticamente significativas entre hombres y mujeres, ni en la nota media de la primera prueba ni en la proporción de aprobados, lo que es coherente con lo observado en las descriptivas y los gráficos iniciales: los dos grupos se comportan, en esta asignatura, de forma muy similar.</span>
+<span id="cb24-225"><a href="#cb24-225" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-226"><a href="#cb24-226" aria-hidden="true" tabindex="-1"></a>Todos los contrastes anteriores exigen que las dos poblaciones comparadas estén formadas por individuos distintos, es decir, que sean independientes. Cuando en cambio se comparan los mismos individuos medidos en dos ocasiones (por ejemplo, la nota de un mismo alumno en dos pruebas distintas, <span class="in">`notaA`</span> y <span class="in">`notaB`</span>), las poblaciones están pareadas y los contrastes anteriores dejan de ser válidos, siendo necesario recurrir a sus versiones para datos pareados, que se desarrollan en el capítulo de <span class="co">[</span><span class="ot">Contrastes para dos poblaciones pareadas</span><span class="co">](13-contrastes-dos-poblaciones-pareadas.qmd)</span>. Y cuando la variable independiente tiene más de dos categorías (por ejemplo, comparar la nota media entre los tres grupos de clase, A, B y C), es necesario recurrir a los contrastes que se desarrollan en el capítulo de <span class="co">[</span><span class="ot">Contrastes para más de dos poblaciones independientes</span><span class="co">](14-contrastes-mas-dos-poblaciones-independientes.qmd)</span>.</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/asalber/estadistica-tipos-estudios/edit/main/12-contrastes-dos-poblaciones-independientes.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/asalber/estadistica-tipos-estudios/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li></ul></div></div></div></footer></body></html>

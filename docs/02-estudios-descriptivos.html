@@ -1,0 +1,1611 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>2&nbsp; Estudios descriptivos – Tipos de Estudios Estadísticos</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./03-estudios-transversales.html" rel="next">
+<link href="./01-introduccion.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-33269adcf1721b81efc5ea7fcfe7f0ee.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-5a2acb6f4ed5aeb23a104ba421924b87.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-b050db56f2b97c639b7ebc2cf71c06d7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-5e50218c20039713403b52e69b91eb5d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="2&nbsp; Estudios descriptivos – Tipos de Estudios Estadísticos">
+<meta property="og:description" content="">
+<meta property="og:image" content="02-estudios-descriptivos_files/figure-html/grafico-proporciones-1.png">
+<meta property="og:site_name" content="Tipos de Estudios Estadísticos">
+<meta name="twitter:title" content="2&nbsp; Estudios descriptivos – Tipos de Estudios Estadísticos">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="02-estudios-descriptivos_files/figure-html/grafico-proporciones-1.png">
+<meta name="twitter:site" content="@aprendeconalf">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-sidebar floating quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02-estudios-descriptivos.html">Diseños de estudio</a></li><li class="breadcrumb-item"><a href="./02-estudios-descriptivos.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Estudios descriptivos</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Tipos de Estudios Estadísticos</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://aprendeconalf.es" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-house-fill"></i></a>
+    <a href="https://github.com/asalber/estadistica-tipos-estudios" title="Ejecutar el código" class="quarto-navigation-tool px-1" aria-label="Ejecutar el código"><i class="bi bi-github"></i></a>
+    <a href="./estadistica-tipos-estudios.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
+              <i class="bi bi-linkedin pe-1"></i>
+            LinkedIn
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefacio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-introduccion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción a los tipos de estudios estadísticos</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Diseños de estudio</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-estudios-descriptivos.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Estudios descriptivos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-estudios-transversales.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Estudios transversales</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-estudios-cohortes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Estudios de cohortes</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-estudios-casos-controles.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Estudios de casos y controles</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-estudios-ecologicos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Estudios ecológicos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-estudios-experimentales.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Estudios experimentales</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-estudios-cuasiexperimentales.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Estudios cuasiexperimentales</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-encuestas-muestreo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Encuestas y diseño de muestreo</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Selección del contraste estadístico</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-seleccion-contraste.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Selección del contraste estadístico</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-contrastes-una-poblacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Contrastes para una población</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12-contrastes-dos-poblaciones-independientes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Contrastes para dos poblaciones independientes</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13-contrastes-dos-poblaciones-pareadas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Contrastes para dos poblaciones pareadas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./14-contrastes-mas-dos-poblaciones-independientes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Contrastes para más de dos poblaciones independientes</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./15-contrastes-medidas-repetidas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Contrastes para más de dos poblaciones relacionadas (medidas repetidas)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./16-relacion-entre-variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Relación y predicción entre dos variables</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Indice de contenidos</h2>
+   
+  <ul>
+  <li><a href="#definición-y-características" id="toc-definición-y-características" class="nav-link active" data-scroll-target="#definición-y-características"><span class="header-section-number">2.1</span> Definición y características</a></li>
+  <li><a href="#ventajas-e-inconvenientes" id="toc-ventajas-e-inconvenientes" class="nav-link" data-scroll-target="#ventajas-e-inconvenientes"><span class="header-section-number">2.2</span> Ventajas e inconvenientes</a></li>
+  <li><a href="#medidas-propias-de-este-diseño" id="toc-medidas-propias-de-este-diseño" class="nav-link" data-scroll-target="#medidas-propias-de-este-diseño"><span class="header-section-number">2.3</span> Medidas propias de este diseño</a>
+  <ul class="collapse">
+  <li><a href="#razón" id="toc-razón" class="nav-link" data-scroll-target="#razón"><span class="header-section-number">2.3.1</span> Razón</a></li>
+  <li><a href="#proporción" id="toc-proporción" class="nav-link" data-scroll-target="#proporción"><span class="header-section-number">2.3.2</span> Proporción</a></li>
+  <li><a href="#tasa" id="toc-tasa" class="nav-link" data-scroll-target="#tasa"><span class="header-section-number">2.3.3</span> Tasa</a></li>
+  </ul></li>
+  <li><a href="#realización-con-r" id="toc-realización-con-r" class="nav-link" data-scroll-target="#realización-con-r"><span class="header-section-number">2.4</span> Realización con R</a></li>
+  <li><a href="#cuándo-utilizar-este-diseño" id="toc-cuándo-utilizar-este-diseño" class="nav-link" data-scroll-target="#cuándo-utilizar-este-diseño"><span class="header-section-number">2.5</span> Cuándo utilizar este diseño</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/asalber/estadistica-tipos-estudios/edit/main/02-estudios-descriptivos.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/asalber/estadistica-tipos-estudios/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02-estudios-descriptivos.html">Diseños de estudio</a></li><li class="breadcrumb-item"><a href="./02-estudios-descriptivos.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Estudios descriptivos</span></a></li></ol></nav>
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Estudios descriptivos</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Código</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Enseñar el código</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Esconder el código</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">Ver el código</a></li></ul></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Como se vio en el <a href="./01-introduccion.html">capítulo de introducción</a>, la finalidad de un estudio puede ser puramente descriptiva o analítica. El estudio descriptivo es el diseño observacional más elemental de todos: no compara grupos, no contrasta hipótesis y no pretende establecer relaciones causales. Su único objetivo es cuantificar y describir con precisión cómo se distribuye un fenómeno (una enfermedad, un hábito, una característica cualquiera) en una población o en un conjunto de individuos, sirviendo habitualmente como primer paso de una investigación más amplia.</p>
+<section id="definición-y-características" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="definición-y-características"><span class="header-section-number">2.1</span> Definición y características</h2>
+<div id="def-descriptivos-estudio-descriptivo" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 2.1 (Estudio descriptivo)</strong></span> Un <em>estudio descriptivo</em> es un estudio observacional cuyo único objetivo es cuantificar la frecuencia, la distribución o las características de un fenómeno en una población o en un grupo de individuos, sin comparar grupos de exposición ni plantear hipótesis sobre relaciones causa-efecto.</p>
+</div>
+<p>En la práctica, los estudios descriptivos adoptan habitualmente alguna de estas formas:</p>
+<ul>
+<li><strong>Reporte de caso</strong> (<em>case report</em>): descripción detallada de un único individuo con una característica, enfermedad o evolución clínica de interés, generalmente por su rareza o por presentar rasgos inesperados.</li>
+<li><strong>Serie de casos</strong> (<em>case series</em>): descripción de un conjunto de individuos, todos ellos con una misma característica (por ejemplo, todos los pacientes diagnosticados de una enfermedad en un hospital durante un periodo determinado), sin comparación con ningún grupo que no la presente.</li>
+<li><strong>Estudio descriptivo de frecuencia poblacional</strong>: cuantificación de la presencia de un fenómeno en toda una población o en una muestra representativa de ella, mediante medidas como proporciones o tasas, habitualmente desagregadas por variables como el tiempo, el lugar o las características de las personas (la tríada clásica <em>tiempo-lugar-persona</em> de la vigilancia epidemiológica).</li>
+</ul>
+<p>Lo que caracteriza a los tres es la ausencia de un <strong>grupo de comparación</strong>: no existen individuos “no expuestos” o “sin la característica” frente a los que contrastar los resultados. Por ello, un estudio descriptivo puede informar, por ejemplo, de que el 8&nbsp;% de una muestra de pacientes ingresados presenta una determinada complicación, pero <strong>no puede</strong> establecer si esa frecuencia es alta o baja en comparación con otro grupo, ni identificar qué factores la explican, ni mucho menos afirmar que exista una relación de causalidad. Para eso son necesarios los diseños analíticos que se desarrollan en los capítulos siguientes.</p>
+</section>
+<section id="ventajas-e-inconvenientes" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="ventajas-e-inconvenientes"><span class="header-section-number">2.2</span> Ventajas e inconvenientes</h2>
+<p><strong>Ventajas</strong></p>
+<ul>
+<li>Son rápidos, sencillos y económicos de llevar a cabo en comparación con cualquier diseño analítico o experimental.</li>
+<li>No requieren un grupo de comparación ni una hipótesis previa, por lo que son ideales para explorar fenómenos sobre los que apenas existe información.</li>
+<li>Son la herramienta natural para generar nuevas hipótesis que después se pondrán a prueba con diseños analíticos.</li>
+<li>Constituyen la base de los sistemas de vigilancia epidemiológica, al permitir detectar cambios en la frecuencia de una enfermedad a lo largo del tiempo.</li>
+<li>Son, con frecuencia, el único diseño posible cuando el fenómeno de estudio es muy poco frecuente (enfermedades raras) o cuando se trata de fenómenos nuevos de los que apenas hay casos documentados.</li>
+</ul>
+<p><strong>Inconvenientes</strong></p>
+<ul>
+<li>No permiten establecer asociaciones entre variables, al carecer de grupo de comparación.</li>
+<li>No permiten en ningún caso establecer relaciones de causalidad.</li>
+<li>Los reportes y series de casos suelen basarse en muestras pequeñas y no representativas (a menudo pacientes de un único centro), lo que limita mucho la generalización de los resultados.</li>
+<li>Son especialmente vulnerables al sesgo de selección, ya que los casos que llegan a describirse suelen ser los más llamativos o los que acuden a centros concretos.</li>
+<li>No permiten controlar factores de confusión, al no compararse ningún grupo.</li>
+</ul>
+</section>
+<section id="medidas-propias-de-este-diseño" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="medidas-propias-de-este-diseño"><span class="header-section-number">2.3</span> Medidas propias de este diseño</h2>
+<p>Los estudios descriptivos se apoyan en tres medidas de frecuencia muy sencillas, pero que conviene definir con precisión porque son los ladrillos con los que se construyen prácticamente todas las medidas de los diseños analíticos que se estudiarán en los capítulos siguientes (riesgos, <em>odds</em>, incidencias, etc.).</p>
+<section id="razón" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="razón"><span class="header-section-number">2.3.1</span> Razón</h3>
+<div id="def-descriptivos-razon" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 2.2 (Razón)</strong></span> Una <em>razón</em> (<em>ratio</em>) es el cociente entre dos cantidades de naturaleza distinta, no necesariamente relacionadas como parte y todo, es decir, el numerador no está necesariamente incluido en el denominador.</p>
+<p><span class="math display">\[R = \frac{a}{b}\]</span></p>
+<p>donde <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span> son los tamaños de dos grupos o cantidades diferentes.</p>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Importante
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Como <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span> pueden ser cantidades de cualquier magnitud y no existe una relación de inclusión entre ellas, se tiene que</p>
+<p><span class="math display">\[R \geq 0,\]</span></p>
+<p>sin que exista, en general, ninguna cota superior.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Interpretación">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Interpretación
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Una razón se interpreta como el número de veces que la cantidad del numerador contiene, o representa, a la cantidad del denominador.</li>
+<li>Por ejemplo, la <em>razón de masculinidad</em> de una población es el cociente entre el número de hombres y el número de mujeres. Una razón de masculinidad de 0.9 indica que hay 0.9 hombres por cada mujer.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="proporción" class="level3" data-number="2.3.2">
+<h3 data-number="2.3.2" class="anchored" data-anchor-id="proporción"><span class="header-section-number">2.3.2</span> Proporción</h3>
+<div id="def-descriptivos-proporcion" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 2.3 (Proporción)</strong></span> Una <em>proporción</em> es el cociente entre el número de individuos que presentan una determinada característica y el número total de individuos del grupo, de modo que el numerador está incluido en el denominador.</p>
+<p><span class="math display">\[P = \frac{a}{a+b} = \frac{a}{n}\]</span></p>
+<p>donde <span class="math inline">\(a\)</span> es el número de individuos con la característica de interés y <span class="math inline">\(n=a+b\)</span> es el tamaño total del grupo.</p>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Importante
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Al estar el numerador incluido en el denominador, toda proporción cumple</p>
+<p><span class="math display">\[0 \leq P \leq 1,\]</span></p>
+<p>y puede expresarse también como porcentaje multiplicándola por 100.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Interpretación">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Interpretación
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Si <span class="math inline">\(P=0\)</span> ningún individuo del grupo presenta la característica.</li>
+<li>Si <span class="math inline">\(P=1\)</span> todos los individuos del grupo presentan la característica.</li>
+<li>Cuanto más próxima esté <span class="math inline">\(P\)</span> a 1, mayor es la frecuencia relativa de la característica en el grupo.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="tasa" class="level3" data-number="2.3.3">
+<h3 data-number="2.3.3" class="anchored" data-anchor-id="tasa"><span class="header-section-number">2.3.3</span> Tasa</h3>
+<div id="def-descriptivos-tasa" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 2.4 (Tasa)</strong></span> Una <em>tasa</em> (<em>rate</em>) es una proporción que incorpora explícitamente el tiempo en su denominador, expresado habitualmente en unidades de <strong>persona-tiempo</strong> (personas-año, personas-mes, etc.), es decir, la suma de los periodos de tiempo que cada individuo permanece en riesgo de que ocurra el fenómeno de interés.</p>
+<p><span class="math display">\[T = \frac{\mbox{número de eventos nuevos}}{\mbox{personas-tiempo en riesgo}}\cdot k\]</span></p>
+<p>donde <span class="math inline">\(k\)</span> es una constante (10, 100, 1,000, 100,000…) que se elige para expresar la tasa con cifras manejables.</p>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Importante
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Como el numerador no está incluido en el denominador (que tiene unidades de tiempo y no de individuos), una tasa</p>
+<p><span class="math display">\[T \geq 0\]</span></p>
+<p>no está acotada superiormente y, a diferencia de la proporción, <strong>no es adimensional</strong>: sus unidades son “eventos por persona-tiempo”.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Interpretación">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Interpretación
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>La tasa mide la <em>velocidad</em> con la que ocurren nuevos eventos en una población, teniendo en cuenta el tiempo real que cada individuo ha estado expuesto al riesgo.</li>
+<li>Dos poblaciones pueden tener el mismo número absoluto de eventos y, sin embargo, tasas muy distintas si el tiempo de seguimiento o el tamaño de la población en riesgo difieren.</li>
+<li>La proporción es adecuada cuando todos los individuos se observan durante el mismo periodo de tiempo; cuando el tiempo de seguimiento varía de un individuo a otro (por incorporaciones tardías, pérdidas de seguimiento o fallecimientos por otras causas), la tasa es la medida correcta porque cada individuo aporta solo el tiempo que realmente estuvo en riesgo.</li>
+</ul>
+</div>
+</div>
+<div id="exm-descriptivos-tasa-incidencia" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 2.1</strong></span> Se sigue durante el año 2026 a 8 personas sanas para observar la aparición de una determinada enfermedad. No todas permanecen en riesgo el año completo: algunas la desarrollan antes de que termine el seguimiento (y dejan de estar en riesgo) y otra abandona el estudio antes de tiempo (pérdida de seguimiento).</p>
+<p><span class="math display">\[
+\begin{array}{lccc}
+\hline
+\mbox{Individuo} &amp; \mbox{Meses en riesgo} &amp; \mbox{¿Caso nuevo?} &amp; \mbox{Motivo de fin de seguimiento}\\
+\hline
+\mbox{Individuo 1} &amp; 12 &amp; \mbox{No} &amp; \mbox{Fin del estudio}\\
+\mbox{Individuo 2} &amp; 12 &amp; \mbox{No} &amp; \mbox{Fin del estudio}\\
+\mbox{Individuo 3} &amp; 5  &amp; \mbox{Sí} &amp; \mbox{Aparición de la enfermedad}\\
+\mbox{Individuo 4} &amp; 12 &amp; \mbox{No} &amp; \mbox{Fin del estudio}\\
+\mbox{Individuo 5} &amp; 8  &amp; \mbox{Sí} &amp; \mbox{Aparición de la enfermedad}\\
+\mbox{Individuo 6} &amp; 12 &amp; \mbox{No} &amp; \mbox{Fin del estudio}\\
+\mbox{Individuo 7} &amp; 3  &amp; \mbox{No} &amp; \mbox{Pérdida de seguimiento}\\
+\mbox{Individuo 8} &amp; 12 &amp; \mbox{No} &amp; \mbox{Fin del estudio}\\
+\hline
+\end{array}
+\]</span></p>
+<p>El total de meses-persona observados es <span class="math inline">\(12+12+5+12+8+12+3+12=76\)</span> meses-persona, lo que equivale a <span class="math inline">\(76/12=6.33\)</span> personas-año. El número de casos nuevos es 2 (individuos 3 y 5). La tasa de incidencia es, por tanto,</p>
+<p><span class="math display">\[
+T = \frac{2}{6.33}\cdot 1\,000 = 315.9 \mbox{ casos por cada } 1\,000 \mbox{ personas-año}.
+\]</span></p>
+<p>Nótese que el individuo 7, aunque solo se observó durante 3 meses, contribuye igualmente al denominador con esos 3 meses-persona, y que ni él ni los individuos que desarrollan la enfermedad aportan tiempo en riesgo más allá del momento en que dejan de estarlo. (Se trata de un ejemplo con un tamaño muestral reducido con fines exclusivamente ilustrativos; en la práctica las tasas se calculan sobre poblaciones de miles o millones de personas-año).</p>
+</div>
+</section>
+</section>
+<section id="realización-con-r" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="realización-con-r"><span class="header-section-number">2.4</span> Realización con R</h2>
+<p>Supongamos que un servicio de urgencias hospitalario registra, durante un mes, todos los casos atendidos de una determinada enfermedad infecciosa, anotando la edad, el sexo y la gravedad del cuadro clínico. Se trata de una serie de casos: no hay ningún grupo de comparación, solo se describe la frecuencia con la que se presenta cada característica dentro de la serie.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>casos <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">28</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">edad =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">67</span>, <span class="dv">45</span>, <span class="dv">2</span>, <span class="dv">78</span>, <span class="dv">34</span>, <span class="dv">56</span>, <span class="dv">81</span>, <span class="dv">29</span>, <span class="dv">5</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>           <span class="dv">72</span>, <span class="dv">41</span>, <span class="dv">19</span>, <span class="dv">63</span>, <span class="dv">8</span>, <span class="dv">55</span>, <span class="dv">39</span>, <span class="dv">74</span>, <span class="dv">47</span>, <span class="dv">3</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>           <span class="dv">68</span>, <span class="dv">52</span>, <span class="dv">27</span>, <span class="dv">9</span>, <span class="dv">61</span>, <span class="dv">33</span>, <span class="dv">76</span>, <span class="dv">48</span>),</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">sexo =</span> <span class="fu">c</span>(<span class="st">"Mujer"</span>, <span class="st">"Hombre"</span>, <span class="st">"Mujer"</span>, <span class="st">"Mujer"</span>, <span class="st">"Hombre"</span>, <span class="st">"Hombre"</span>, <span class="st">"Mujer"</span>, <span class="st">"Mujer"</span>,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>           <span class="st">"Hombre"</span>, <span class="st">"Mujer"</span>, <span class="st">"Hombre"</span>, <span class="st">"Mujer"</span>, <span class="st">"Hombre"</span>, <span class="st">"Mujer"</span>, <span class="st">"Hombre"</span>, <span class="st">"Hombre"</span>,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>           <span class="st">"Mujer"</span>, <span class="st">"Mujer"</span>, <span class="st">"Hombre"</span>, <span class="st">"Mujer"</span>, <span class="st">"Mujer"</span>, <span class="st">"Hombre"</span>, <span class="st">"Mujer"</span>, <span class="st">"Hombre"</span>,</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>           <span class="st">"Hombre"</span>, <span class="st">"Mujer"</span>, <span class="st">"Mujer"</span>, <span class="st">"Hombre"</span>),</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">gravedad =</span> <span class="fu">c</span>(<span class="st">"Leve"</span>, <span class="st">"Grave"</span>, <span class="st">"Moderada"</span>, <span class="st">"Leve"</span>, <span class="st">"Grave"</span>, <span class="st">"Moderada"</span>, <span class="st">"Leve"</span>, <span class="st">"Grave"</span>,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>               <span class="st">"Leve"</span>, <span class="st">"Leve"</span>, <span class="st">"Moderada"</span>, <span class="st">"Leve"</span>, <span class="st">"Leve"</span>, <span class="st">"Moderada"</span>, <span class="st">"Leve"</span>, <span class="st">"Moderada"</span>,</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>               <span class="st">"Leve"</span>, <span class="st">"Grave"</span>, <span class="st">"Moderada"</span>, <span class="st">"Leve"</span>, <span class="st">"Grave"</span>, <span class="st">"Leve"</span>, <span class="st">"Leve"</span>, <span class="st">"Leve"</span>,</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>               <span class="st">"Moderada"</span>, <span class="st">"Leve"</span>, <span class="st">"Grave"</span>, <span class="st">"Moderada"</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>casos</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 28 × 4
+      id  edad sexo   gravedad
+   &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;   
+ 1     1     4 Mujer  Leve    
+ 2     2    67 Hombre Grave   
+ 3     3    45 Mujer  Moderada
+ 4     4     2 Mujer  Leve    
+ 5     5    78 Hombre Grave   
+ 6     6    34 Hombre Moderada
+ 7     7    56 Mujer  Leve    
+ 8     8    81 Mujer  Grave   
+ 9     9    29 Hombre Leve    
+10    10     5 Mujer  Leve    
+# ℹ 18 more rows</code></pre>
+</div>
+</div>
+<p>Con <code>dplyr</code> es inmediato calcular la proporción de casos que corresponde a cada categoría de gravedad, la primera medida descriptiva de interés:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>proporciones_gravedad <span class="ot">&lt;-</span> casos <span class="sc">|&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(gravedad) <span class="sc">|&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">proporcion =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n),</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">porcentaje =</span> <span class="fu">round</span>(<span class="dv">100</span> <span class="sc">*</span> proporcion, <span class="dv">1</span>))</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>proporciones_gravedad</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 4
+  gravedad     n proporcion porcentaje
+  &lt;chr&gt;    &lt;int&gt;      &lt;dbl&gt;      &lt;dbl&gt;
+1 Grave        6      0.214       21.4
+2 Leve        14      0.5         50  
+3 Moderada     8      0.286       28.6</code></pre>
+</div>
+</div>
+<p>También puede describirse la razón entre sexos de la serie, y la proporción de casos graves dentro de cada grupo de edad, agrupando previamente la edad en tramos:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Razón hombres / mujeres en la serie de casos</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>razon_sexo <span class="ot">&lt;-</span> casos <span class="sc">|&gt;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(sexo) <span class="sc">|&gt;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> sexo, <span class="at">values_from =</span> n) <span class="sc">|&gt;</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">razon_masculinidad =</span> Hombre <span class="sc">/</span> Mujer)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>razon_sexo</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+  Hombre Mujer razon_masculinidad
+   &lt;int&gt; &lt;int&gt;              &lt;dbl&gt;
+1     13    15              0.867</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Proporción de casos graves por tramo de edad</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>casos_edad <span class="ot">&lt;-</span> casos <span class="sc">|&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">tramo_edad =</span> <span class="fu">case_when</span>(</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    edad <span class="sc">&lt;</span> <span class="dv">15</span> <span class="sc">~</span> <span class="st">"0-14 años"</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    edad <span class="sc">&lt;</span> <span class="dv">65</span> <span class="sc">~</span> <span class="st">"15-64 años"</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"65 o más años"</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  )) <span class="sc">|&gt;</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(tramo_edad) <span class="sc">|&gt;</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">graves =</span> <span class="fu">sum</span>(gravedad <span class="sc">==</span> <span class="st">"Grave"</span>),</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">proporcion_graves =</span> <span class="fu">round</span>(graves <span class="sc">/</span> n, <span class="dv">2</span>))</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>casos_edad</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 4
+  tramo_edad        n graves proporcion_graves
+  &lt;chr&gt;         &lt;int&gt;  &lt;int&gt;             &lt;dbl&gt;
+1 0-14 años         6      0              0   
+2 15-64 años       15      0              0   
+3 65 o más años     7      6              0.86</code></pre>
+</div>
+</div>
+<p>Si, además, se conociera cuántos días ha permanecido cada paciente ingresado (por ejemplo, porque los casos graves requieren hospitalización), podría calcularse una tasa de nuevos casos graves por cada 1000 días-paciente de estancia, lo que ilustra cómo la misma lógica de las tasas se aplica también dentro de un estudio descriptivo:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>estancias <span class="ot">&lt;-</span> casos <span class="sc">|&gt;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(gravedad <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Moderada"</span>, <span class="st">"Grave"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dias_estancia =</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">9</span>, <span class="dv">4</span>, <span class="dv">10</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">8</span>, <span class="dv">7</span>, <span class="dv">6</span>, <span class="dv">11</span>, <span class="dv">4</span>, <span class="dv">9</span>, <span class="dv">7</span>, <span class="dv">5</span>))</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>tasa_complicacion <span class="ot">&lt;-</span> estancias <span class="sc">|&gt;</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">dias_persona =</span> <span class="fu">sum</span>(dias_estancia),</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">casos_graves =</span> <span class="fu">sum</span>(gravedad <span class="sc">==</span> <span class="st">"Grave"</span>),</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">tasa_x1000 =</span> <span class="fu">round</span>(<span class="dv">1000</span> <span class="sc">*</span> casos_graves <span class="sc">/</span> dias_persona, <span class="dv">1</span>)</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>tasa_complicacion</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+  dias_persona casos_graves tasa_x1000
+         &lt;dbl&gt;        &lt;int&gt;      &lt;dbl&gt;
+1           94            6       63.8</code></pre>
+</div>
+</div>
+<p>Por último, un diagrama de barras permite visualizar de un vistazo la distribución de la gravedad de los casos, la representación gráfica más habitual de una variable cualitativa en un estudio descriptivo:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(proporciones_gravedad, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_reorder</span>(gravedad, proporcion, <span class="at">.desc =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">y =</span> proporcion)) <span class="sc">+</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste0</span>(porcentaje, <span class="st">"%"</span>)), <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent, <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">max</span>(proporciones_gravedad<span class="sc">$</span>proporcion) <span class="sc">*</span> <span class="fl">1.2</span>)) <span class="sc">+</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Gravedad del cuadro clínico"</span>, <span class="at">y =</span> <span class="st">"Proporción de casos"</span>,</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Gravedad de los casos atendidos en urgencias"</span>) <span class="sc">+</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="02-estudios-descriptivos_files/figure-html/grafico-proporciones-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Distribución de la gravedad de los casos registrados en urgencias durante el mes.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Los resultados describen la serie de casos, pero no permiten ir más allá: puede afirmarse que algo más de la mitad de los casos de esta serie fueron leves y que la proporción de cuadros graves es mayor entre los mayores de 65 años, pero no puede concluirse que la edad <em>cause</em> una mayor gravedad, porque no se dispone de ningún grupo de comparación con el que contrastar esa diferencia ni se han controlado otros factores que pudieran explicarla.</p>
+</section>
+<section id="cuándo-utilizar-este-diseño" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="cuándo-utilizar-este-diseño"><span class="header-section-number">2.5</span> Cuándo utilizar este diseño</h2>
+<p>Un estudio descriptivo es la elección adecuada cuando todavía se sabe poco sobre un fenómeno y el objetivo prioritario es simplemente cuantificarlo: en las primeras fases de un brote epidemiológico, en la vigilancia rutinaria de enfermedades, al documentar un caso clínico inusual, o al estudiar enfermedades tan raras que reunir un grupo de comparación resulta inviable. Su gran ventaja es la sencillez y la rapidez con la que aporta una primera fotografía del problema, que sirve para generar hipótesis sobre posibles factores asociados. Sin embargo, en cuanto la pregunta de investigación pasa de “¿con qué frecuencia ocurre esto?” a “¿por qué ocurre?” o “¿qué lo explica?”, un diseño descriptivo deja de ser suficiente y es necesario recurrir a un diseño analítico, como el <a href="./03-estudios-transversales.html">estudio transversal</a> o el <a href="./04-estudios-cohortes.html">estudio de cohortes</a>, que sí incorporan un grupo de comparación frente al que contrastar los resultados.</p>
+
+
+<!-- -->
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiada");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiada");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./01-introduccion.html" class="pagination-link" aria-label="Introducción a los tipos de estudios estadísticos">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción a los tipos de estudios estadísticos</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./03-estudios-transversales.html" class="pagination-link" aria-label="Estudios transversales">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Estudios transversales</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Ejecutar el código</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Estudios descriptivos</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="an">lang:</span><span class="co"> es</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup, include=FALSE}</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo =</span> <span class="cn">TRUE</span>, <span class="at">message =</span> <span class="cn">FALSE</span>, <span class="at">warning =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>Como se vio en el <span class="co">[</span><span class="ot">capítulo de introducción</span><span class="co">](01-introduccion.qmd)</span>, la finalidad de un estudio puede ser puramente descriptiva o analítica. El estudio descriptivo es el diseño observacional más elemental de todos: no compara grupos, no contrasta hipótesis y no pretende establecer relaciones causales. Su único objetivo es cuantificar y describir con precisión cómo se distribuye un fenómeno (una enfermedad, un hábito, una característica cualquiera) en una población o en un conjunto de individuos, sirviendo habitualmente como primer paso de una investigación más amplia.</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="fu">## Definición y características</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>:::{#def-descriptivos-estudio-descriptivo}</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="fu">## Estudio descriptivo</span></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>Un _estudio descriptivo_ es un estudio observacional cuyo único objetivo es cuantificar la frecuencia, la distribución o las características de un fenómeno en una población o en un grupo de individuos, sin comparar grupos de exposición ni plantear hipótesis sobre relaciones causa-efecto.</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>En la práctica, los estudios descriptivos adoptan habitualmente alguna de estas formas:</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Reporte de caso** (_case report_): descripción detallada de un único individuo con una característica, enfermedad o evolución clínica de interés, generalmente por su rareza o por presentar rasgos inesperados.</span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Serie de casos** (_case series_): descripción de un conjunto de individuos, todos ellos con una misma característica (por ejemplo, todos los pacientes diagnosticados de una enfermedad en un hospital durante un periodo determinado), sin comparación con ningún grupo que no la presente.</span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Estudio descriptivo de frecuencia poblacional**: cuantificación de la presencia de un fenómeno en toda una población o en una muestra representativa de ella, mediante medidas como proporciones o tasas, habitualmente desagregadas por variables como el tiempo, el lugar o las características de las personas (la tríada clásica _tiempo-lugar-persona_ de la vigilancia epidemiológica).</span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>Lo que caracteriza a los tres es la ausencia de un **grupo de comparación**: no existen individuos "no expuestos" o "sin la característica" frente a los que contrastar los resultados. Por ello, un estudio descriptivo puede informar, por ejemplo, de que el 8&amp;nbsp;% de una muestra de pacientes ingresados presenta una determinada complicación, pero **no puede** establecer si esa frecuencia es alta o baja en comparación con otro grupo, ni identificar qué factores la explican, ni mucho menos afirmar que exista una relación de causalidad. Para eso son necesarios los diseños analíticos que se desarrollan en los capítulos siguientes.</span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a><span class="fu">## Ventajas e inconvenientes</span></span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>**Ventajas**</span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Son rápidos, sencillos y económicos de llevar a cabo en comparación con cualquier diseño analítico o experimental.</span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>No requieren un grupo de comparación ni una hipótesis previa, por lo que son ideales para explorar fenómenos sobre los que apenas existe información.</span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Son la herramienta natural para generar nuevas hipótesis que después se pondrán a prueba con diseños analíticos.</span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Constituyen la base de los sistemas de vigilancia epidemiológica, al permitir detectar cambios en la frecuencia de una enfermedad a lo largo del tiempo.</span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Son, con frecuencia, el único diseño posible cuando el fenómeno de estudio es muy poco frecuente (enfermedades raras) o cuando se trata de fenómenos nuevos de los que apenas hay casos documentados.</span>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a>**Inconvenientes**</span>
+<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>No permiten establecer asociaciones entre variables, al carecer de grupo de comparación.</span>
+<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>No permiten en ningún caso establecer relaciones de causalidad.</span>
+<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Los reportes y series de casos suelen basarse en muestras pequeñas y no representativas (a menudo pacientes de un único centro), lo que limita mucho la generalización de los resultados.</span>
+<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Son especialmente vulnerables al sesgo de selección, ya que los casos que llegan a describirse suelen ser los más llamativos o los que acuden a centros concretos.</span>
+<span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>No permiten controlar factores de confusión, al no compararse ningún grupo.</span>
+<span id="cb12-45"><a href="#cb12-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-46"><a href="#cb12-46" aria-hidden="true" tabindex="-1"></a><span class="fu">## Medidas propias de este diseño</span></span>
+<span id="cb12-47"><a href="#cb12-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-48"><a href="#cb12-48" aria-hidden="true" tabindex="-1"></a>Los estudios descriptivos se apoyan en tres medidas de frecuencia muy sencillas, pero que conviene definir con precisión porque son los ladrillos con los que se construyen prácticamente todas las medidas de los diseños analíticos que se estudiarán en los capítulos siguientes (riesgos, _odds_, incidencias, etc.).</span>
+<span id="cb12-49"><a href="#cb12-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-50"><a href="#cb12-50" aria-hidden="true" tabindex="-1"></a><span class="fu">### Razón</span></span>
+<span id="cb12-51"><a href="#cb12-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-52"><a href="#cb12-52" aria-hidden="true" tabindex="-1"></a>:::{#def-descriptivos-razon}</span>
+<span id="cb12-53"><a href="#cb12-53" aria-hidden="true" tabindex="-1"></a><span class="fu">## Razón</span></span>
+<span id="cb12-54"><a href="#cb12-54" aria-hidden="true" tabindex="-1"></a>Una _razón_ (_ratio_) es el cociente entre dos cantidades de naturaleza distinta, no necesariamente relacionadas como parte y todo, es decir, el numerador no está necesariamente incluido en el denominador.</span>
+<span id="cb12-55"><a href="#cb12-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-56"><a href="#cb12-56" aria-hidden="true" tabindex="-1"></a>$$R = \frac{a}{b}$$</span>
+<span id="cb12-57"><a href="#cb12-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-58"><a href="#cb12-58" aria-hidden="true" tabindex="-1"></a>donde $a$ y $b$ son los tamaños de dos grupos o cantidades diferentes.</span>
+<span id="cb12-59"><a href="#cb12-59" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb12-60"><a href="#cb12-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-61"><a href="#cb12-61" aria-hidden="true" tabindex="-1"></a>:::{.callout-important}</span>
+<span id="cb12-62"><a href="#cb12-62" aria-hidden="true" tabindex="-1"></a>Como $a$ y $b$ pueden ser cantidades de cualquier magnitud y no existe una relación de inclusión entre ellas, se tiene que</span>
+<span id="cb12-63"><a href="#cb12-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-64"><a href="#cb12-64" aria-hidden="true" tabindex="-1"></a>$$R \geq 0,$$</span>
+<span id="cb12-65"><a href="#cb12-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-66"><a href="#cb12-66" aria-hidden="true" tabindex="-1"></a>sin que exista, en general, ninguna cota superior.</span>
+<span id="cb12-67"><a href="#cb12-67" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb12-68"><a href="#cb12-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-69"><a href="#cb12-69" aria-hidden="true" tabindex="-1"></a>:::{.callout-note title=Interpretación}</span>
+<span id="cb12-70"><a href="#cb12-70" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Una razón se interpreta como el número de veces que la cantidad del numerador contiene, o representa, a la cantidad del denominador.</span>
+<span id="cb12-71"><a href="#cb12-71" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Por ejemplo, la _razón de masculinidad_ de una población es el cociente entre el número de hombres y el número de mujeres. Una razón de masculinidad de 0.9 indica que hay 0.9 hombres por cada mujer.</span>
+<span id="cb12-72"><a href="#cb12-72" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb12-73"><a href="#cb12-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-74"><a href="#cb12-74" aria-hidden="true" tabindex="-1"></a><span class="fu">### Proporción</span></span>
+<span id="cb12-75"><a href="#cb12-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-76"><a href="#cb12-76" aria-hidden="true" tabindex="-1"></a>:::{#def-descriptivos-proporcion}</span>
+<span id="cb12-77"><a href="#cb12-77" aria-hidden="true" tabindex="-1"></a><span class="fu">## Proporción</span></span>
+<span id="cb12-78"><a href="#cb12-78" aria-hidden="true" tabindex="-1"></a>Una _proporción_ es el cociente entre el número de individuos que presentan una determinada característica y el número total de individuos del grupo, de modo que el numerador está incluido en el denominador.</span>
+<span id="cb12-79"><a href="#cb12-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-80"><a href="#cb12-80" aria-hidden="true" tabindex="-1"></a>$$P = \frac{a}{a+b} = \frac{a}{n}$$</span>
+<span id="cb12-81"><a href="#cb12-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-82"><a href="#cb12-82" aria-hidden="true" tabindex="-1"></a>donde $a$ es el número de individuos con la característica de interés y $n=a+b$ es el tamaño total del grupo.</span>
+<span id="cb12-83"><a href="#cb12-83" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb12-84"><a href="#cb12-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-85"><a href="#cb12-85" aria-hidden="true" tabindex="-1"></a>:::{.callout-important}</span>
+<span id="cb12-86"><a href="#cb12-86" aria-hidden="true" tabindex="-1"></a>Al estar el numerador incluido en el denominador, toda proporción cumple</span>
+<span id="cb12-87"><a href="#cb12-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-88"><a href="#cb12-88" aria-hidden="true" tabindex="-1"></a>$$0 \leq P \leq 1,$$</span>
+<span id="cb12-89"><a href="#cb12-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-90"><a href="#cb12-90" aria-hidden="true" tabindex="-1"></a>y puede expresarse también como porcentaje multiplicándola por 100.</span>
+<span id="cb12-91"><a href="#cb12-91" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb12-92"><a href="#cb12-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-93"><a href="#cb12-93" aria-hidden="true" tabindex="-1"></a>:::{.callout-note title=Interpretación}</span>
+<span id="cb12-94"><a href="#cb12-94" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Si $P=0$ ningún individuo del grupo presenta la característica.</span>
+<span id="cb12-95"><a href="#cb12-95" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Si $P=1$ todos los individuos del grupo presentan la característica.</span>
+<span id="cb12-96"><a href="#cb12-96" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Cuanto más próxima esté $P$ a 1, mayor es la frecuencia relativa de la característica en el grupo.</span>
+<span id="cb12-97"><a href="#cb12-97" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb12-98"><a href="#cb12-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-99"><a href="#cb12-99" aria-hidden="true" tabindex="-1"></a><span class="fu">### Tasa</span></span>
+<span id="cb12-100"><a href="#cb12-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-101"><a href="#cb12-101" aria-hidden="true" tabindex="-1"></a>:::{#def-descriptivos-tasa}</span>
+<span id="cb12-102"><a href="#cb12-102" aria-hidden="true" tabindex="-1"></a><span class="fu">## Tasa</span></span>
+<span id="cb12-103"><a href="#cb12-103" aria-hidden="true" tabindex="-1"></a>Una _tasa_ (_rate_) es una proporción que incorpora explícitamente el tiempo en su denominador, expresado habitualmente en unidades de **persona-tiempo** (personas-año, personas-mes, etc.), es decir, la suma de los periodos de tiempo que cada individuo permanece en riesgo de que ocurra el fenómeno de interés.</span>
+<span id="cb12-104"><a href="#cb12-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-105"><a href="#cb12-105" aria-hidden="true" tabindex="-1"></a>$$T = \frac{\mbox{número de eventos nuevos}}{\mbox{personas-tiempo en riesgo}}\cdot k$$</span>
+<span id="cb12-106"><a href="#cb12-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-107"><a href="#cb12-107" aria-hidden="true" tabindex="-1"></a>donde $k$ es una constante (10, 100, 1\,000, 100\,000...) que se elige para expresar la tasa con cifras manejables.</span>
+<span id="cb12-108"><a href="#cb12-108" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb12-109"><a href="#cb12-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-110"><a href="#cb12-110" aria-hidden="true" tabindex="-1"></a>:::{.callout-important}</span>
+<span id="cb12-111"><a href="#cb12-111" aria-hidden="true" tabindex="-1"></a>Como el numerador no está incluido en el denominador (que tiene unidades de tiempo y no de individuos), una tasa</span>
+<span id="cb12-112"><a href="#cb12-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-113"><a href="#cb12-113" aria-hidden="true" tabindex="-1"></a>$$T \geq 0$$</span>
+<span id="cb12-114"><a href="#cb12-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-115"><a href="#cb12-115" aria-hidden="true" tabindex="-1"></a>no está acotada superiormente y, a diferencia de la proporción, **no es adimensional**: sus unidades son "eventos por persona-tiempo".</span>
+<span id="cb12-116"><a href="#cb12-116" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb12-117"><a href="#cb12-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-118"><a href="#cb12-118" aria-hidden="true" tabindex="-1"></a>:::{.callout-note title=Interpretación}</span>
+<span id="cb12-119"><a href="#cb12-119" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>La tasa mide la _velocidad_ con la que ocurren nuevos eventos en una población, teniendo en cuenta el tiempo real que cada individuo ha estado expuesto al riesgo.</span>
+<span id="cb12-120"><a href="#cb12-120" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Dos poblaciones pueden tener el mismo número absoluto de eventos y, sin embargo, tasas muy distintas si el tiempo de seguimiento o el tamaño de la población en riesgo difieren.</span>
+<span id="cb12-121"><a href="#cb12-121" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>La proporción es adecuada cuando todos los individuos se observan durante el mismo periodo de tiempo; cuando el tiempo de seguimiento varía de un individuo a otro (por incorporaciones tardías, pérdidas de seguimiento o fallecimientos por otras causas), la tasa es la medida correcta porque cada individuo aporta solo el tiempo que realmente estuvo en riesgo.</span>
+<span id="cb12-122"><a href="#cb12-122" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb12-123"><a href="#cb12-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-124"><a href="#cb12-124" aria-hidden="true" tabindex="-1"></a>:::{#exm-descriptivos-tasa-incidencia}</span>
+<span id="cb12-125"><a href="#cb12-125" aria-hidden="true" tabindex="-1"></a>Se sigue durante el año 2026 a 8 personas sanas para observar la aparición de una determinada enfermedad. No todas permanecen en riesgo el año completo: algunas la desarrollan antes de que termine el seguimiento (y dejan de estar en riesgo) y otra abandona el estudio antes de tiempo (pérdida de seguimiento).</span>
+<span id="cb12-126"><a href="#cb12-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-127"><a href="#cb12-127" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb12-128"><a href="#cb12-128" aria-hidden="true" tabindex="-1"></a>\begin{array}{lccc}</span>
+<span id="cb12-129"><a href="#cb12-129" aria-hidden="true" tabindex="-1"></a>\hline</span>
+<span id="cb12-130"><a href="#cb12-130" aria-hidden="true" tabindex="-1"></a>\mbox{Individuo} &amp; \mbox{Meses en riesgo} &amp; \mbox{¿Caso nuevo?} &amp; \mbox{Motivo de fin de seguimiento}<span class="sc">\\</span></span>
+<span id="cb12-131"><a href="#cb12-131" aria-hidden="true" tabindex="-1"></a>\hline</span>
+<span id="cb12-132"><a href="#cb12-132" aria-hidden="true" tabindex="-1"></a>\mbox{Individuo 1} &amp; 12 &amp; \mbox{No} &amp; \mbox{Fin del estudio}<span class="sc">\\</span></span>
+<span id="cb12-133"><a href="#cb12-133" aria-hidden="true" tabindex="-1"></a>\mbox{Individuo 2} &amp; 12 &amp; \mbox{No} &amp; \mbox{Fin del estudio}<span class="sc">\\</span></span>
+<span id="cb12-134"><a href="#cb12-134" aria-hidden="true" tabindex="-1"></a>\mbox{Individuo 3} &amp; 5  &amp; \mbox{Sí} &amp; \mbox{Aparición de la enfermedad}<span class="sc">\\</span></span>
+<span id="cb12-135"><a href="#cb12-135" aria-hidden="true" tabindex="-1"></a>\mbox{Individuo 4} &amp; 12 &amp; \mbox{No} &amp; \mbox{Fin del estudio}<span class="sc">\\</span></span>
+<span id="cb12-136"><a href="#cb12-136" aria-hidden="true" tabindex="-1"></a>\mbox{Individuo 5} &amp; 8  &amp; \mbox{Sí} &amp; \mbox{Aparición de la enfermedad}<span class="sc">\\</span></span>
+<span id="cb12-137"><a href="#cb12-137" aria-hidden="true" tabindex="-1"></a>\mbox{Individuo 6} &amp; 12 &amp; \mbox{No} &amp; \mbox{Fin del estudio}<span class="sc">\\</span></span>
+<span id="cb12-138"><a href="#cb12-138" aria-hidden="true" tabindex="-1"></a>\mbox{Individuo 7} &amp; 3  &amp; \mbox{No} &amp; \mbox{Pérdida de seguimiento}<span class="sc">\\</span></span>
+<span id="cb12-139"><a href="#cb12-139" aria-hidden="true" tabindex="-1"></a>\mbox{Individuo 8} &amp; 12 &amp; \mbox{No} &amp; \mbox{Fin del estudio}<span class="sc">\\</span></span>
+<span id="cb12-140"><a href="#cb12-140" aria-hidden="true" tabindex="-1"></a>\hline</span>
+<span id="cb12-141"><a href="#cb12-141" aria-hidden="true" tabindex="-1"></a>\end{array}</span>
+<span id="cb12-142"><a href="#cb12-142" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb12-143"><a href="#cb12-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-144"><a href="#cb12-144" aria-hidden="true" tabindex="-1"></a>El total de meses-persona observados es $12+12+5+12+8+12+3+12=76$ meses-persona, lo que equivale a $76/12=6.33$ personas-año. El número de casos nuevos es 2 (individuos 3 y 5). La tasa de incidencia es, por tanto,</span>
+<span id="cb12-145"><a href="#cb12-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-146"><a href="#cb12-146" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb12-147"><a href="#cb12-147" aria-hidden="true" tabindex="-1"></a>T = \frac{2}{6.33}\cdot 1\,000 = 315.9 \mbox{ casos por cada } 1\,000 \mbox{ personas-año}.</span>
+<span id="cb12-148"><a href="#cb12-148" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb12-149"><a href="#cb12-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-150"><a href="#cb12-150" aria-hidden="true" tabindex="-1"></a>Nótese que el individuo 7, aunque solo se observó durante 3 meses, contribuye igualmente al denominador con esos 3 meses-persona, y que ni él ni los individuos que desarrollan la enfermedad aportan tiempo en riesgo más allá del momento en que dejan de estarlo. (Se trata de un ejemplo con un tamaño muestral reducido con fines exclusivamente ilustrativos; en la práctica las tasas se calculan sobre poblaciones de miles o millones de personas-año).</span>
+<span id="cb12-151"><a href="#cb12-151" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb12-152"><a href="#cb12-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-153"><a href="#cb12-153" aria-hidden="true" tabindex="-1"></a><span class="fu">## Realización con R</span></span>
+<span id="cb12-154"><a href="#cb12-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-155"><a href="#cb12-155" aria-hidden="true" tabindex="-1"></a>Supongamos que un servicio de urgencias hospitalario registra, durante un mes, todos los casos atendidos de una determinada enfermedad infecciosa, anotando la edad, el sexo y la gravedad del cuadro clínico. Se trata de una serie de casos: no hay ningún grupo de comparación, solo se describe la frecuencia con la que se presenta cada característica dentro de la serie.</span>
+<span id="cb12-156"><a href="#cb12-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-157"><a href="#cb12-157" aria-hidden="true" tabindex="-1"></a><span class="in">```{r datos-serie-casos}</span></span>
+<span id="cb12-158"><a href="#cb12-158" aria-hidden="true" tabindex="-1"></a>casos <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb12-159"><a href="#cb12-159" aria-hidden="true" tabindex="-1"></a>  <span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">28</span>,</span>
+<span id="cb12-160"><a href="#cb12-160" aria-hidden="true" tabindex="-1"></a>  <span class="at">edad =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">67</span>, <span class="dv">45</span>, <span class="dv">2</span>, <span class="dv">78</span>, <span class="dv">34</span>, <span class="dv">56</span>, <span class="dv">81</span>, <span class="dv">29</span>, <span class="dv">5</span>,</span>
+<span id="cb12-161"><a href="#cb12-161" aria-hidden="true" tabindex="-1"></a>           <span class="dv">72</span>, <span class="dv">41</span>, <span class="dv">19</span>, <span class="dv">63</span>, <span class="dv">8</span>, <span class="dv">55</span>, <span class="dv">39</span>, <span class="dv">74</span>, <span class="dv">47</span>, <span class="dv">3</span>,</span>
+<span id="cb12-162"><a href="#cb12-162" aria-hidden="true" tabindex="-1"></a>           <span class="dv">68</span>, <span class="dv">52</span>, <span class="dv">27</span>, <span class="dv">9</span>, <span class="dv">61</span>, <span class="dv">33</span>, <span class="dv">76</span>, <span class="dv">48</span>),</span>
+<span id="cb12-163"><a href="#cb12-163" aria-hidden="true" tabindex="-1"></a>  <span class="at">sexo =</span> <span class="fu">c</span>(<span class="st">"Mujer"</span>, <span class="st">"Hombre"</span>, <span class="st">"Mujer"</span>, <span class="st">"Mujer"</span>, <span class="st">"Hombre"</span>, <span class="st">"Hombre"</span>, <span class="st">"Mujer"</span>, <span class="st">"Mujer"</span>,</span>
+<span id="cb12-164"><a href="#cb12-164" aria-hidden="true" tabindex="-1"></a>           <span class="st">"Hombre"</span>, <span class="st">"Mujer"</span>, <span class="st">"Hombre"</span>, <span class="st">"Mujer"</span>, <span class="st">"Hombre"</span>, <span class="st">"Mujer"</span>, <span class="st">"Hombre"</span>, <span class="st">"Hombre"</span>,</span>
+<span id="cb12-165"><a href="#cb12-165" aria-hidden="true" tabindex="-1"></a>           <span class="st">"Mujer"</span>, <span class="st">"Mujer"</span>, <span class="st">"Hombre"</span>, <span class="st">"Mujer"</span>, <span class="st">"Mujer"</span>, <span class="st">"Hombre"</span>, <span class="st">"Mujer"</span>, <span class="st">"Hombre"</span>,</span>
+<span id="cb12-166"><a href="#cb12-166" aria-hidden="true" tabindex="-1"></a>           <span class="st">"Hombre"</span>, <span class="st">"Mujer"</span>, <span class="st">"Mujer"</span>, <span class="st">"Hombre"</span>),</span>
+<span id="cb12-167"><a href="#cb12-167" aria-hidden="true" tabindex="-1"></a>  <span class="at">gravedad =</span> <span class="fu">c</span>(<span class="st">"Leve"</span>, <span class="st">"Grave"</span>, <span class="st">"Moderada"</span>, <span class="st">"Leve"</span>, <span class="st">"Grave"</span>, <span class="st">"Moderada"</span>, <span class="st">"Leve"</span>, <span class="st">"Grave"</span>,</span>
+<span id="cb12-168"><a href="#cb12-168" aria-hidden="true" tabindex="-1"></a>               <span class="st">"Leve"</span>, <span class="st">"Leve"</span>, <span class="st">"Moderada"</span>, <span class="st">"Leve"</span>, <span class="st">"Leve"</span>, <span class="st">"Moderada"</span>, <span class="st">"Leve"</span>, <span class="st">"Moderada"</span>,</span>
+<span id="cb12-169"><a href="#cb12-169" aria-hidden="true" tabindex="-1"></a>               <span class="st">"Leve"</span>, <span class="st">"Grave"</span>, <span class="st">"Moderada"</span>, <span class="st">"Leve"</span>, <span class="st">"Grave"</span>, <span class="st">"Leve"</span>, <span class="st">"Leve"</span>, <span class="st">"Leve"</span>,</span>
+<span id="cb12-170"><a href="#cb12-170" aria-hidden="true" tabindex="-1"></a>               <span class="st">"Moderada"</span>, <span class="st">"Leve"</span>, <span class="st">"Grave"</span>, <span class="st">"Moderada"</span>)</span>
+<span id="cb12-171"><a href="#cb12-171" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb12-172"><a href="#cb12-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-173"><a href="#cb12-173" aria-hidden="true" tabindex="-1"></a>casos</span>
+<span id="cb12-174"><a href="#cb12-174" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb12-175"><a href="#cb12-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-176"><a href="#cb12-176" aria-hidden="true" tabindex="-1"></a>Con <span class="in">`dplyr`</span> es inmediato calcular la proporción de casos que corresponde a cada categoría de gravedad, la primera medida descriptiva de interés:</span>
+<span id="cb12-177"><a href="#cb12-177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-178"><a href="#cb12-178" aria-hidden="true" tabindex="-1"></a><span class="in">```{r proporciones-gravedad}</span></span>
+<span id="cb12-179"><a href="#cb12-179" aria-hidden="true" tabindex="-1"></a>proporciones_gravedad <span class="ot">&lt;-</span> casos <span class="sc">|&gt;</span></span>
+<span id="cb12-180"><a href="#cb12-180" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(gravedad) <span class="sc">|&gt;</span></span>
+<span id="cb12-181"><a href="#cb12-181" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">proporcion =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n),</span>
+<span id="cb12-182"><a href="#cb12-182" aria-hidden="true" tabindex="-1"></a>         <span class="at">porcentaje =</span> <span class="fu">round</span>(<span class="dv">100</span> <span class="sc">*</span> proporcion, <span class="dv">1</span>))</span>
+<span id="cb12-183"><a href="#cb12-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-184"><a href="#cb12-184" aria-hidden="true" tabindex="-1"></a>proporciones_gravedad</span>
+<span id="cb12-185"><a href="#cb12-185" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb12-186"><a href="#cb12-186" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-187"><a href="#cb12-187" aria-hidden="true" tabindex="-1"></a>También puede describirse la razón entre sexos de la serie, y la proporción de casos graves dentro de cada grupo de edad, agrupando previamente la edad en tramos:</span>
+<span id="cb12-188"><a href="#cb12-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-189"><a href="#cb12-189" aria-hidden="true" tabindex="-1"></a><span class="in">```{r razon-sexo-y-proporcion-edad}</span></span>
+<span id="cb12-190"><a href="#cb12-190" aria-hidden="true" tabindex="-1"></a><span class="co"># Razón hombres / mujeres en la serie de casos</span></span>
+<span id="cb12-191"><a href="#cb12-191" aria-hidden="true" tabindex="-1"></a>razon_sexo <span class="ot">&lt;-</span> casos <span class="sc">|&gt;</span></span>
+<span id="cb12-192"><a href="#cb12-192" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(sexo) <span class="sc">|&gt;</span></span>
+<span id="cb12-193"><a href="#cb12-193" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> sexo, <span class="at">values_from =</span> n) <span class="sc">|&gt;</span></span>
+<span id="cb12-194"><a href="#cb12-194" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">razon_masculinidad =</span> Hombre <span class="sc">/</span> Mujer)</span>
+<span id="cb12-195"><a href="#cb12-195" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-196"><a href="#cb12-196" aria-hidden="true" tabindex="-1"></a>razon_sexo</span>
+<span id="cb12-197"><a href="#cb12-197" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-198"><a href="#cb12-198" aria-hidden="true" tabindex="-1"></a><span class="co"># Proporción de casos graves por tramo de edad</span></span>
+<span id="cb12-199"><a href="#cb12-199" aria-hidden="true" tabindex="-1"></a>casos_edad <span class="ot">&lt;-</span> casos <span class="sc">|&gt;</span></span>
+<span id="cb12-200"><a href="#cb12-200" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">tramo_edad =</span> <span class="fu">case_when</span>(</span>
+<span id="cb12-201"><a href="#cb12-201" aria-hidden="true" tabindex="-1"></a>    edad <span class="sc">&lt;</span> <span class="dv">15</span> <span class="sc">~</span> <span class="st">"0-14 años"</span>,</span>
+<span id="cb12-202"><a href="#cb12-202" aria-hidden="true" tabindex="-1"></a>    edad <span class="sc">&lt;</span> <span class="dv">65</span> <span class="sc">~</span> <span class="st">"15-64 años"</span>,</span>
+<span id="cb12-203"><a href="#cb12-203" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"65 o más años"</span></span>
+<span id="cb12-204"><a href="#cb12-204" aria-hidden="true" tabindex="-1"></a>  )) <span class="sc">|&gt;</span></span>
+<span id="cb12-205"><a href="#cb12-205" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(tramo_edad) <span class="sc">|&gt;</span></span>
+<span id="cb12-206"><a href="#cb12-206" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb12-207"><a href="#cb12-207" aria-hidden="true" tabindex="-1"></a>            <span class="at">graves =</span> <span class="fu">sum</span>(gravedad <span class="sc">==</span> <span class="st">"Grave"</span>),</span>
+<span id="cb12-208"><a href="#cb12-208" aria-hidden="true" tabindex="-1"></a>            <span class="at">proporcion_graves =</span> <span class="fu">round</span>(graves <span class="sc">/</span> n, <span class="dv">2</span>))</span>
+<span id="cb12-209"><a href="#cb12-209" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-210"><a href="#cb12-210" aria-hidden="true" tabindex="-1"></a>casos_edad</span>
+<span id="cb12-211"><a href="#cb12-211" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb12-212"><a href="#cb12-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-213"><a href="#cb12-213" aria-hidden="true" tabindex="-1"></a>Si, además, se conociera cuántos días ha permanecido cada paciente ingresado (por ejemplo, porque los casos graves requieren hospitalización), podría calcularse una tasa de nuevos casos graves por cada 1000 días-paciente de estancia, lo que ilustra cómo la misma lógica de las tasas se aplica también dentro de un estudio descriptivo:</span>
+<span id="cb12-214"><a href="#cb12-214" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-215"><a href="#cb12-215" aria-hidden="true" tabindex="-1"></a><span class="in">```{r tasa-dias-estancia}</span></span>
+<span id="cb12-216"><a href="#cb12-216" aria-hidden="true" tabindex="-1"></a>estancias <span class="ot">&lt;-</span> casos <span class="sc">|&gt;</span></span>
+<span id="cb12-217"><a href="#cb12-217" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(gravedad <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Moderada"</span>, <span class="st">"Grave"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb12-218"><a href="#cb12-218" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dias_estancia =</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">9</span>, <span class="dv">4</span>, <span class="dv">10</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">8</span>, <span class="dv">7</span>, <span class="dv">6</span>, <span class="dv">11</span>, <span class="dv">4</span>, <span class="dv">9</span>, <span class="dv">7</span>, <span class="dv">5</span>))</span>
+<span id="cb12-219"><a href="#cb12-219" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-220"><a href="#cb12-220" aria-hidden="true" tabindex="-1"></a>tasa_complicacion <span class="ot">&lt;-</span> estancias <span class="sc">|&gt;</span></span>
+<span id="cb12-221"><a href="#cb12-221" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb12-222"><a href="#cb12-222" aria-hidden="true" tabindex="-1"></a>    <span class="at">dias_persona =</span> <span class="fu">sum</span>(dias_estancia),</span>
+<span id="cb12-223"><a href="#cb12-223" aria-hidden="true" tabindex="-1"></a>    <span class="at">casos_graves =</span> <span class="fu">sum</span>(gravedad <span class="sc">==</span> <span class="st">"Grave"</span>),</span>
+<span id="cb12-224"><a href="#cb12-224" aria-hidden="true" tabindex="-1"></a>    <span class="at">tasa_x1000 =</span> <span class="fu">round</span>(<span class="dv">1000</span> <span class="sc">*</span> casos_graves <span class="sc">/</span> dias_persona, <span class="dv">1</span>)</span>
+<span id="cb12-225"><a href="#cb12-225" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb12-226"><a href="#cb12-226" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-227"><a href="#cb12-227" aria-hidden="true" tabindex="-1"></a>tasa_complicacion</span>
+<span id="cb12-228"><a href="#cb12-228" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb12-229"><a href="#cb12-229" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-230"><a href="#cb12-230" aria-hidden="true" tabindex="-1"></a>Por último, un diagrama de barras permite visualizar de un vistazo la distribución de la gravedad de los casos, la representación gráfica más habitual de una variable cualitativa en un estudio descriptivo:</span>
+<span id="cb12-231"><a href="#cb12-231" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-232"><a href="#cb12-232" aria-hidden="true" tabindex="-1"></a><span class="in">```{r grafico-proporciones, fig.cap="Distribución de la gravedad de los casos registrados en urgencias durante el mes."}</span></span>
+<span id="cb12-233"><a href="#cb12-233" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(proporciones_gravedad, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_reorder</span>(gravedad, proporcion, <span class="at">.desc =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb12-234"><a href="#cb12-234" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">y =</span> proporcion)) <span class="sc">+</span></span>
+<span id="cb12-235"><a href="#cb12-235" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span></span>
+<span id="cb12-236"><a href="#cb12-236" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste0</span>(porcentaje, <span class="st">"%"</span>)), <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb12-237"><a href="#cb12-237" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent, <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">max</span>(proporciones_gravedad<span class="sc">$</span>proporcion) <span class="sc">*</span> <span class="fl">1.2</span>)) <span class="sc">+</span></span>
+<span id="cb12-238"><a href="#cb12-238" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Gravedad del cuadro clínico"</span>, <span class="at">y =</span> <span class="st">"Proporción de casos"</span>,</span>
+<span id="cb12-239"><a href="#cb12-239" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Gravedad de los casos atendidos en urgencias"</span>) <span class="sc">+</span></span>
+<span id="cb12-240"><a href="#cb12-240" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb12-241"><a href="#cb12-241" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb12-242"><a href="#cb12-242" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-243"><a href="#cb12-243" aria-hidden="true" tabindex="-1"></a>Los resultados describen la serie de casos, pero no permiten ir más allá: puede afirmarse que algo más de la mitad de los casos de esta serie fueron leves y que la proporción de cuadros graves es mayor entre los mayores de 65 años, pero no puede concluirse que la edad *cause* una mayor gravedad, porque no se dispone de ningún grupo de comparación con el que contrastar esa diferencia ni se han controlado otros factores que pudieran explicarla.</span>
+<span id="cb12-244"><a href="#cb12-244" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-245"><a href="#cb12-245" aria-hidden="true" tabindex="-1"></a><span class="fu">## Cuándo utilizar este diseño</span></span>
+<span id="cb12-246"><a href="#cb12-246" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-247"><a href="#cb12-247" aria-hidden="true" tabindex="-1"></a>Un estudio descriptivo es la elección adecuada cuando todavía se sabe poco sobre un fenómeno y el objetivo prioritario es simplemente cuantificarlo: en las primeras fases de un brote epidemiológico, en la vigilancia rutinaria de enfermedades, al documentar un caso clínico inusual, o al estudiar enfermedades tan raras que reunir un grupo de comparación resulta inviable. Su gran ventaja es la sencillez y la rapidez con la que aporta una primera fotografía del problema, que sirve para generar hipótesis sobre posibles factores asociados. Sin embargo, en cuanto la pregunta de investigación pasa de "¿con qué frecuencia ocurre esto?" a "¿por qué ocurre?" o "¿qué lo explica?", un diseño descriptivo deja de ser suficiente y es necesario recurrir a un diseño analítico, como el <span class="co">[</span><span class="ot">estudio transversal</span><span class="co">](03-estudios-transversales.qmd)</span> o el <span class="co">[</span><span class="ot">estudio de cohortes</span><span class="co">](04-estudios-cohortes.qmd)</span>, que sí incorporan un grupo de comparación frente al que contrastar los resultados.</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/asalber/estadistica-tipos-estudios/edit/main/02-estudios-descriptivos.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/asalber/estadistica-tipos-estudios/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li></ul></div></div></div></footer></body></html>

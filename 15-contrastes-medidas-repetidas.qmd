@@ -1,0 +1,178 @@
+---
+title: Contrastes para más de dos poblaciones relacionadas (medidas repetidas)
+lang: es
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+library(tidyverse)
+df <- read_csv("datos/datos-curso.csv")
+```
+
+Este capítulo generaliza el [capítulo anterior](13-contrastes-dos-poblaciones-pareadas.qmd), dedicado a dos poblaciones pareadas, al caso de **más de dos** medidas relacionadas tomadas sobre los mismos individuos. Corresponde a la fila de la [tabla de decisión](10-seleccion-contraste.qmd) en la que la variable independiente es cualitativa con más de dos categorías, pero, a diferencia del [capítulo dedicado a poblaciones independientes](14-contrastes-mas-dos-poblaciones-independientes.qmd), esas categorías no distinguen grupos de individuos distintos, sino ocasiones de medida repetidas sobre los mismos individuos. El conjunto de datos del curso dispone de cinco calificaciones distintas, `notaA`, `notaB`, `notaC`, `notaD` y `notaE`, obtenidas por los **mismos** 120 alumnos (pueden interpretarse como cinco pruebas o exámenes distintos realizados por cada alumno a lo largo del curso). Estas cinco notas no son, por tanto, cinco poblaciones independientes, sino cinco **medidas repetidas** por individuo, y esa dependencia entre ellas es la que obliga a utilizar contrastes distintos de los vistos en el capítulo anterior sobre poblaciones independientes: ignorarla y tratar las cinco notas como si procedieran de alumnos distintos infravaloraría la precisión real de las comparaciones y podría llevar a conclusiones erróneas.
+
+## Preparación de los datos: de formato ancho a formato largo
+
+En `df`, cada alumno ocupa una única fila y cada una de sus cinco notas ocupa una columna distinta (`notaA`, ..., `notaE`): es el llamado **formato ancho**. Los contrastes de este capítulo, sin embargo, necesitan el **formato largo**, en el que cada fila representa una única combinación de alumno y prueba. Para pasar de un formato a otro se crea primero un identificador de alumno (el número de fila) y después se reorganizan las cinco columnas de notas en dos columnas nuevas, `prueba` (con el nombre de la prueba) y `nota` (con la calificación), usando `tidyr::pivot_longer()`:
+
+```{r pivot-largo}
+df_largo <- df %>%
+  mutate(alumno = row_number()) %>%
+  select(alumno, notaA, notaB, notaC, notaD, notaE) %>%
+  pivot_longer(cols = starts_with("nota"), names_to = "prueba", values_to = "nota") %>%
+  mutate(prueba = factor(prueba))
+
+head(df_largo, 10)
+```
+
+Cada alumno pasa de ocupar una fila a ocupar cinco (una por prueba), de modo que `df_largo` tiene $120 \times 5 = 600$ filas. Algunas notas son valores perdidos (10 en total, repartidos entre `notaB`, `notaC`, `notaD` y `notaE`), que se mantienen en `df_largo` y se tratarán más adelante según lo exija cada contraste.
+
+**Estadísticos descriptivos por prueba**
+
+```{r descriptivos-prueba}
+df_largo %>%
+  group_by(prueba) %>%
+  summarise(
+    n = sum(!is.na(nota)),
+    media = mean(nota, na.rm = TRUE),
+    dt = sd(nota, na.rm = TRUE)
+  )
+```
+
+La nota media desciende de forma bastante regular a lo largo del curso, de $\bar{x}=6.03$ en la prueba A a $\bar{x}=2.70$ en la prueba E, con desviaciones típicas parecidas entre sí (entre 1.34 y 1.80). Esta caída progresiva de la media ya sugiere que las cinco pruebas no tienen el mismo nivel de dificultad o de exigencia, algo que los contrastes de este capítulo permitirán confirmar formalmente.
+
+**Gráficos**
+
+El diagrama de cajas y bigotes de `nota` según `prueba` permite comparar de un vistazo la posición y la dispersión de las cinco pruebas:
+
+```{r boxplot-pruebas, fig.cap="Diagrama de cajas y bigotes de la nota en cada una de las cinco pruebas."}
+ggplot(df_largo, aes(x = prueba, y = nota, fill = prueba)) +
+  geom_boxplot() +
+  scale_fill_brewer(palette = "Set2") +
+  labs(x = "Prueba", y = "Nota") +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
+
+Como el interés de este capítulo está en las medidas repetidas sobre los mismos individuos, conviene también visualizar la trayectoria de cada alumno a través de las cinco pruebas. Para no saturar el gráfico se representan solo los 10 primeros alumnos, junto con la trayectoria de la media general (en rojo) calculada sobre todos los alumnos:
+
+```{r lineas-trayectoria, fig.cap="Trayectoria de las notas de los 10 primeros alumnos a través de las cinco pruebas, con la media general superpuesta en rojo."}
+ggplot(df_largo %>% filter(alumno <= 10), aes(x = prueba, y = nota)) +
+  geom_line(aes(group = alumno), alpha = 0.4) +
+  stat_summary(data = df_largo, aes(group = 1), fun = mean, geom = "line", color = "firebrick", linewidth = 1.2) +
+  labs(x = "Prueba", y = "Nota") +
+  theme_minimal()
+```
+
+Tanto las cajas como las trayectorias individuales confirman la tendencia descendente ya apuntada por las medias: la mayoría de los alumnos obtiene notas cada vez más bajas a medida que avanzan las pruebas, aunque con un orden entre alumnos que se mantiene razonablemente estable (quien saca más nota en la prueba A tiende también a sacar más nota en las siguientes).
+
+**Comprobación de la normalidad**
+
+El ANOVA de medidas repetidas que se presenta en la sección siguiente exige que la variable sea normal en cada una de las medidas repetidas. Antes de aplicarlo conviene comprobarlo, con el test de Shapiro-Wilk visto en el capítulo de [contrastes para una población](11-contrastes-una-poblacion.qmd), en cada una de las cinco pruebas por separado:
+
+```{r shapiro-pruebas}
+df_largo %>%
+  group_by(prueba) %>%
+  summarise(
+    n = sum(!is.na(nota)),
+    `p-valor` = shapiro.test(nota[!is.na(nota)])$p.value
+  )
+```
+
+En `notaA`, `notaB`, `notaC` y `notaD` el p-valor del test de Shapiro-Wilk es superior a 0.05 (0.907, 0.068, 0.412 y 0.575, respectivamente), por lo que no hay evidencia para rechazar la normalidad en ninguna de ellas. En `notaE`, en cambio, el p-valor es $4.07\times10^{-6}$, muy inferior a 0.05, por lo que se rechaza la normalidad: esta última prueba tiene una distribución claramente no normal (coherente con concentrar más alumnos suspensos en valores bajos, lo que genera asimetría). El requisito de normalidad del ANOVA de medidas repetidas no se cumple, por tanto, de forma estricta en las cinco pruebas a la vez, lo que hace especialmente pertinente comprobar también el resultado con la alternativa no paramétrica, el test de Friedman, que se presenta a continuación.
+
+## Comparación de las medidas repetidas
+
+Con los datos ya en formato largo, el objetivo es contrastar si existen diferencias entre las medias (o las distribuciones) de las cinco pruebas. Según pueda asumirse o no la normalidad de las notas, se dispone de una versión paramétrica (el ANOVA de medidas repetidas) y de una alternativa no paramétrica (el test de Friedman).
+
+### ANOVA de medidas repetidas de un factor
+
+:::{#def-medidasrepetidas-anova}
+## ANOVA de medidas repetidas de un factor
+El _ANOVA de medidas repetidas de un factor_ contrasta si las medias de una variable cuantitativa son iguales en más de dos medidas relacionadas (tomadas sobre los mismos individuos). La hipótesis nula es
+
+$$H_0: \mu_1 = \mu_2 = \dots = \mu_k,$$
+
+donde $\mu_1, \dots, \mu_k$ son las medias poblacionales de las $k$ medidas repetidas, frente a la alternativa de que al menos una de esas medias difiere de las demás.
+:::
+
+**Requisitos**: la variable dependiente debe ser cuantitativa y seguir una distribución normal en cada una de las medidas repetidas (o un tamaño muestral suficientemente grande en cada una). Además debe cumplirse el supuesto de **esfericidad**, que exige que las varianzas de las diferencias entre todos los pares posibles de medidas repetidas sean aproximadamente iguales; cuando no se cumple, el contraste se vuelve demasiado liberal (rechaza $H_0$ con más facilidad de la debida) y conviene corregirlo o recurrir a la alternativa no paramétrica de la sección siguiente. Su comprobación formal (con el test de esfericidad de Mauchly y correcciones como la de Greenhouse-Geisser) queda fuera del alcance de este capítulo introductorio.
+
+En R, el ANOVA de medidas repetidas se ajusta con la función `aov()` habitual, pero añadiendo un término `Error()` que identifica al alumno como la unidad sobre la que se repiten las medidas: `Error(alumno/prueba)` indica que `prueba` varía dentro de cada `alumno`. Este contraste exige que todos los individuos tengan las cinco medidas completas, así que primero se eliminan de `df_largo` los alumnos con alguna nota perdida.
+
+:::{#exm-medidasrepetidas-anova}
+```{r anova-medidas-repetidas}
+df_largo_completo <- df_largo %>%
+  group_by(alumno) %>%
+  filter(!any(is.na(nota))) %>%
+  ungroup() %>%
+  mutate(alumno = factor(alumno))
+
+n_distinct(df_largo_completo$alumno)
+
+modelo <- aov(nota ~ prueba + Error(alumno/prueba), data = df_largo_completo)
+summary(modelo)
+```
+
+De los 120 alumnos, 111 tienen las cinco notas completas y son los que entran en el análisis (los 9 restantes se descartan por tener algún valor perdido). El resultado se organiza en dos estratos: el primero (`Error: alumno`) recoge la variabilidad debida a las diferencias globales entre alumnos, y el segundo (`Error: alumno:prueba`) es el que contiene el contraste de interés, sobre `prueba`. El estadístico es $F=192.5$ con 4 y 440 grados de libertad, y un p-valor inferior a $2\times10^{-16}$, muy por debajo de 0.05, por lo que se rechaza $H_0$: existen diferencias significativas entre las medias de las cinco pruebas. A la vista de las medias descendentes ya observadas (de 6.03 en la prueba A a 2.70 en la prueba E), la conclusión es que el nivel de exigencia (o el rendimiento medio) no se mantiene constante a lo largo del curso.
+:::
+
+El ANOVA de medidas repetidas solo informa de que **alguna** de las cinco medias difiere de las demás, pero no de **cuáles**. Para averiguarlo se puede completar el análisis con comparaciones por pares (una versión del test t pareado para cada par de pruebas), corrigiendo el nivel de significación de cada comparación individual con el método de Bonferroni para controlar la probabilidad de cometer al menos un error de tipo I al hacer varias comparaciones a la vez:
+
+```{r pairwise-anova}
+pairwise.t.test(df_largo_completo$nota, df_largo_completo$prueba,
+                 paired = TRUE, p.adjust.method = "bonferroni")
+```
+
+Los diez p-valores de la tabla son inferiores a 0.05 (el mayor, entre `notaD` y `notaE`, es $7.9\times10^{-7}$), por lo que las cinco pruebas difieren significativamente entre sí dos a dos: no se trata de que una única prueba se aparte de las demás, sino de un descenso generalizado y progresivo del rendimiento a lo largo de las cinco pruebas.
+
+### Test de Friedman
+
+:::{#def-medidasrepetidas-friedman}
+## Test de Friedman
+El _test de Friedman_ es la alternativa no paramétrica al ANOVA de medidas repetidas: contrasta si existen diferencias entre más de dos medidas relacionadas sin necesidad de asumir que la variable sigue una distribución normal. La hipótesis nula es
+
+$$H_0: \mbox{no hay diferencias entre las medidas repetidas.}$$
+
+El contraste se basa en los rangos que ocupa cada medida dentro de cada individuo, en lugar de en los valores originales de la variable.
+:::
+
+**Requisitos**: la variable dependiente debe ser, al menos, cualitativa ordinal (o cuantitativa), y las medidas deben proceder de los mismos individuos. No exige normalidad, por lo que es la opción adecuada cuando no puede garantizarse el requisito de normalidad (o de esfericidad) del ANOVA de medidas repetidas.
+
+En R, `friedman.test()` no trabaja sobre el formato largo, sino que espera una matriz con los individuos en las filas y las medidas repetidas en las columnas (es decir, prácticamente el formato ancho original), y no admite valores perdidos, por lo que hay que eliminarlos antes con `na.omit()`.
+
+:::{#exm-medidasrepetidas-friedman}
+```{r friedman-medidas-repetidas}
+mat_notas <- df %>%
+  select(notaA, notaB, notaC, notaD, notaE) %>%
+  as.matrix() %>%
+  na.omit()
+
+nrow(mat_notas)
+
+friedman.test(mat_notas)
+```
+
+Tras eliminar los valores perdidos quedan, de nuevo, 111 alumnos con las cinco notas completas (los mismos que en el ANOVA anterior). El estadístico del contraste es $\chi^2=316.59$ con 4 grados de libertad y un p-valor inferior a $2.2\times10^{-16}$, muy inferior a 0.05, por lo que también se rechaza $H_0$: hay diferencias significativas entre las cinco pruebas. La conclusión coincide plenamente con la del ANOVA de medidas repetidas, lo cual es tranquilizador dado que, como se vio antes, `notaE` no cumplía estrictamente el requisito de normalidad: al no depender de ese supuesto, el resultado del test de Friedman es, en este caso concreto, la referencia más fiable de las dos, y el hecho de que ambos contrastes coincidan en su conclusión refuerza la confianza en el resultado.
+:::
+
+Al igual que con el ANOVA, el test de Friedman solo indica que existen diferencias globales, no entre qué pares de pruebas concretas. La versión no paramétrica de las comparaciones por pares, con la misma corrección de Bonferroni, se obtiene con `pairwise.wilcox.test()`:
+
+```{r pairwise-friedman}
+pairwise.wilcox.test(df_largo_completo$nota, df_largo_completo$prueba,
+                      paired = TRUE, p.adjust.method = "bonferroni")
+```
+
+De nuevo los diez p-valores son inferiores a 0.05 (el mayor, $8.8\times10^{-7}$, vuelve a corresponder al par `notaD`-`notaE`), confirmando con un método que no depende de la normalidad la misma conclusión obtenida con las comparaciones paramétricas: cada una de las cinco pruebas difiere significativamente de las demás.
+
+:::{.callout-tip}
+Ante datos de medidas repetidas conviene aplicar primero el test de Shapiro-Wilk (u otro contraste de normalidad) en cada una de las medidas por separado. Si todas son razonablemente normales, el ANOVA de medidas repetidas es la opción más potente; si alguna se aparta claramente de la normalidad, como ocurre aquí con `notaE`, el test de Friedman es la alternativa más segura. Cuando, como en este ejemplo, ambos contrastes coinciden en su conclusión, puede reportarse cualquiera de los dos con tranquilidad. La comprobación formal del supuesto adicional de esfericidad que exige el ANOVA de medidas repetidas (con el test de Mauchly y las correcciones de Greenhouse-Geisser o Huynh-Feldt) se desarrolla con detalle en el [Manual de Estadística](https://aprendeconalf.es/estadistica-manual/).
+:::
+
+## Resumen
+
+Los dos contrastes de este capítulo llegan a la misma conclusión: el rendimiento de los alumnos no es constante a lo largo de las cinco pruebas del curso, sino que desciende de forma significativa y, según muestran las comparaciones por pares, de forma generalizada entre todas ellas. Un resultado así, obtenido sobre datos de medidas repetidas, sugiere una pregunta que el contraste estadístico por sí solo no puede responder: si el descenso se debe a que las pruebas son cada vez más difíciles, a que la materia se acumula y exige más al alumno conforme avanza el curso, o a otra causa distinta (por ejemplo, cansancio o pérdida de motivación); dar respuesta a esa pregunta exigiría un diseño adicional, no solo un contraste de hipótesis.
+
+Ambos contrastes son, además, la generalización, a más de dos medidas repetidas, del contraste paramétrico visto en [Contrastes para dos poblaciones pareadas](13-contrastes-dos-poblaciones-pareadas.qmd) para el caso particular de solo dos medidas: de hecho, cuando solo hay dos medidas repetidas, el estadístico F del ANOVA de medidas repetidas coincide con el cuadrado del estadístico t del test t pareado, y ambos contrastes dan exactamente el mismo p-valor. El test de Friedman, en cambio, no se reduce al test de Wilcoxon para datos pareados cuando solo hay dos medidas, porque Friedman se basa únicamente en el orden (el rango) que ocupa cada medida dentro de cada individuo, mientras que Wilcoxon tiene en cuenta también la magnitud de las diferencias; con dos medidas, la generalización natural del test de Friedman es más bien el test de los signos.
+
+Con esto se cierra la parte de la tabla de decisión dedicada a comparar medias o distribuciones entre dos o más poblaciones, ya sean independientes o relacionadas; el [último capítulo de esta parte](16-relacion-entre-variables.qmd) aborda una cuestión distinta: la relación y la predicción entre dos variables cuantitativas.

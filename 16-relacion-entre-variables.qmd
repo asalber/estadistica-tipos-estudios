@@ -1,0 +1,60 @@
+---
+title: Relación y predicción entre dos variables
+lang: es
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+library(tidyverse)
+df <- read_csv("datos/datos-curso.csv")
+```
+
+Este último capítulo cierra la tabla de decisión presentada en [Selección del contraste estadístico](10-seleccion-contraste.qmd) con las filas que faltaban: aquellas en las que se quiere estudiar la **relación** entre dos variables cuantitativas, o **predecir** una variable cuantitativa (o cualitativa binaria) a partir de otra cuantitativa. La correlación y la regresión son temas amplios, con mucha teoría, propiedades y variantes detrás. Como ese desarrollo ya está hecho, y con detalle, en el [Manual de Estadística](https://aprendeconalf.es/estadistica-manual/) del mismo autor, aquí no se repite: este capítulo se limita a situar cada contraste en la tabla de decisión y a mostrar el ejemplo mínimo de código en R necesario para aplicarlo sobre el conjunto de datos del curso. Para las definiciones formales, las fórmulas y las propiedades de estos contrastes, así como para el coeficiente chi-cuadrado y el coeficiente de contingencia entre dos variables cualitativas (mencionados pero no desarrollados en el capítulo introductorio de esta parte), acúdase al Manual.
+
+## Relación entre dos variables cuantitativas
+
+Cuando ambas variables son cuantitativas y (aproximadamente) normales, la pregunta habitual es si existe una **relación lineal** entre ellas. El coeficiente de correlación de Pearson mide la fuerza y el sentido de esa relación lineal, y toma valores en el intervalo $[-1,1]$: cerca de $1$ indica relación lineal positiva fuerte, cerca de $-1$ relación lineal negativa fuerte, y cerca de $0$ ausencia de relación lineal.
+
+Cuando alguna de las variables es cualitativa ordinal, o cuando las variables son cuantitativas pero no puede asumirse normalidad, se utiliza en su lugar el coeficiente de correlación de Spearman, que mide la relación de orden (monótona) entre las dos variables en lugar de la relación estrictamente lineal. También toma valores en $[-1,1]$ y se interpreta igual.
+
+```{r}
+cor.test(df$notaA, df$notaB, method = "pearson")
+```
+
+El coeficiente de correlación de Pearson entre `notaA` y `notaB` es $r = 0.81$, y el contraste de hipótesis nula $H_0: \rho = 0$ da un p-valor prácticamente nulo ($p < 2.2 \times 10^{-16}$), por lo que se rechaza la hipótesis nula: existe una relación lineal positiva fuerte y significativa entre las dos calificaciones.
+
+```{r}
+#| fig-cap: "Diagrama de dispersión entre notaA y notaB, con la recta de regresión ajustada."
+ggplot(df, aes(x = notaB, y = notaA)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+
+## Regresión simple
+
+Cuando el objetivo no es solo contrastar si existe relación, sino construir un **modelo predictivo** que permita estimar el valor de una variable cuantitativa a partir de otra, se recurre a la regresión lineal simple. El modelo ajusta la recta que mejor explica la variable dependiente en función de la independiente, y el contraste de hipótesis asociado a la pendiente indica si esa relación es estadísticamente significativa.
+
+```{r}
+modelo <- lm(notaA ~ notaB, data = df)
+summary(modelo)
+```
+
+Por cada punto que sube `notaB`, `notaA` sube en promedio 0.673 puntos ($\hat\beta_1 = 0.673$), y esa pendiente es significativamente distinta de cero ($p < 2\times10^{-16}$), lo que confirma la relación lineal ya detectada con la correlación. El coeficiente de determinación, $R^2 = 0.657$, indica que el modelo explica un 65.7 % de la variabilidad de `notaA`.
+
+## Regresión logística simple
+
+Cuando la variable que se quiere predecir es cualitativa binaria (por ejemplo, aprobar o suspender una prueba) y la variable predictora es cuantitativa, el modelo lineal deja de ser adecuado y se sustituye por la regresión logística simple, que modela la probabilidad de la categoría de interés en función de la variable independiente.
+
+```{r}
+df <- df %>%
+  mutate(aprobado = as.numeric(calificacionA == "Aprobado"))
+
+modelo_log <- glm(aprobado ~ notaE, data = df, family = "binomial")
+summary(modelo_log)
+```
+
+El coeficiente de `notaE` es positivo ($\hat\beta_1 = 0.030$), lo que indicaría que una nota más alta en la prueba E se asocia a una mayor probabilidad de aprobar la prueba A, pero el p-valor asociado ($p = 0.81$) está muy lejos de ser significativo: con estos datos no hay evidencia de que la calificación obtenida en la prueba E prediga el resultado (aprobado/suspenso) de la prueba A.
+
+## Cierre de esta parte del libro
+
+Este libro ha recorrido dos preguntas distintas pero complementarias sobre un mismo estudio estadístico. La primera parte trató sobre el **diseño**: cómo se recogen los datos, según los distintos tipos de estudios descriptivos, transversales, de cohortes, de casos y controles, ecológicos, experimentales, cuasiexperimentales o basados en encuestas, y qué conclusiones de causalidad permite extraer cada uno. La segunda parte, cerrada con este capítulo, trató sobre el **análisis**: una vez recogidos los datos, cómo elegir el contraste de hipótesis adecuado según el número y el tipo de variables involucradas y la relación entre las poblaciones comparadas. Conviene no perder de vista que ambas preguntas son necesarias pero ninguna es suficiente por sí sola: un contraste estadístico perfectamente elegido y ejecutado sobre datos mal recogidos —con sesgos de selección, factores de confusión no controlados u otras amenazas a la validez discutidas en la primera parte— no produce conclusiones válidas, por muy pequeño que sea el p-valor obtenido. El buen análisis estadístico empieza en el buen diseño. Quien llegue a este capítulo sin haber pasado antes por el principio del libro puede retomarlo en [Introducción a los tipos de estudios estadísticos](01-introduccion.qmd), y quien busque de nuevo el mapa completo de contrastes puede volver a [Selección del contraste estadístico](10-seleccion-contraste.qmd).

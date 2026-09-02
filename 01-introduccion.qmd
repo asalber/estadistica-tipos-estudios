@@ -1,0 +1,170 @@
+---
+title: Introducción a los tipos de estudios estadísticos
+lang: es
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+library(tidyverse)
+```
+
+Cualquier investigación que utilice datos para responder a una pregunta científica se apoya en un _estudio estadístico_: un plan que determina qué individuos se observan, qué variables se miden, si el investigador interviene sobre ellos, y en qué momento o momentos del tiempo se recogen los datos.
+
+:::{#def-estudio-estadistico}
+## Estudio estadístico
+Un _estudio estadístico_ es un proceso planificado de recogida, organización y análisis de datos sobre una población o muestra, con el fin de describir un fenómeno, buscar asociaciones entre variables o establecer relaciones de causalidad.
+:::
+
+La elección del tipo de estudio no es un detalle metodológico secundario: condiciona qué conclusiones pueden extraerse de los datos, qué medidas estadísticas tienen sentido calcular, y qué amenazas a la validez de los resultados hay que vigilar (sesgos de selección, factores de confusión, pérdidas de seguimiento, etc.). Este libro dedica un capítulo a cada uno de los tipos de estudio más habituales, mostrando cómo diseñarlos, qué medidas les son propias y cómo analizarlos con R.
+
+Para situar cada capítulo dentro de un mapa común, en este primer capítulo se presentan los criterios que se utilizan habitualmente para clasificar los estudios estadísticos.
+
+## Elementos comunes a todo estudio estadístico
+
+Antes de clasificar los estudios conviene recordar algunos conceptos, desarrollados con detalle en el [Manual de Estadística](https://aprendeconalf.es/estadistica-manual/), que se emplearán a lo largo de todo el libro:
+
+- **Población**: conjunto de individuos sobre los que se quiere obtener conclusiones.
+- **Muestra**: subconjunto de la población que realmente se observa.
+- **Variable de exposición o factor de estudio**: característica cuyo efecto se quiere investigar (un tratamiento, un hábito, una exposición ambiental, etc.).
+- **Variable de respuesta o resultado**: característica sobre la que se mide el efecto (una enfermedad, un evento, una puntuación, etc.).
+- **Unidad de observación**: el elemento sobre el que se recogen los datos, que no siempre coincide con el individuo (puede ser un grupo, una región, un periodo de tiempo...).
+
+## Criterios de clasificación
+
+### Según la intervención del investigador
+
+El criterio más importante distingue entre estudios en los que el investigador se limita a observar la realidad y estudios en los que el investigador manipula activamente alguna condición.
+
+:::{#def-estudio-observacional}
+## Estudio observacional
+Un _estudio observacional_ es aquel en el que el investigador se limita a observar y medir las variables de interés tal y como se presentan de forma natural, sin intervenir en la asignación de los individuos a los grupos de exposición.
+:::
+
+:::{#def-estudio-experimental}
+## Estudio experimental
+Un _estudio experimental_ es aquel en el que el investigador interviene activamente, asignando de forma controlada la exposición o el tratamiento a los individuos, habitualmente mediante aleatorización.
+:::
+
+Los estudios observacionales permiten detectar asociaciones entre variables, pero por sí solos rara vez permiten establecer relaciones de causa-efecto, porque no se puede descartar que la asociación observada se deba a un **factor de confusión**: una tercera variable relacionada tanto con la exposición como con el resultado. Los estudios experimentales, al controlar la asignación de la exposición mediante aleatorización, están diseñados precisamente para eliminar esta amenaza y poder establecer causalidad.
+
+:::{.callout-note title=Interpretación}
+Como regla general, la evidencia científica sobre relaciones causales es tanto más fuerte cuanto mayor es el grado de control que ejerce el investigador sobre la asignación de la exposición. Los [ensayos clínicos aleatorizados](07-estudios-experimentales.qmd) se consideran el diseño de referencia (_gold standard_) para establecer causalidad, mientras que los estudios observacionales ocupan una posición más débil en esta jerarquía.
+:::
+
+### Según la finalidad del estudio
+
+:::{#def-estudio-descriptivo}
+## Estudio descriptivo
+Un _estudio descriptivo_ tiene como objetivo describir la frecuencia o distribución de una o varias variables en una población, sin plantear hipótesis sobre relaciones causales entre ellas.
+:::
+
+:::{#def-estudio-analitico}
+## Estudio analítico
+Un _estudio analítico_ tiene como objetivo poner a prueba una hipótesis sobre la asociación o relación causal entre una exposición y un resultado, comparando grupos de individuos.
+:::
+
+Dentro de los estudios observacionales, los [estudios de cohortes](04-estudios-cohortes.qmd), de [casos y controles](05-estudios-casos-controles.qmd) y [ecológicos](06-estudios-ecologicos.qmd) son analíticos, mientras que los [estudios descriptivos](02-estudios-descriptivos.qmd) propiamente dichos y los [estudios transversales](03-estudios-transversales.qmd) tienen, en su forma más simple, una finalidad principalmente descriptiva.
+
+### Según la secuencia temporal
+
+:::{#def-estudio-transversal-temporal}
+## Estudio transversal
+Un estudio es _transversal_ (o de corte, del inglés _cross-sectional_) cuando la exposición y el resultado se miden en un único momento del tiempo, sobre los mismos individuos.
+:::
+
+:::{#def-estudio-longitudinal}
+## Estudio longitudinal
+Un estudio es _longitudinal_ cuando los individuos se observan a lo largo de un periodo de tiempo, lo que permite establecer la secuencia temporal entre la exposición y el resultado.
+:::
+
+Establecer con claridad qué ocurrió primero, la exposición o el resultado, es esencial para poder hablar de causalidad, ya que la causa debe preceder siempre al efecto. Esta es una de las principales limitaciones de los estudios transversales.
+
+### Según la direccionalidad
+
+Entre los estudios longitudinales, es habitual distinguir además según la dirección en la que se recorre el tiempo respecto al momento en que se inicia la investigación:
+
+:::{#def-estudio-prospectivo}
+## Estudio prospectivo
+Un estudio es _prospectivo_ cuando se parte de la exposición, en el presente, y se sigue a los individuos hacia el futuro para observar la aparición del resultado.
+:::
+
+:::{#def-estudio-retrospectivo}
+## Estudio retrospectivo
+Un estudio es _retrospectivo_ cuando se parte del resultado, ya ocurrido, y se indaga hacia atrás en el tiempo en busca de la exposición.
+:::
+
+:::{.callout-important}
+Los términos _prospectivo/retrospectivo_ (dirección temporal de la recogida de información) y _cohorte/casos y controles_ (forma de seleccionar la muestra) no son sinónimos, aunque a menudo se solapan: lo habitual es que un estudio de cohortes sea prospectivo y un estudio de casos y controles sea retrospectivo, pero existen diseños de [cohortes retrospectivas](04-estudios-cohortes.qmd) que combinan ambos aspectos.
+:::
+
+## Mapa de los tipos de estudio
+
+La siguiente tabla resume los tipos de estudio que se desarrollan en los capítulos siguientes, clasificados según los criterios anteriores.
+
+| Tipo de estudio | Intervención | Finalidad | Secuencia temporal |
+|---|---|---|---|
+| [Estudio descriptivo](02-estudios-descriptivos.qmd) | Observacional | Descriptiva | Variable |
+| [Estudio transversal](03-estudios-transversales.qmd) | Observacional | Descriptiva / analítica | Transversal |
+| [Estudio de cohortes](04-estudios-cohortes.qmd) | Observacional | Analítica | Longitudinal |
+| [Estudio de casos y controles](05-estudios-casos-controles.qmd) | Observacional | Analítica | Longitudinal (retrospectivo) |
+| [Estudio ecológico](06-estudios-ecologicos.qmd) | Observacional | Analítica | Variable |
+| [Estudio experimental / ensayo clínico](07-estudios-experimentales.qmd) | Experimental | Analítica | Longitudinal (prospectivo) |
+| [Estudio cuasiexperimental](08-estudios-cuasiexperimentales.qmd) | Experimental (sin aleatorización) | Analítica | Longitudinal |
+| [Encuesta y muestreo](09-encuestas-muestreo.qmd) | Observacional | Descriptiva / analítica | Transversal (habitualmente) |
+
+```{r piramide-evidencia, echo=FALSE, fig.cap="Jerarquía habitual de la evidencia científica según el tipo de estudio."}
+niveles_txt <- c("Series de casos", "Estudio transversal", "Estudio de casos y controles",
+                  "Estudio de cohortes", "Ensayo clínico aleatorizado")
+n <- length(niveles_txt)
+base_width <- 10
+
+# Anchura de la pirámide a una altura y (y=0 en la base, y=n en el vértice)
+ancho <- function(y) base_width * (n - y) / n
+
+# Un trapecio (o triángulo en el nivel superior) por cada tipo de estudio,
+# apilados de la base (mayor frecuencia, menor calidad) al vértice (menor
+# frecuencia, mayor calidad)
+piramide <- map_dfr(1:n, function(i) {
+  y0 <- i - 1
+  y1 <- i
+  w0 <- ancho(y0)
+  w1 <- ancho(y1)
+  tibble(
+    nivel = niveles_txt[i],
+    x = c(-w0 / 2, w0 / 2, w1 / 2, -w1 / 2),
+    y = c(y0, y0, y1, y1)
+  )
+})
+piramide$nivel <- factor(piramide$nivel, levels = niveles_txt)
+
+# Etiquetas con líneas guía fuera de la pirámide, para que quepan también
+# en los niveles superiores, más estrechos
+etiquetas <- tibble(
+  nivel = factor(niveles_txt, levels = niveles_txt),
+  y = (0:(n - 1)) + 0.5,
+  x_borde = ancho(y) / 2,
+  x_texto = base_width / 2 + 0.6
+)
+
+ggplot() +
+  geom_polygon(data = piramide, aes(x = x, y = y, group = nivel, fill = nivel),
+               color = "white", linewidth = 0.8) +
+  geom_segment(data = etiquetas, aes(x = x_borde, xend = x_texto - 0.1, y = y, yend = y),
+               color = "grey50", linewidth = 0.4) +
+  geom_text(data = etiquetas, aes(x = x_texto, y = y, label = nivel),
+            hjust = 0, size = 3.4, color = "black") +
+  annotate("text", x = 0, y = n + 0.35, label = "Mayor calidad de la evidencia",
+           size = 3.2, fontface = "italic") +
+  annotate("text", x = 0, y = -0.35, label = "Mayor frecuencia / menor calidad de la evidencia",
+           size = 3.2, fontface = "italic") +
+  scale_fill_brewer(palette = "Greens") +
+  scale_x_continuous(limits = c(-base_width / 2 - 0.5, base_width / 2 + 6)) +
+  coord_fixed(ratio = 1, clip = "off") +
+  theme_void() +
+  theme(legend.position = "none",
+        plot.title = element_text(hjust = 0.5, margin = margin(b = 10)),
+        plot.margin = margin(15, 5, 5, 5)) +
+  labs(title = "A mayor control del diseño, mayor fuerza de la evidencia")
+```
+
+Cada uno de los capítulos siguientes sigue la misma estructura: definición y características del diseño, ventajas e inconvenientes, medidas estadísticas propias del tipo de estudio, y un ejemplo completo resuelto con R.

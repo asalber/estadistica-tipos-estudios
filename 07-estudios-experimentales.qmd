@@ -1,0 +1,279 @@
+---
+title: Estudios experimentales
+lang: es
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+library(tidyverse)
+library(pwr)
+```
+
+A diferencia de los diseños observacionales estudiados en los capítulos anteriores, en los que el investigador se limita a observar lo que ocurre de forma natural, en un _estudio experimental_ es el propio investigador quien decide, de forma activa, qué tratamiento o exposición recibe cada individuo. Esta capacidad de intervenir sobre la exposición, unida a la asignación aleatoria de los sujetos a los distintos grupos, convierte al estudio experimental en el diseño con mayor capacidad para establecer relaciones causales de todos los vistos hasta ahora. Dentro de los estudios experimentales, el _ensayo clínico aleatorizado_ es, con diferencia, el más utilizado, especialmente en la evaluación de nuevos fármacos y tratamientos, y constituye el paradigma de este tipo de diseño. Los conceptos generales de estudio experimental frente a observacional se presentaron en el [capítulo de introducción](01-introduccion.qmd).
+
+## Definición y características
+
+:::{#def-experimentales-ensayo-clinico-aleatorizado}
+## Ensayo clínico aleatorizado
+Un _ensayo clínico aleatorizado_ (ECA) es un estudio experimental, analítico y longitudinal en el que un grupo de individuos se asigna al azar a recibir un tratamiento (o exposición) experimental o un tratamiento de control, y se les sigue en el tiempo para comparar la frecuencia con la que se produce el resultado de interés en ambos grupos.
+:::
+
+El ensayo clínico aleatorizado comparte con el estudio de cohortes la lógica general (se parte de la exposición y se observa el resultado a lo largo del tiempo), pero se diferencia de él en un aspecto esencial: mientras que en el estudio de cohortes la exposición la determinan los propios individuos o las circunstancias, en el ensayo clínico es el investigador quien la asigna, y además lo hace de forma aleatoria. Esta doble característica, intervención y aleatorización, es la que dota a este diseño de su extraordinaria capacidad para el control de los factores de confusión. Tres elementos son clave en su diseño: la aleatorización, la existencia de un grupo control (habitualmente con placebo) y el cegamiento.
+
+### Aleatorización
+
+:::{#def-experimentales-aleatorizacion}
+## Aleatorización
+La _aleatorización_ es el procedimiento por el cual la asignación de cada individuo al grupo experimental o al grupo control se realiza mediante un mecanismo puramente aleatorio (por ejemplo, un generador de números aleatorios), de forma que todos los individuos tienen la misma probabilidad de recibir cada uno de los tratamientos.
+:::
+
+:::{.callout-important}
+Si el proceso de asignación es realmente aleatorio y el tamaño muestral es suficientemente grande, la aleatorización tiende a repartir por igual entre los grupos tanto los factores de confusión conocidos por el investigador como los que no lo son (o los que ni siquiera se han llegado a identificar). Esto es algo que ningún diseño observacional puede garantizar, por muy cuidadoso que sea el ajuste estadístico posterior, ya que este solo puede corregir el efecto de las variables que se han medido.
+:::
+
+:::{.callout-note title=Interpretación}
+Gracias a la aleatorización, si al final del estudio se observa una diferencia en el resultado entre los dos grupos, esa diferencia puede atribuirse con mucha mayor confianza al tratamiento y no a otras características previas de los individuos, ya que estas se distribuyen de forma similar (en promedio) en ambos grupos.
+:::
+
+### Grupo control y placebo
+
+En todo ensayo clínico es necesario disponer de un grupo de comparación, el _grupo control_, que permite valorar qué le hubiera ocurrido a los individuos del grupo experimental si no hubieran recibido el tratamiento en estudio. Sin este grupo de referencia sería imposible saber si la evolución observada en los pacientes tratados se debe al tratamiento o a otros factores, como la evolución natural de la enfermedad.
+
+El grupo control puede recibir un _placebo_ (una sustancia o procedimiento inactivo, sin efecto farmacológico, pero indistinguible del tratamiento experimental en apariencia) cuando no existe un tratamiento eficaz conocido para la enfermedad estudiada, o bien el _tratamiento estándar_ ya disponible, cuando por motivos éticos no seria admisible dejar sin tratamiento a los pacientes del grupo control. En ambos casos el objetivo es el mismo: aislar el efecto específico del nuevo tratamiento del efecto inespecífico de recibir cualquier atención o intervención.
+
+### Cegamiento
+
+:::{#def-experimentales-cegamiento}
+## Cegamiento
+El _cegamiento_ (o enmascaramiento) es el procedimiento por el cual se oculta a los participantes, a los investigadores, o a ambos, qué tratamiento está recibiendo cada individuo, con el fin de evitar que ese conocimiento influya en el resultado del estudio.
+:::
+
+Se distinguen varios niveles de cegamiento:
+
+- En un ensayo _simple ciego_, el paciente desconoce si recibe el tratamiento experimental o el control, pero el investigador sí lo sabe.
+- En un ensayo _doble ciego_, ni el paciente ni el investigador que evalúa el resultado conocen el tratamiento asignado.
+- En un ensayo _abierto_ no existe cegamiento: tanto el paciente como el investigador conocen el tratamiento asignado, algo inevitable en algunos diseños (por ejemplo, cuando se compara cirugía frente a tratamiento farmacológico).
+
+:::{.callout-note title=Interpretación}
+El cegamiento reduce el sesgo de información en ambas direcciones: evita que el conocimiento del tratamiento modifique la respuesta del paciente (por ejemplo, mediante el efecto placebo, o comunicando síntomas de forma distinta según lo que espera sentir) y evita que el investigador, de forma consciente o inconsciente, valore el resultado de forma diferente según el tratamiento que sabe que ha recibido cada paciente.
+:::
+
+## Ventajas e inconvenientes
+
+El ensayo clínico aleatorizado presenta ventajas muy destacadas frente al resto de diseños estudiados hasta ahora:
+
+- Proporciona la evidencia más sólida para establecer relaciones de causalidad entre una exposición o tratamiento y un resultado, por lo que se considera el patrón de referencia (_gold standard_) de la investigación clínica.
+- La aleatorización controla simultáneamente los factores de confusión conocidos y los desconocidos, algo que ningún estudio observacional puede lograr.
+- El investigador controla el momento y la forma en que se administra la exposición, lo que reduce muchos de los sesgos de selección e información habituales en los estudios observacionales.
+- El cegamiento y el uso de un grupo control con placebo permiten aislar el efecto específico del tratamiento.
+
+Frente a estas ventajas, el diseño presenta también inconvenientes importantes:
+
+- Suele requerir un coste económico y una duración muy elevados, sobre todo cuando el resultado de interés tarda mucho tiempo en manifestarse o es poco frecuente.
+- Plantea problemas éticos que limitan notablemente su aplicabilidad: no es aceptable asignar de forma aleatoria una exposición que se sospecha perjudicial, ni negar a un grupo de pacientes un tratamiento del que ya existe evidencia de eficacia.
+- Los criterios de inclusión y exclusión, necesarios para garantizar la seguridad de los participantes y la homogeneidad de la muestra, suelen ser muy estrictos, lo que limita la validez externa (la capacidad de generalizar los resultados a la población general de pacientes, más heterogénea que la muestra del ensayo).
+
+## Medidas propias de este diseño
+
+Al igual que en el estudio de cohortes, en un ensayo clínico se comparan las incidencias del resultado de interés en el grupo experimental y en el grupo control, a partir de una tabla de contingencia como la siguiente, donde $a$ y $c$ son el número de individuos en los que se produce el evento en el grupo experimental y en el grupo control, respectivamente, y $n_e$ y $n_c$ el número total de individuos en cada grupo:
+
+$$
+\begin{array}{lrrr}
+\hline
+ & \mbox{Evento} & \mbox{No evento} & \mbox{Total}\\
+\hline
+\mbox{Experimental} & a & b & n_e\\
+\mbox{Control} & c & d & n_c\\
+\hline
+\end{array}
+$$
+
+A partir de esta tabla se define la incidencia del evento en el grupo experimental, $I_e = a/n_e$, y la incidencia del evento en el grupo control, $I_c = c/n_c$. Sobre estas dos incidencias se construyen tres medidas propias de este diseño, especialmente utilizadas cuando el resultado de interés es un evento adverso que el tratamiento pretende evitar: la reducción relativa del riesgo, la reducción absoluta del riesgo y el número necesario a tratar.
+
+### Reducción relativa del riesgo
+
+:::{#def-experimentales-rrr}
+## Reducción relativa del riesgo
+La _reducción relativa del riesgo_ (RRR) es la proporción en la que el tratamiento experimental reduce el riesgo del evento respecto al grupo control, y se define como
+
+$$RRR = \frac{I_c - I_e}{I_c}$$
+:::
+
+:::{.callout-important}
+Cuando el tratamiento experimental reduce el riesgo del evento respecto al control ($I_e < I_c$), se tiene que
+
+$$0 < RRR \leq 1,$$
+
+y suele expresarse en tanto por ciento.
+:::
+
+:::{.callout-note title=Interpretación}
+Un $RRR = 0.3$ (30%) indica que el tratamiento experimental reduce el riesgo de sufrir el evento en un 30% respecto al riesgo del grupo control. La reducción relativa del riesgo es equivalente a $1-RR$, donde $RR=I_e/I_c$ es el riesgo relativo definido en el estudio de cohortes, por lo que comparte con él la limitación de no informar sobre la magnitud absoluta del riesgo evitado.
+:::
+
+### Reducción absoluta del riesgo
+
+:::{#def-experimentales-rar}
+## Reducción absoluta del riesgo
+La _reducción absoluta del riesgo_ (RAR) es la diferencia entre la incidencia del evento en el grupo control y la incidencia del evento en el grupo experimental, y se define como
+
+$$RAR = I_c - I_e$$
+:::
+
+:::{.callout-important}
+Cuando el tratamiento experimental reduce el riesgo del evento respecto al control ($I_e < I_c$), se tiene que
+
+$$0 < RAR \leq 1.$$
+:::
+
+:::{.callout-note title=Interpretación}
+A diferencia de la reducción relativa, la reducción absoluta del riesgo depende directamente del riesgo basal del grupo control: dos tratamientos pueden tener la misma $RRR$ y una $RAR$ muy distinta si las incidencias de partida son muy diferentes, por lo que la RAR ofrece una idea más realista del beneficio esperado del tratamiento en la práctica.
+:::
+
+### Número necesario a tratar
+
+:::{#def-experimentales-nnt}
+## Número necesario a tratar
+El _número necesario a tratar_ (NNT) es el número de pacientes que sería necesario tratar con el tratamiento experimental, en lugar de con el control, para evitar un caso adicional del evento de interés, y se define como el inverso de la reducción absoluta del riesgo:
+
+$$NNT = \frac{1}{RAR}$$
+:::
+
+:::{.callout-note title=Interpretación}
+El NNT traduce la reducción absoluta del riesgo a una escala muy intuitiva para la práctica clínica: un $NNT=10$ significa que, de media, hay que tratar a 10 pacientes con el nuevo tratamiento en lugar de con el control para evitar que uno de ellos sufra el evento. Cuanto menor es el NNT, mayor es la eficacia práctica del tratamiento.
+:::
+
+:::{.callout-warning}
+El NNT se calcula siempre como el inverso de la RAR expresada en proporción (no en porcentaje) y, puesto que en la práctica no tiene sentido tratar a una fracción de paciente, el resultado se redondea siempre al entero superior (por ejemplo, un $NNT=8.3$ se interpreta y se comunica como $NNT=9$). Además, al depender de la RAR, el NNT no es una propiedad fija del tratamiento, sino que varía con el riesgo basal de la población a la que se aplique: el mismo tratamiento tendrá un NNT mucho más favorable en pacientes de alto riesgo que en pacientes de bajo riesgo, por lo que no debe extrapolarse sin más de una población a otra.
+:::
+
+### Ejemplo numérico
+
+:::{#exm-experimentales-rrr-rar-nnt}
+Se lleva a cabo un ensayo clínico aleatorizado, doble ciego y controlado con placebo, para evaluar si un nuevo fármaco reduce la aparición de infarto de miocardio en pacientes con alto riesgo cardiovascular. Se reclutan 500 pacientes, que se asignan aleatoriamente a dos grupos de 250: uno recibe el fármaco experimental y otro recibe un placebo, y se les sigue durante 3 años. Al finalizar el seguimiento se obtiene la siguiente tabla de frecuencias:
+
+$$
+\begin{array}{lrrr}
+\hline
+ & \mbox{Infarto} & \mbox{No infarto} & \mbox{Total}\\
+\hline
+\mbox{Fármaco} & 25 & 225 & 250\\
+\mbox{Placebo} & 50 & 200 & 250\\
+\hline
+\end{array}
+$$
+
+**Incidencias.** La incidencia de infarto en el grupo experimental es
+
+$$I_e = \frac{25}{250} = 0.10 = 10\%,$$
+
+y la incidencia de infarto en el grupo control es
+
+$$I_c = \frac{50}{250} = 0.20 = 20\%.$$
+
+**Reducción relativa del riesgo.**
+
+$$RRR = \frac{I_c - I_e}{I_c} = \frac{0.20 - 0.10}{0.20} = 0.5 = 50\%.$$
+
+El fármaco reduce el riesgo de sufrir un infarto en un 50% respecto al riesgo de los pacientes que reciben placebo.
+
+**Reducción absoluta del riesgo.**
+
+$$RAR = I_c - I_e = 0.20 - 0.10 = 0.10 = 10\%.$$
+
+De cada 100 pacientes tratados con el fármaco, se evitan 10 infartos que sí se habrían producido de haber recibido placebo.
+
+**Número necesario a tratar.**
+
+$$NNT = \frac{1}{RAR} = \frac{1}{0.10} = 10.$$
+
+Es necesario tratar a 10 pacientes con el nuevo fármaco, en lugar de con placebo, durante 3 años, para evitar un infarto de miocardio adicional. Obsérvese que, a pesar de que la reducción relativa del riesgo parece muy elevada (50%), el NNT permite valorar el beneficio del tratamiento en términos absolutos y directamente aplicables a la práctica clínica.
+:::
+
+## Realización con R
+
+### Cálculo de las medidas a partir de la tabla de contingencia
+
+El primer paso es reproducir con R el cálculo manual del ejemplo anterior, construyendo la tabla de contingencia como una matriz y calculando a partir de ella las incidencias, la RRR, la RAR y el NNT.
+
+```{r}
+# Tabla de contingencia: filas = grupo, columnas = resultado (infarto, no infarto)
+tabla <- matrix(c(25, 225, 50, 200),
+                 nrow = 2, byrow = TRUE,
+                 dimnames = list(Grupo = c("Farmaco", "Placebo"),
+                                  Resultado = c("Infarto", "No infarto")))
+tabla
+```
+
+```{r}
+# Incidencias del evento en cada grupo
+i_e <- tabla["Farmaco", "Infarto"] / sum(tabla["Farmaco", ])
+i_c <- tabla["Placebo", "Infarto"] / sum(tabla["Placebo", ])
+c(I_e = i_e, I_c = i_c)
+```
+
+```{r}
+# Reducción relativa del riesgo, reducción absoluta del riesgo y NNT
+rrr <- (i_c - i_e) / i_c
+rar <- i_c - i_e
+nnt <- 1 / rar
+c(RRR = rrr, RAR = rar, NNT = ceiling(nnt))
+```
+
+Los resultados, $I_e=0.10$, $I_c=0.20$, $RRR=0.5$, $RAR=0.10$ y $NNT=10$, coinciden exactamente con los obtenidos a mano.
+
+Para representar gráficamente la diferencia entre grupos conviene acompañar las incidencias observadas de su intervalo de confianza, que puede obtenerse para cada grupo con `prop.test()`:
+
+```{r}
+ic_farmaco <- prop.test(tabla["Farmaco", "Infarto"], sum(tabla["Farmaco", ]))
+ic_placebo <- prop.test(tabla["Placebo", "Infarto"], sum(tabla["Placebo", ]))
+
+incidencias <- tibble(
+  grupo = c("Fármaco", "Placebo"),
+  incidencia = c(ic_farmaco$estimate, ic_placebo$estimate),
+  ic_inf = c(ic_farmaco$conf.int[1], ic_placebo$conf.int[1]),
+  ic_sup = c(ic_farmaco$conf.int[2], ic_placebo$conf.int[2])
+)
+incidencias
+```
+
+```{r}
+ggplot(incidencias, aes(x = grupo, y = incidencia, fill = grupo)) +
+  geom_col(width = 0.6, show.legend = FALSE) +
+  geom_errorbar(aes(ymin = ic_inf, ymax = ic_sup), width = 0.15) +
+  scale_y_continuous(labels = scales::percent) +
+  labs(x = "Grupo",
+       y = "Incidencia de infarto de miocardio",
+       title = "Incidencia de infarto según grupo de tratamiento",
+       subtitle = "Barras de error: intervalo de confianza al 95%") +
+  theme_minimal()
+```
+
+El gráfico muestra que la incidencia observada en el grupo tratado con el fármaco es claramente inferior a la del grupo placebo, aunque los intervalos de confianza recuerdan que ambas incidencias se han estimado a partir de una muestra y están sujetas a variabilidad muestral.
+
+### Cálculo del tamaño muestral
+
+Antes de iniciar un ensayo clínico es necesario determinar cuántos pacientes por grupo se van a reclutar, de forma que el estudio tenga potencia suficiente para detectar la diferencia de incidencias que se considera clínicamente relevante, si esta existe realmente. El paquete `pwr` permite realizar este cálculo para la comparación de dos proporciones con la función `pwr.2p.test()`, que requiere el tamaño del efecto de Cohen `h` (calculado a partir de las dos proporciones con `ES.h()`), el nivel de significación `sig.level` y la potencia deseada `power`.
+
+Supóngase que, antes de realizar el ensayo del ejemplo anterior, se quiere diseñar un estudio capaz de detectar una reducción de la incidencia de infarto del 20% (grupo control) al 10% (grupo experimental), con una potencia del 80% y un nivel de significación del 5%:
+
+```{r}
+tamano_efecto <- ES.h(p1 = 0.10, p2 = 0.20)
+tamano_efecto
+```
+
+```{r}
+calculo_muestra <- pwr.2p.test(h = tamano_efecto, sig.level = 0.05, power = 0.8)
+calculo_muestra
+```
+
+```{r}
+n_por_grupo <- ceiling(calculo_muestra$n)
+n_por_grupo
+```
+
+El resultado indica que serían necesarios aproximadamente `r n_por_grupo` pacientes por grupo (es decir, un total de `r 2 * n_por_grupo` pacientes) para tener una probabilidad del 80% de detectar, con un nivel de significación del 5%, una diferencia de incidencias como la observada en el ejemplo si esta existe realmente en la población. Con los 250 pacientes por grupo reclutados en el ejemplo anterior, el estudio contaba con potencia más que suficiente para detectar una diferencia de esa magnitud; en la práctica, este cálculo debe realizarse siempre antes de iniciar el reclutamiento, y no a posteriori, para justificar el tamaño de la muestra planificada.
+
+## Cuándo utilizar este diseño
+
+El ensayo clínico aleatorizado es el diseño de elección siempre que sea factible desde el punto de vista ético y práctico llevarlo a cabo, ya que ofrece la evidencia más sólida para establecer que una exposición o tratamiento causa un determinado resultado. Resulta especialmente indicado en las fases de evaluación de nuevos fármacos, vacunas o intervenciones sanitarias, antes de su aprobación y uso generalizado. Sin embargo, cuando no es posible asignar aleatoriamente la exposición, bien porque sería contrario a la ética (por ejemplo, asignar el consumo de tabaco), bien por motivos prácticos, de coste o de tiempo, es necesario recurrir a un [estudio cuasiexperimental](08-estudios-cuasiexperimentales.qmd), que conserva la intervención activa del investigador pero renuncia a la aleatorización, o bien a alguno de los diseños observacionales estudiados en los capítulos anteriores.

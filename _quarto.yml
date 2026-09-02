@@ -1,0 +1,68 @@
+project:
+  type: book
+  output-dir: "docs"
+  preview:
+    port: 1314
+
+execute:
+  freeze: auto
+  cache: true
+  daemon: 3600
+
+website:
+  reader-mode: true
+
+book:
+  title: "Tipos de Estudios Estadísticos"
+  subtitle: "Diseño, análisis e implementación con R"
+  author: "Alfredo Sánchez Alberca"
+  date: "2/9/2026"
+  output-file: "estadistica-tipos-estudios"
+  sharing: [twitter, linkedin]
+  downloads: [pdf]
+  sidebar:
+    tools:
+      - icon: house-fill
+        href: https://aprendeconalf.es
+  open-graph: true
+  twitter-card:
+    site: "@aprendeconalf"
+  repo-url: https://github.com/asalber/estadistica-tipos-estudios
+  repo-actions: [edit, issue]
+  chapters:
+    - index.qmd
+    - 01-introduccion.qmd
+    - part: "Diseños de estudio"
+      chapters:
+        - 02-estudios-descriptivos.qmd
+        - 03-estudios-transversales.qmd
+        - 04-estudios-cohortes.qmd
+        - 05-estudios-casos-controles.qmd
+        - 06-estudios-ecologicos.qmd
+        - 07-estudios-experimentales.qmd
+        - 08-estudios-cuasiexperimentales.qmd
+        - 09-encuestas-muestreo.qmd
+    - part: "Selección del contraste estadístico"
+      chapters:
+        - 10-seleccion-contraste.qmd
+        - 11-contrastes-una-poblacion.qmd
+        - 12-contrastes-dos-poblaciones-independientes.qmd
+        - 13-contrastes-dos-poblaciones-pareadas.qmd
+        - 14-contrastes-mas-dos-poblaciones-independientes.qmd
+        - 15-contrastes-medidas-repetidas.qmd
+        - 16-relacion-entre-variables.qmd
+
+format:
+  html:
+    highlight-style: a11y
+    theme:
+      dark: [darkly, custom-dark.scss]
+      light: [flatly, custom.scss]
+    html-math-method: mathjax
+    code-tools: true
+    code-fold: show
+  pdf:
+    documentclass: scrreport
+    papersize: a4
+    toc: true
+    keep-tex: false

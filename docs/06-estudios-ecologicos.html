@@ -1,0 +1,1441 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>6&nbsp; Estudios ecológicos – Tipos de Estudios Estadísticos</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./07-estudios-experimentales.html" rel="next">
+<link href="./05-estudios-casos-controles.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-33269adcf1721b81efc5ea7fcfe7f0ee.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-5a2acb6f4ed5aeb23a104ba421924b87.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-b050db56f2b97c639b7ebc2cf71c06d7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-5e50218c20039713403b52e69b91eb5d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="6&nbsp; Estudios ecológicos – Tipos de Estudios Estadísticos">
+<meta property="og:description" content="">
+<meta property="og:image" content="06-estudios-ecologicos_files/figure-html/grafico-dispersion-1.png">
+<meta property="og:site_name" content="Tipos de Estudios Estadísticos">
+<meta name="twitter:title" content="6&nbsp; Estudios ecológicos – Tipos de Estudios Estadísticos">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="06-estudios-ecologicos_files/figure-html/grafico-dispersion-1.png">
+<meta name="twitter:site" content="@aprendeconalf">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-sidebar floating quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02-estudios-descriptivos.html">Diseños de estudio</a></li><li class="breadcrumb-item"><a href="./06-estudios-ecologicos.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Estudios ecológicos</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Tipos de Estudios Estadísticos</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://aprendeconalf.es" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-house-fill"></i></a>
+    <a href="https://github.com/asalber/estadistica-tipos-estudios" title="Ejecutar el código" class="quarto-navigation-tool px-1" aria-label="Ejecutar el código"><i class="bi bi-github"></i></a>
+    <a href="./estadistica-tipos-estudios.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
+              <i class="bi bi-linkedin pe-1"></i>
+            LinkedIn
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefacio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-introduccion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción a los tipos de estudios estadísticos</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Diseños de estudio</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-estudios-descriptivos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Estudios descriptivos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-estudios-transversales.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Estudios transversales</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-estudios-cohortes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Estudios de cohortes</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-estudios-casos-controles.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Estudios de casos y controles</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-estudios-ecologicos.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Estudios ecológicos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-estudios-experimentales.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Estudios experimentales</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-estudios-cuasiexperimentales.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Estudios cuasiexperimentales</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-encuestas-muestreo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Encuestas y diseño de muestreo</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Selección del contraste estadístico</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-seleccion-contraste.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Selección del contraste estadístico</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-contrastes-una-poblacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Contrastes para una población</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12-contrastes-dos-poblaciones-independientes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Contrastes para dos poblaciones independientes</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13-contrastes-dos-poblaciones-pareadas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Contrastes para dos poblaciones pareadas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./14-contrastes-mas-dos-poblaciones-independientes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Contrastes para más de dos poblaciones independientes</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./15-contrastes-medidas-repetidas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Contrastes para más de dos poblaciones relacionadas (medidas repetidas)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./16-relacion-entre-variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Relación y predicción entre dos variables</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Indice de contenidos</h2>
+   
+  <ul>
+  <li><a href="#definición-y-características" id="toc-definición-y-características" class="nav-link active" data-scroll-target="#definición-y-características"><span class="header-section-number">6.1</span> Definición y características</a></li>
+  <li><a href="#ventajas-e-inconvenientes" id="toc-ventajas-e-inconvenientes" class="nav-link" data-scroll-target="#ventajas-e-inconvenientes"><span class="header-section-number">6.2</span> Ventajas e inconvenientes</a></li>
+  <li><a href="#medidas-propias-de-este-diseño" id="toc-medidas-propias-de-este-diseño" class="nav-link" data-scroll-target="#medidas-propias-de-este-diseño"><span class="header-section-number">6.3</span> Medidas propias de este diseño</a></li>
+  <li><a href="#realización-con-r" id="toc-realización-con-r" class="nav-link" data-scroll-target="#realización-con-r"><span class="header-section-number">6.4</span> Realización con R</a></li>
+  <li><a href="#cuándo-utilizar-este-diseño" id="toc-cuándo-utilizar-este-diseño" class="nav-link" data-scroll-target="#cuándo-utilizar-este-diseño"><span class="header-section-number">6.5</span> Cuándo utilizar este diseño</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/asalber/estadistica-tipos-estudios/edit/main/06-estudios-ecologicos.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/asalber/estadistica-tipos-estudios/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02-estudios-descriptivos.html">Diseños de estudio</a></li><li class="breadcrumb-item"><a href="./06-estudios-ecologicos.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Estudios ecológicos</span></a></li></ol></nav>
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Estudios ecológicos</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Código</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Enseñar el código</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Esconder el código</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">Ver el código</a></li></ul></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Todos los diseños vistos hasta ahora en este libro comparten un rasgo común: la unidad de observación es el individuo. Sin embargo, no siempre se dispone de datos a nivel individual, ni siempre interesa estudiarlos: en ocasiones lo único disponible, o lo único relevante, son datos agregados sobre grupos enteros de personas. El estudio ecológico es el diseño observacional y analítico en el que la unidad de análisis no es el individuo, sino un grupo o agregado de individuos (un país, una región, un colegio, un periodo de tiempo), y en el que se relacionan tasas o promedios agregados de exposición con tasas o promedios agregados de resultado. Como se anticipó en el <a href="./01-introduccion.html">capítulo de introducción</a>, este diseño ocupa una posición particular entre los estudios analíticos, ya que permite generar hipótesis con gran rapidez pero exige una cautela especial a la hora de interpretar sus resultados.</p>
+<section id="definición-y-características" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="definición-y-características"><span class="header-section-number">6.1</span> Definición y características</h2>
+<div id="def-ecologicos-estudio-ecologico" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 6.1 (Estudio ecológico)</strong></span> Un <em>estudio ecológico</em> es un estudio observacional y analítico en el que la unidad de análisis es un grupo o agregado de individuos, denominado <em>unidad ecológica</em>, y en el que se estudia la relación entre una medida agregada de exposición (una tasa, una proporción o una media) y una medida agregada de resultado, calculadas ambas para cada unidad ecológica.</p>
+</div>
+<p>Lo que distingue a un estudio ecológico de todos los demás diseños de este libro no es el tipo de medida que se calcula, sino la naturaleza de la unidad de observación. En un estudio de cohortes o de casos y controles, cada fila de la base de datos corresponde a una persona; en un estudio ecológico, cada fila corresponde a un grupo, del que solo se conocen valores resumidos (por ejemplo, el porcentaje de fumadores o la tasa de mortalidad), y se ignora la combinación exacta de exposición y resultado que presenta cada individuo del grupo.</p>
+<p>Una <strong>unidad ecológica</strong> puede definirse de muy diversas formas, dependiendo de la disponibilidad de datos agregados y de la pregunta de investigación. Algunos ejemplos habituales son:</p>
+<ul>
+<li><strong>Áreas geográficas</strong>: países, comunidades autónomas, provincias o municipios, para los que existen estadísticas oficiales agregadas (renta media, tasas de mortalidad, cobertura vacunal, etc.).</li>
+<li><strong>Instituciones</strong>: colegios, hospitales o empresas, comparados a partir de indicadores agregados de sus miembros (por ejemplo, el gasto medio por alumno y la tasa de graduación de cada colegio).</li>
+<li><strong>Cohortes de nacimiento o periodos de tiempo</strong>: grupos de personas nacidas en un mismo año, o datos agregados por años calendario, para estudiar tendencias temporales conjuntas de una exposición y un resultado.</li>
+</ul>
+</section>
+<section id="ventajas-e-inconvenientes" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="ventajas-e-inconvenientes"><span class="header-section-number">6.2</span> Ventajas e inconvenientes</h2>
+<p><strong>Ventajas</strong></p>
+<ul>
+<li>Es, con diferencia, uno de los diseños más rápidos y baratos de llevar a cabo, ya que habitualmente no requiere recoger datos nuevos.</li>
+<li>Aprovecha datos agregados ya disponibles, como estadísticas oficiales, registros administrativos o indicadores publicados por organismos públicos, sin necesidad de reclutar y seguir a individuos.</li>
+<li>Es muy útil para generar hipótesis de forma exploratoria, que después podrán confirmarse (o no) con diseños a nivel individual.</li>
+<li>Permite estudiar exposiciones que solo tienen sentido a nivel de grupo, como políticas públicas, normativas, campañas o características del entorno, que no varían entre los individuos de una misma unidad ecológica.</li>
+<li>Permite detectar <strong>efectos contextuales</strong>, es decir, efectos del grupo sobre el individuo que no pueden observarse estudiando únicamente características individuales (por ejemplo, el efecto de vivir en una región con mayor desigualdad de renta, con independencia de la renta propia de cada individuo).</li>
+</ul>
+<p><strong>Inconvenientes</strong></p>
+<ul>
+<li>Al no disponer de datos individuales, no se puede saber si, dentro de cada unidad ecológica, son realmente los individuos expuestos los que presentan el resultado, o si exposición y resultado se distribuyen entre personas distintas del mismo grupo.</li>
+<li>La falta de información individual impide controlar adecuadamente los factores de confusión a nivel de persona, que solo pueden ajustarse (si acaso) de forma agregada.</li>
+<li>Los grupos comparados pueden diferir en muchas otras características además de la exposición estudiada, lo que dificulta atribuir la asociación observada a esa exposición concreta.</li>
+<li>Su limitación más importante, hasta el punto de merecer un nombre propio, es la posibilidad de incurrir en una <strong>falacia ecológica</strong>, que se desarrolla con detalle en el apartado siguiente.</li>
+</ul>
+</section>
+<section id="medidas-propias-de-este-diseño" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="medidas-propias-de-este-diseño"><span class="header-section-number">6.3</span> Medidas propias de este diseño</h2>
+<p>La medida de asociación característica del estudio ecológico es el coeficiente de correlación aplicado, no a datos individuales, sino a las tasas o medias agregadas de las <span class="math inline">\(n\)</span> unidades ecológicas comparadas.</p>
+<div id="def-ecologicos-correlacion-agregada" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 6.2 (Coeficiente de correlación ecológica)</strong></span> Dadas <span class="math inline">\(n\)</span> unidades ecológicas, para cada una de las cuales se dispone de una medida agregada de exposición <span class="math inline">\(x_i\)</span> (una tasa, proporción o media) y una medida agregada de resultado <span class="math inline">\(y_i\)</span>, el <em>coeficiente de correlación ecológica</em> es el coeficiente de correlación de Pearson calculado sobre esos <span class="math inline">\(n\)</span> pares de valores agregados,</p>
+<p><span class="math display">\[r = \frac{\displaystyle\sum_{i=1}^n (x_i-\bar x)(y_i-\bar y)}{\sqrt{\displaystyle\sum_{i=1}^n (x_i-\bar x)^2}\sqrt{\displaystyle\sum_{i=1}^n (y_i-\bar y)^2}}\]</span></p>
+<p>donde <span class="math inline">\(\bar x\)</span> y <span class="math inline">\(\bar y\)</span> son las medias de las medidas agregadas de exposición y de resultado, respectivamente, en las <span class="math inline">\(n\)</span> unidades ecológicas.</p>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Importante
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Al ser un coeficiente de correlación de Pearson, el coeficiente de correlación ecológica siempre verifica</p>
+<p><span class="math display">\[-1\leq r\leq 1.\]</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Interpretación">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Interpretación
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>El signo de <span class="math inline">\(r\)</span> indica el sentido de la relación entre las unidades ecológicas: si <span class="math inline">\(r&gt;0\)</span>, las unidades con mayor exposición agregada tienden a presentar también mayor resultado agregado; si <span class="math inline">\(r&lt;0\)</span>, ocurre lo contrario.</li>
+<li>Cuanto más se aproxima <span class="math inline">\(|r|\)</span> a 1, más fuerte es la relación lineal observada entre las medidas agregadas.</li>
+<li>Si <span class="math inline">\(r\)</span> es próximo a 0, no se observa relación lineal entre la exposición y el resultado a nivel de las unidades ecológicas.</li>
+<li>Es fundamental recordar que <span class="math inline">\(r\)</span> mide una asociación <strong>entre grupos</strong>, no entre individuos, tal y como se explica a continuación.</li>
+</ul>
+</div>
+</div>
+<p>La principal amenaza a la validez de las conclusiones de un estudio ecológico es la posibilidad de trasladar indebidamente una asociación observada entre grupos a una afirmación sobre los individuos que los componen.</p>
+<div id="def-ecologicos-falacia-ecologica" class="theorem definition">
+<p><span class="theorem-title"><strong>Definición 6.3 (Falacia ecológica)</strong></span> La <em>falacia ecológica</em> consiste en inferir, a partir de una asociación observada entre la exposición y el resultado agregados a nivel de grupo, que existe esa misma asociación entre la exposición y el resultado a nivel individual, sin disponer de datos individuales que lo confirmen.</p>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Advertencia
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Una correlación ecológica alta <strong>no implica</strong> que, dentro de cada unidad ecológica, sean precisamente los individuos expuestos los que presenten el resultado. La asociación agregada puede deberse, total o parcialmente, a diferencias entre grupos que nada tienen que ver con la relación individual entre exposición y resultado, e incluso puede tener signo contrario al de la verdadera asociación individual.</p>
+<p>Un ejemplo clásico ilustra el problema: si se calcula, para cada comunidad autónoma, el porcentaje de población nacida en el extranjero y la tasa media de alfabetización, es posible encontrar una correlación ecológica positiva (las comunidades con mayor proporción de población extranjera presentan, en promedio, tasas de alfabetización más altas), simplemente porque la población extranjera tiende a concentrarse en las regiones más urbanas y con mejores sistemas educativos. Concluir de ahí que, a nivel individual, las personas nacidas en el extranjero tienen mayor probabilidad de saber leer y escribir que las nacidas en España sería un error: los datos agregados no informan sobre qué personas concretas, dentro de cada comunidad, son las que están alfabetizadas, y la relación individual podría ser incluso la contraria.</p>
+</div>
+</div>
+<div id="exm-ecologicos-correlacion-alcohol-cirrosis" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 6.1</strong></span> Se dispone de datos agregados de 7 países sobre el consumo medio de alcohol per cápita (<span class="math inline">\(x\)</span>, en litros de alcohol puro al año) y la tasa de mortalidad por cirrosis hepática (<span class="math inline">\(y\)</span>, casos por cada 100 000 habitantes):</p>
+<p><span class="math display">\[
+\begin{array}{lrrrrrrr}
+\hline
+\mbox{País} &amp; x_i &amp; y_i &amp; x_i-\bar x &amp; y_i-\bar y &amp; (x_i-\bar x)(y_i-\bar y) &amp; (x_i-\bar x)^2 &amp; (y_i-\bar y)^2\\
+\hline
+\mbox{País 1} &amp; 2 &amp; 5 &amp; -6 &amp; -10 &amp; 60 &amp; 36 &amp; 100\\
+\mbox{País 2} &amp; 4 &amp; 8 &amp; -4 &amp; -7 &amp; 28 &amp; 16 &amp; 49\\
+\mbox{País 3} &amp; 6 &amp; 11 &amp; -2 &amp; -4 &amp; 8 &amp; 4 &amp; 16\\
+\mbox{País 4} &amp; 8 &amp; 15 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\
+\mbox{País 5} &amp; 10 &amp; 18 &amp; 2 &amp; 3 &amp; 6 &amp; 4 &amp; 9\\
+\mbox{País 6} &amp; 12 &amp; 20 &amp; 4 &amp; 5 &amp; 20 &amp; 16 &amp; 25\\
+\mbox{País 7} &amp; 14 &amp; 28 &amp; 6 &amp; 13 &amp; 78 &amp; 36 &amp; 169\\
+\hline
+\mbox{Total} &amp; 56 &amp; 105 &amp; &amp; &amp; 200 &amp; 112 &amp; 368\\
+\hline
+\end{array}
+\]</span></p>
+<p>Las medias agregadas son <span class="math inline">\(\bar x = 56/7 = 8\)</span> litros y <span class="math inline">\(\bar y = 105/7 = 15\)</span> casos por cada 100 000 habitantes. Con las sumas de la tabla, el coeficiente de correlación ecológica resulta</p>
+<p><span class="math display">\[r = \frac{\sum (x_i-\bar x)(y_i-\bar y)}{\sqrt{\sum (x_i-\bar x)^2}\sqrt{\sum (y_i-\bar y)^2}} = \frac{200}{\sqrt{112}\sqrt{368}} = \frac{200}{203.02} \approx 0.985.\]</span></p>
+<p>Existe, por tanto, una correlación ecológica positiva y muy fuerte entre el consumo medio de alcohol y la mortalidad por cirrosis a nivel de país: los países con mayor consumo agregado tienden a presentar también una mayor tasa agregada de mortalidad por esta causa. Esta asociación es coherente con lo que se sabe a nivel clínico sobre el alcohol y la cirrosis, pero conviene insistir en que, por sí sola, esta correlación agregada de 7 países no demuestra que sean los individuos que más beben dentro de cada país los que fallecen por cirrosis: para eso haría falta un diseño con datos individuales, como un <a href="./04-estudios-cohortes.html">estudio de cohortes</a>.</p>
+</div>
+</section>
+<section id="realización-con-r" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="realización-con-r"><span class="header-section-number">6.4</span> Realización con R</h2>
+<p>A continuación se construye un conjunto de datos agregados por región, con el consumo medio diario de sal (<span class="math inline">\(x\)</span>, en gramos por persona y día) y la tasa de hipertensión arterial (<span class="math inline">\(y\)</span>, casos por cada 1000 habitantes) de 18 regiones ficticias, tal y como podrían obtenerse a partir de estadísticas sanitarias oficiales.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>n_regiones <span class="ot">&lt;-</span> <span class="dv">18</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>datos_ecologicos <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">region =</span> <span class="fu">paste</span>(<span class="st">"Región"</span>, <span class="dv">1</span><span class="sc">:</span>n_regiones),</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">consumo_sal =</span> <span class="fu">round</span>(<span class="fu">rnorm</span>(n_regiones, <span class="at">mean =</span> <span class="dv">8</span>, <span class="at">sd =</span> <span class="fl">1.8</span>), <span class="dv">1</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">tasa_hipertension =</span> <span class="fu">round</span>(<span class="dv">15</span> <span class="sc">+</span> <span class="dv">6</span> <span class="sc">*</span> consumo_sal <span class="sc">+</span> <span class="fu">rnorm</span>(n_regiones, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">10</span>), <span class="dv">1</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>datos_ecologicos</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 18 × 3
+   region    consumo_sal tasa_hipertension
+   &lt;chr&gt;           &lt;dbl&gt;             &lt;dbl&gt;
+ 1 Región 1          7                64  
+ 2 Región 2          7.6              55.9
+ 3 Región 3         10.8              69.1
+ 4 Región 4          8.1              61.4
+ 5 Región 5          8.2              53.9
+ 6 Región 6         11.1              74.3
+ 7 Región 7          8.8              61.5
+ 8 Región 8          5.7              32.3
+ 9 Región 9          6.8              64.2
+10 Región 10         7.2              59.7
+11 Región 11        10.2              64.8
+12 Región 12         8.6              79.1
+13 Región 13         8.7              71.5
+14 Región 14         8.2              61.2
+15 Región 15         7                66  
+16 Región 16        11.2              91  
+17 Región 17         8.9              76.6
+18 Región 18         4.5              48.9</code></pre>
+</div>
+</div>
+<p>Cada fila representa una región completa, no una persona: <code>consumo_sal</code> es el consumo medio agregado de esa región, y <code>tasa_hipertension</code> es la tasa agregada de hipertensión en esa misma región.</p>
+<p>El coeficiente de correlación ecológica entre ambas variables agregadas se calcula con <code>cor()</code>, y su significación estadística con <code>cor.test()</code>:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>correlacion <span class="ot">&lt;-</span> <span class="fu">cor</span>(datos_ecologicos<span class="sc">$</span>consumo_sal, datos_ecologicos<span class="sc">$</span>tasa_hipertension)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>correlacion</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.7283621</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>test_correlacion <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(datos_ecologicos<span class="sc">$</span>consumo_sal, datos_ecologicos<span class="sc">$</span>tasa_hipertension)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>test_correlacion</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's product-moment correlation
+
+data:  datos_ecologicos$consumo_sal and datos_ecologicos$tasa_hipertension
+t = 4.252, df = 16, p-value = 0.0006086
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ 0.3962304 0.8919307
+sample estimates:
+      cor 
+0.7283621 </code></pre>
+</div>
+</div>
+<p>El coeficiente de correlación ecológica es 0.73, lo que indica una asociación positiva y fuerte entre el consumo medio de sal y la tasa de hipertensión a nivel regional, y el contraste de hipótesis asociado sugiere que esta correlación es difícilmente atribuible al azar.</p>
+<p>A continuación se ajusta una recta de regresión sobre los datos agregados con <code>lm()</code>:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>modelo_ecologico <span class="ot">&lt;-</span> <span class="fu">lm</span>(tasa_hipertension <span class="sc">~</span> consumo_sal, <span class="at">data =</span> datos_ecologicos)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo_ecologico)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = tasa_hipertension ~ consumo_sal, data = datos_ecologicos)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-18.794  -5.341  -0.536   7.163  13.146 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)   21.887     10.171   2.152 0.047028 *  
+consumo_sal    5.124      1.205   4.252 0.000609 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 8.98 on 16 degrees of freedom
+Multiple R-squared:  0.5305,    Adjusted R-squared:  0.5012 
+F-statistic: 18.08 on 1 and 16 DF,  p-value: 0.0006086</code></pre>
+</div>
+</div>
+<p>Y se representa el diagrama de dispersión de las 18 regiones junto con la recta de regresión ajustada:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos_ecologicos, <span class="fu">aes</span>(<span class="at">x =</span> consumo_sal, <span class="at">y =</span> tasa_hipertension)) <span class="sc">+</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">color =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">TRUE</span>, <span class="at">color =</span> <span class="st">"firebrick"</span>) <span class="sc">+</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Consumo medio de sal (g/día)"</span>,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Tasa de hipertensión (casos por 1000 hab.)"</span>,</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Correlación ecológica entre consumo de sal e hipertensión"</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="06-estudios-ecologicos_files/figure-html/grafico-dispersion-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Relación ecológica entre el consumo medio de sal y la tasa de hipertensión en 18 regiones.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Cada punto del gráfico representa una región entera, no una persona. La nube de puntos y la recta ajustada muestran una relación positiva clara entre el consumo medio de sal y la tasa de hipertensión a nivel regional: las regiones que, en promedio, consumen más sal presentan también, en promedio, tasas de hipertensión más altas. Sin embargo, estos datos agregados no permiten afirmar que sean precisamente las personas que más sal consumen, dentro de cada región, las que desarrollan hipertensión: podría haber diferencias entre regiones (edad media de la población, acceso a la sanidad, otros hábitos dietéticos) que expliquen parte de esta asociación agregada, y la propia falacia ecológica advierte de que la relación a nivel individual debería confirmarse con un diseño que recoja datos de cada persona.</p>
+</section>
+<section id="cuándo-utilizar-este-diseño" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="cuándo-utilizar-este-diseño"><span class="header-section-number">6.5</span> Cuándo utilizar este diseño</h2>
+<p>El estudio ecológico resulta especialmente útil como primera aproximación rápida y económica a una pregunta de investigación, cuando ya existen estadísticas agregadas disponibles y no es viable, al menos en una fase inicial, recoger datos a nivel individual. También es el diseño de elección, y en muchos casos el único posible, cuando la exposición que se quiere estudiar es en sí misma una característica de grupo (una política sanitaria, una normativa medioambiental, una campaña de salud pública) que no varía entre los individuos de una misma unidad ecológica y que, por tanto, no podría analizarse comparando personas dentro de un mismo grupo. Sin embargo, precisamente por la amenaza de la falacia ecológica, cualquier asociación encontrada con este diseño debe tratarse como una hipótesis preliminar, no como una conclusión establecida. Cuando el objetivo final es determinar si la exposición y el resultado están realmente asociados a nivel de persona, es necesario confirmar los hallazgos ecológicos con un diseño que recoja datos individuales, como un <a href="./04-estudios-cohortes.html">estudio de cohortes</a> o un <a href="./05-estudios-casos-controles.html">estudio de casos y controles</a>, antes de trasladar las conclusiones a los individuos.</p>
+
+
+<!-- -->
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiada");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiada");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./05-estudios-casos-controles.html" class="pagination-link" aria-label="Estudios de casos y controles">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Estudios de casos y controles</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./07-estudios-experimentales.html" class="pagination-link" aria-label="Estudios experimentales">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Estudios experimentales</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Ejecutar el código</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Estudios ecológicos</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="an">lang:</span><span class="co"> es</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup, include=FALSE}</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo =</span> <span class="cn">TRUE</span>, <span class="at">message =</span> <span class="cn">FALSE</span>, <span class="at">warning =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>Todos los diseños vistos hasta ahora en este libro comparten un rasgo común: la unidad de observación es el individuo. Sin embargo, no siempre se dispone de datos a nivel individual, ni siempre interesa estudiarlos: en ocasiones lo único disponible, o lo único relevante, son datos agregados sobre grupos enteros de personas. El estudio ecológico es el diseño observacional y analítico en el que la unidad de análisis no es el individuo, sino un grupo o agregado de individuos (un país, una región, un colegio, un periodo de tiempo), y en el que se relacionan tasas o promedios agregados de exposición con tasas o promedios agregados de resultado. Como se anticipó en el <span class="co">[</span><span class="ot">capítulo de introducción</span><span class="co">](01-introduccion.qmd)</span>, este diseño ocupa una posición particular entre los estudios analíticos, ya que permite generar hipótesis con gran rapidez pero exige una cautela especial a la hora de interpretar sus resultados.</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="fu">## Definición y características</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>:::{#def-ecologicos-estudio-ecologico}</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="fu">## Estudio ecológico</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>Un _estudio ecológico_ es un estudio observacional y analítico en el que la unidad de análisis es un grupo o agregado de individuos, denominado _unidad ecológica_, y en el que se estudia la relación entre una medida agregada de exposición (una tasa, una proporción o una media) y una medida agregada de resultado, calculadas ambas para cada unidad ecológica.</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>Lo que distingue a un estudio ecológico de todos los demás diseños de este libro no es el tipo de medida que se calcula, sino la naturaleza de la unidad de observación. En un estudio de cohortes o de casos y controles, cada fila de la base de datos corresponde a una persona; en un estudio ecológico, cada fila corresponde a un grupo, del que solo se conocen valores resumidos (por ejemplo, el porcentaje de fumadores o la tasa de mortalidad), y se ignora la combinación exacta de exposición y resultado que presenta cada individuo del grupo.</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>Una **unidad ecológica** puede definirse de muy diversas formas, dependiendo de la disponibilidad de datos agregados y de la pregunta de investigación. Algunos ejemplos habituales son:</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Áreas geográficas**: países, comunidades autónomas, provincias o municipios, para los que existen estadísticas oficiales agregadas (renta media, tasas de mortalidad, cobertura vacunal, etc.).</span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Instituciones**: colegios, hospitales o empresas, comparados a partir de indicadores agregados de sus miembros (por ejemplo, el gasto medio por alumno y la tasa de graduación de cada colegio).</span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Cohortes de nacimiento o periodos de tiempo**: grupos de personas nacidas en un mismo año, o datos agregados por años calendario, para estudiar tendencias temporales conjuntas de una exposición y un resultado.</span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a><span class="fu">## Ventajas e inconvenientes</span></span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>**Ventajas**</span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Es, con diferencia, uno de los diseños más rápidos y baratos de llevar a cabo, ya que habitualmente no requiere recoger datos nuevos.</span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Aprovecha datos agregados ya disponibles, como estadísticas oficiales, registros administrativos o indicadores publicados por organismos públicos, sin necesidad de reclutar y seguir a individuos.</span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Es muy útil para generar hipótesis de forma exploratoria, que después podrán confirmarse (o no) con diseños a nivel individual.</span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Permite estudiar exposiciones que solo tienen sentido a nivel de grupo, como políticas públicas, normativas, campañas o características del entorno, que no varían entre los individuos de una misma unidad ecológica.</span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Permite detectar **efectos contextuales**, es decir, efectos del grupo sobre el individuo que no pueden observarse estudiando únicamente características individuales (por ejemplo, el efecto de vivir en una región con mayor desigualdad de renta, con independencia de la renta propia de cada individuo).</span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>**Inconvenientes**</span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Al no disponer de datos individuales, no se puede saber si, dentro de cada unidad ecológica, son realmente los individuos expuestos los que presentan el resultado, o si exposición y resultado se distribuyen entre personas distintas del mismo grupo.</span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>La falta de información individual impide controlar adecuadamente los factores de confusión a nivel de persona, que solo pueden ajustarse (si acaso) de forma agregada.</span>
+<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Los grupos comparados pueden diferir en muchas otras características además de la exposición estudiada, lo que dificulta atribuir la asociación observada a esa exposición concreta.</span>
+<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Su limitación más importante, hasta el punto de merecer un nombre propio, es la posibilidad de incurrir en una **falacia ecológica**, que se desarrolla con detalle en el apartado siguiente.</span>
+<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a><span class="fu">## Medidas propias de este diseño</span></span>
+<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a>La medida de asociación característica del estudio ecológico es el coeficiente de correlación aplicado, no a datos individuales, sino a las tasas o medias agregadas de las $n$ unidades ecológicas comparadas.</span>
+<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-49"><a href="#cb10-49" aria-hidden="true" tabindex="-1"></a>:::{#def-ecologicos-correlacion-agregada}</span>
+<span id="cb10-50"><a href="#cb10-50" aria-hidden="true" tabindex="-1"></a><span class="fu">## Coeficiente de correlación ecológica</span></span>
+<span id="cb10-51"><a href="#cb10-51" aria-hidden="true" tabindex="-1"></a>Dadas $n$ unidades ecológicas, para cada una de las cuales se dispone de una medida agregada de exposición $x_i$ (una tasa, proporción o media) y una medida agregada de resultado $y_i$, el _coeficiente de correlación ecológica_ es el coeficiente de correlación de Pearson calculado sobre esos $n$ pares de valores agregados,</span>
+<span id="cb10-52"><a href="#cb10-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-53"><a href="#cb10-53" aria-hidden="true" tabindex="-1"></a>$$r = \frac{\displaystyle\sum_{i=1}^n (x_i-\bar x)(y_i-\bar y)}{\sqrt{\displaystyle\sum_{i=1}^n (x_i-\bar x)^2}\sqrt{\displaystyle\sum_{i=1}^n (y_i-\bar y)^2}}$$</span>
+<span id="cb10-54"><a href="#cb10-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-55"><a href="#cb10-55" aria-hidden="true" tabindex="-1"></a>donde $\bar x$ y $\bar y$ son las medias de las medidas agregadas de exposición y de resultado, respectivamente, en las $n$ unidades ecológicas.</span>
+<span id="cb10-56"><a href="#cb10-56" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb10-57"><a href="#cb10-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-58"><a href="#cb10-58" aria-hidden="true" tabindex="-1"></a>:::{.callout-important}</span>
+<span id="cb10-59"><a href="#cb10-59" aria-hidden="true" tabindex="-1"></a>Al ser un coeficiente de correlación de Pearson, el coeficiente de correlación ecológica siempre verifica</span>
+<span id="cb10-60"><a href="#cb10-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-61"><a href="#cb10-61" aria-hidden="true" tabindex="-1"></a>$$-1\leq r\leq 1.$$</span>
+<span id="cb10-62"><a href="#cb10-62" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb10-63"><a href="#cb10-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-64"><a href="#cb10-64" aria-hidden="true" tabindex="-1"></a>:::{.callout-note title=Interpretación}</span>
+<span id="cb10-65"><a href="#cb10-65" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>El signo de $r$ indica el sentido de la relación entre las unidades ecológicas: si $r&gt;0$, las unidades con mayor exposición agregada tienden a presentar también mayor resultado agregado; si $r&lt;0$, ocurre lo contrario.</span>
+<span id="cb10-66"><a href="#cb10-66" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Cuanto más se aproxima $|r|$ a 1, más fuerte es la relación lineal observada entre las medidas agregadas.</span>
+<span id="cb10-67"><a href="#cb10-67" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Si $r$ es próximo a 0, no se observa relación lineal entre la exposición y el resultado a nivel de las unidades ecológicas.</span>
+<span id="cb10-68"><a href="#cb10-68" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Es fundamental recordar que $r$ mide una asociación **entre grupos**, no entre individuos, tal y como se explica a continuación.</span>
+<span id="cb10-69"><a href="#cb10-69" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb10-70"><a href="#cb10-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-71"><a href="#cb10-71" aria-hidden="true" tabindex="-1"></a>La principal amenaza a la validez de las conclusiones de un estudio ecológico es la posibilidad de trasladar indebidamente una asociación observada entre grupos a una afirmación sobre los individuos que los componen.</span>
+<span id="cb10-72"><a href="#cb10-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-73"><a href="#cb10-73" aria-hidden="true" tabindex="-1"></a>:::{#def-ecologicos-falacia-ecologica}</span>
+<span id="cb10-74"><a href="#cb10-74" aria-hidden="true" tabindex="-1"></a><span class="fu">## Falacia ecológica</span></span>
+<span id="cb10-75"><a href="#cb10-75" aria-hidden="true" tabindex="-1"></a>La _falacia ecológica_ consiste en inferir, a partir de una asociación observada entre la exposición y el resultado agregados a nivel de grupo, que existe esa misma asociación entre la exposición y el resultado a nivel individual, sin disponer de datos individuales que lo confirmen.</span>
+<span id="cb10-76"><a href="#cb10-76" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb10-77"><a href="#cb10-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-78"><a href="#cb10-78" aria-hidden="true" tabindex="-1"></a>:::{.callout-warning}</span>
+<span id="cb10-79"><a href="#cb10-79" aria-hidden="true" tabindex="-1"></a>Una correlación ecológica alta **no implica** que, dentro de cada unidad ecológica, sean precisamente los individuos expuestos los que presenten el resultado. La asociación agregada puede deberse, total o parcialmente, a diferencias entre grupos que nada tienen que ver con la relación individual entre exposición y resultado, e incluso puede tener signo contrario al de la verdadera asociación individual.</span>
+<span id="cb10-80"><a href="#cb10-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-81"><a href="#cb10-81" aria-hidden="true" tabindex="-1"></a>Un ejemplo clásico ilustra el problema: si se calcula, para cada comunidad autónoma, el porcentaje de población nacida en el extranjero y la tasa media de alfabetización, es posible encontrar una correlación ecológica positiva (las comunidades con mayor proporción de población extranjera presentan, en promedio, tasas de alfabetización más altas), simplemente porque la población extranjera tiende a concentrarse en las regiones más urbanas y con mejores sistemas educativos. Concluir de ahí que, a nivel individual, las personas nacidas en el extranjero tienen mayor probabilidad de saber leer y escribir que las nacidas en España sería un error: los datos agregados no informan sobre qué personas concretas, dentro de cada comunidad, son las que están alfabetizadas, y la relación individual podría ser incluso la contraria.</span>
+<span id="cb10-82"><a href="#cb10-82" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb10-83"><a href="#cb10-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-84"><a href="#cb10-84" aria-hidden="true" tabindex="-1"></a>:::{#exm-ecologicos-correlacion-alcohol-cirrosis}</span>
+<span id="cb10-85"><a href="#cb10-85" aria-hidden="true" tabindex="-1"></a>Se dispone de datos agregados de 7 países sobre el consumo medio de alcohol per cápita ($x$, en litros de alcohol puro al año) y la tasa de mortalidad por cirrosis hepática ($y$, casos por cada 100 000 habitantes):</span>
+<span id="cb10-86"><a href="#cb10-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-87"><a href="#cb10-87" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb10-88"><a href="#cb10-88" aria-hidden="true" tabindex="-1"></a>\begin{array}{lrrrrrrr}</span>
+<span id="cb10-89"><a href="#cb10-89" aria-hidden="true" tabindex="-1"></a>\hline</span>
+<span id="cb10-90"><a href="#cb10-90" aria-hidden="true" tabindex="-1"></a>\mbox{País} &amp; x_i &amp; y_i &amp; x_i-\bar x &amp; y_i-\bar y &amp; (x_i-\bar x)(y_i-\bar y) &amp; (x_i-\bar x)^2 &amp; (y_i-\bar y)^2<span class="sc">\\</span></span>
+<span id="cb10-91"><a href="#cb10-91" aria-hidden="true" tabindex="-1"></a>\hline</span>
+<span id="cb10-92"><a href="#cb10-92" aria-hidden="true" tabindex="-1"></a>\mbox{País 1} &amp; 2 &amp; 5 &amp; -6 &amp; -10 &amp; 60 &amp; 36 &amp; 100<span class="sc">\\</span></span>
+<span id="cb10-93"><a href="#cb10-93" aria-hidden="true" tabindex="-1"></a>\mbox{País 2} &amp; 4 &amp; 8 &amp; -4 &amp; -7 &amp; 28 &amp; 16 &amp; 49<span class="sc">\\</span></span>
+<span id="cb10-94"><a href="#cb10-94" aria-hidden="true" tabindex="-1"></a>\mbox{País 3} &amp; 6 &amp; 11 &amp; -2 &amp; -4 &amp; 8 &amp; 4 &amp; 16<span class="sc">\\</span></span>
+<span id="cb10-95"><a href="#cb10-95" aria-hidden="true" tabindex="-1"></a>\mbox{País 4} &amp; 8 &amp; 15 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0<span class="sc">\\</span></span>
+<span id="cb10-96"><a href="#cb10-96" aria-hidden="true" tabindex="-1"></a>\mbox{País 5} &amp; 10 &amp; 18 &amp; 2 &amp; 3 &amp; 6 &amp; 4 &amp; 9<span class="sc">\\</span></span>
+<span id="cb10-97"><a href="#cb10-97" aria-hidden="true" tabindex="-1"></a>\mbox{País 6} &amp; 12 &amp; 20 &amp; 4 &amp; 5 &amp; 20 &amp; 16 &amp; 25<span class="sc">\\</span></span>
+<span id="cb10-98"><a href="#cb10-98" aria-hidden="true" tabindex="-1"></a>\mbox{País 7} &amp; 14 &amp; 28 &amp; 6 &amp; 13 &amp; 78 &amp; 36 &amp; 169<span class="sc">\\</span></span>
+<span id="cb10-99"><a href="#cb10-99" aria-hidden="true" tabindex="-1"></a>\hline</span>
+<span id="cb10-100"><a href="#cb10-100" aria-hidden="true" tabindex="-1"></a>\mbox{Total} &amp; 56 &amp; 105 &amp; &amp; &amp; 200 &amp; 112 &amp; 368<span class="sc">\\</span></span>
+<span id="cb10-101"><a href="#cb10-101" aria-hidden="true" tabindex="-1"></a>\hline</span>
+<span id="cb10-102"><a href="#cb10-102" aria-hidden="true" tabindex="-1"></a>\end{array}</span>
+<span id="cb10-103"><a href="#cb10-103" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb10-104"><a href="#cb10-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-105"><a href="#cb10-105" aria-hidden="true" tabindex="-1"></a>Las medias agregadas son $\bar x = 56/7 = 8$ litros y $\bar y = 105/7 = 15$ casos por cada 100 000 habitantes. Con las sumas de la tabla, el coeficiente de correlación ecológica resulta</span>
+<span id="cb10-106"><a href="#cb10-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-107"><a href="#cb10-107" aria-hidden="true" tabindex="-1"></a>$$r = \frac{\sum (x_i-\bar x)(y_i-\bar y)}{\sqrt{\sum (x_i-\bar x)^2}\sqrt{\sum (y_i-\bar y)^2}} = \frac{200}{\sqrt{112}\sqrt{368}} = \frac{200}{203.02} \approx 0.985.$$</span>
+<span id="cb10-108"><a href="#cb10-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-109"><a href="#cb10-109" aria-hidden="true" tabindex="-1"></a>Existe, por tanto, una correlación ecológica positiva y muy fuerte entre el consumo medio de alcohol y la mortalidad por cirrosis a nivel de país: los países con mayor consumo agregado tienden a presentar también una mayor tasa agregada de mortalidad por esta causa. Esta asociación es coherente con lo que se sabe a nivel clínico sobre el alcohol y la cirrosis, pero conviene insistir en que, por sí sola, esta correlación agregada de 7 países no demuestra que sean los individuos que más beben dentro de cada país los que fallecen por cirrosis: para eso haría falta un diseño con datos individuales, como un <span class="co">[</span><span class="ot">estudio de cohortes</span><span class="co">](04-estudios-cohortes.qmd)</span>.</span>
+<span id="cb10-110"><a href="#cb10-110" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb10-111"><a href="#cb10-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-112"><a href="#cb10-112" aria-hidden="true" tabindex="-1"></a><span class="fu">## Realización con R</span></span>
+<span id="cb10-113"><a href="#cb10-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-114"><a href="#cb10-114" aria-hidden="true" tabindex="-1"></a>A continuación se construye un conjunto de datos agregados por región, con el consumo medio diario de sal ($x$, en gramos por persona y día) y la tasa de hipertensión arterial ($y$, casos por cada 1000 habitantes) de 18 regiones ficticias, tal y como podrían obtenerse a partir de estadísticas sanitarias oficiales.</span>
+<span id="cb10-115"><a href="#cb10-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-116"><a href="#cb10-116" aria-hidden="true" tabindex="-1"></a><span class="in">```{r simulacion-datos}</span></span>
+<span id="cb10-117"><a href="#cb10-117" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb10-118"><a href="#cb10-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-119"><a href="#cb10-119" aria-hidden="true" tabindex="-1"></a>n_regiones <span class="ot">&lt;-</span> <span class="dv">18</span></span>
+<span id="cb10-120"><a href="#cb10-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-121"><a href="#cb10-121" aria-hidden="true" tabindex="-1"></a>datos_ecologicos <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb10-122"><a href="#cb10-122" aria-hidden="true" tabindex="-1"></a>  <span class="at">region =</span> <span class="fu">paste</span>(<span class="st">"Región"</span>, <span class="dv">1</span><span class="sc">:</span>n_regiones),</span>
+<span id="cb10-123"><a href="#cb10-123" aria-hidden="true" tabindex="-1"></a>  <span class="at">consumo_sal =</span> <span class="fu">round</span>(<span class="fu">rnorm</span>(n_regiones, <span class="at">mean =</span> <span class="dv">8</span>, <span class="at">sd =</span> <span class="fl">1.8</span>), <span class="dv">1</span>)</span>
+<span id="cb10-124"><a href="#cb10-124" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb10-125"><a href="#cb10-125" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb10-126"><a href="#cb10-126" aria-hidden="true" tabindex="-1"></a>    <span class="at">tasa_hipertension =</span> <span class="fu">round</span>(<span class="dv">15</span> <span class="sc">+</span> <span class="dv">6</span> <span class="sc">*</span> consumo_sal <span class="sc">+</span> <span class="fu">rnorm</span>(n_regiones, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">10</span>), <span class="dv">1</span>)</span>
+<span id="cb10-127"><a href="#cb10-127" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb10-128"><a href="#cb10-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-129"><a href="#cb10-129" aria-hidden="true" tabindex="-1"></a>datos_ecologicos</span>
+<span id="cb10-130"><a href="#cb10-130" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-131"><a href="#cb10-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-132"><a href="#cb10-132" aria-hidden="true" tabindex="-1"></a>Cada fila representa una región completa, no una persona: <span class="in">`consumo_sal`</span> es el consumo medio agregado de esa región, y <span class="in">`tasa_hipertension`</span> es la tasa agregada de hipertensión en esa misma región.</span>
+<span id="cb10-133"><a href="#cb10-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-134"><a href="#cb10-134" aria-hidden="true" tabindex="-1"></a>El coeficiente de correlación ecológica entre ambas variables agregadas se calcula con <span class="in">`cor()`</span>, y su significación estadística con <span class="in">`cor.test()`</span>:</span>
+<span id="cb10-135"><a href="#cb10-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-136"><a href="#cb10-136" aria-hidden="true" tabindex="-1"></a><span class="in">```{r correlacion}</span></span>
+<span id="cb10-137"><a href="#cb10-137" aria-hidden="true" tabindex="-1"></a>correlacion <span class="ot">&lt;-</span> <span class="fu">cor</span>(datos_ecologicos<span class="sc">$</span>consumo_sal, datos_ecologicos<span class="sc">$</span>tasa_hipertension)</span>
+<span id="cb10-138"><a href="#cb10-138" aria-hidden="true" tabindex="-1"></a>correlacion</span>
+<span id="cb10-139"><a href="#cb10-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-140"><a href="#cb10-140" aria-hidden="true" tabindex="-1"></a>test_correlacion <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(datos_ecologicos<span class="sc">$</span>consumo_sal, datos_ecologicos<span class="sc">$</span>tasa_hipertension)</span>
+<span id="cb10-141"><a href="#cb10-141" aria-hidden="true" tabindex="-1"></a>test_correlacion</span>
+<span id="cb10-142"><a href="#cb10-142" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-143"><a href="#cb10-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-144"><a href="#cb10-144" aria-hidden="true" tabindex="-1"></a>El coeficiente de correlación ecológica es <span class="in">`r round(correlacion, 2)`</span>, lo que indica una asociación positiva y fuerte entre el consumo medio de sal y la tasa de hipertensión a nivel regional, y el contraste de hipótesis asociado sugiere que esta correlación es difícilmente atribuible al azar.</span>
+<span id="cb10-145"><a href="#cb10-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-146"><a href="#cb10-146" aria-hidden="true" tabindex="-1"></a>A continuación se ajusta una recta de regresión sobre los datos agregados con <span class="in">`lm()`</span>:</span>
+<span id="cb10-147"><a href="#cb10-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-148"><a href="#cb10-148" aria-hidden="true" tabindex="-1"></a><span class="in">```{r regresion}</span></span>
+<span id="cb10-149"><a href="#cb10-149" aria-hidden="true" tabindex="-1"></a>modelo_ecologico <span class="ot">&lt;-</span> <span class="fu">lm</span>(tasa_hipertension <span class="sc">~</span> consumo_sal, <span class="at">data =</span> datos_ecologicos)</span>
+<span id="cb10-150"><a href="#cb10-150" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo_ecologico)</span>
+<span id="cb10-151"><a href="#cb10-151" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-152"><a href="#cb10-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-153"><a href="#cb10-153" aria-hidden="true" tabindex="-1"></a>Y se representa el diagrama de dispersión de las 18 regiones junto con la recta de regresión ajustada:</span>
+<span id="cb10-154"><a href="#cb10-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-155"><a href="#cb10-155" aria-hidden="true" tabindex="-1"></a><span class="in">```{r grafico-dispersion, fig.cap="Relación ecológica entre el consumo medio de sal y la tasa de hipertensión en 18 regiones."}</span></span>
+<span id="cb10-156"><a href="#cb10-156" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos_ecologicos, <span class="fu">aes</span>(<span class="at">x =</span> consumo_sal, <span class="at">y =</span> tasa_hipertension)) <span class="sc">+</span></span>
+<span id="cb10-157"><a href="#cb10-157" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">color =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span></span>
+<span id="cb10-158"><a href="#cb10-158" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">TRUE</span>, <span class="at">color =</span> <span class="st">"firebrick"</span>) <span class="sc">+</span></span>
+<span id="cb10-159"><a href="#cb10-159" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb10-160"><a href="#cb10-160" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Consumo medio de sal (g/día)"</span>,</span>
+<span id="cb10-161"><a href="#cb10-161" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Tasa de hipertensión (casos por 1000 hab.)"</span>,</span>
+<span id="cb10-162"><a href="#cb10-162" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Correlación ecológica entre consumo de sal e hipertensión"</span></span>
+<span id="cb10-163"><a href="#cb10-163" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb10-164"><a href="#cb10-164" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb10-165"><a href="#cb10-165" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-166"><a href="#cb10-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-167"><a href="#cb10-167" aria-hidden="true" tabindex="-1"></a>Cada punto del gráfico representa una región entera, no una persona. La nube de puntos y la recta ajustada muestran una relación positiva clara entre el consumo medio de sal y la tasa de hipertensión a nivel regional: las regiones que, en promedio, consumen más sal presentan también, en promedio, tasas de hipertensión más altas. Sin embargo, estos datos agregados no permiten afirmar que sean precisamente las personas que más sal consumen, dentro de cada región, las que desarrollan hipertensión: podría haber diferencias entre regiones (edad media de la población, acceso a la sanidad, otros hábitos dietéticos) que expliquen parte de esta asociación agregada, y la propia falacia ecológica advierte de que la relación a nivel individual debería confirmarse con un diseño que recoja datos de cada persona.</span>
+<span id="cb10-168"><a href="#cb10-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-169"><a href="#cb10-169" aria-hidden="true" tabindex="-1"></a><span class="fu">## Cuándo utilizar este diseño</span></span>
+<span id="cb10-170"><a href="#cb10-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-171"><a href="#cb10-171" aria-hidden="true" tabindex="-1"></a>El estudio ecológico resulta especialmente útil como primera aproximación rápida y económica a una pregunta de investigación, cuando ya existen estadísticas agregadas disponibles y no es viable, al menos en una fase inicial, recoger datos a nivel individual. También es el diseño de elección, y en muchos casos el único posible, cuando la exposición que se quiere estudiar es en sí misma una característica de grupo (una política sanitaria, una normativa medioambiental, una campaña de salud pública) que no varía entre los individuos de una misma unidad ecológica y que, por tanto, no podría analizarse comparando personas dentro de un mismo grupo. Sin embargo, precisamente por la amenaza de la falacia ecológica, cualquier asociación encontrada con este diseño debe tratarse como una hipótesis preliminar, no como una conclusión establecida. Cuando el objetivo final es determinar si la exposición y el resultado están realmente asociados a nivel de persona, es necesario confirmar los hallazgos ecológicos con un diseño que recoja datos individuales, como un <span class="co">[</span><span class="ot">estudio de cohortes</span><span class="co">](04-estudios-cohortes.qmd)</span> o un <span class="co">[</span><span class="ot">estudio de casos y controles</span><span class="co">](05-estudios-casos-controles.qmd)</span>, antes de trasladar las conclusiones a los individuos.</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/asalber/estadistica-tipos-estudios/edit/main/06-estudios-ecologicos.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/asalber/estadistica-tipos-estudios/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li></ul></div></div></div></footer></body></html>
