@@ -10,7 +10,12 @@ execute:
   daemon: 3600
 
 website:
+  favicon: img/logos/favicon.ico
   reader-mode: true
+  comments: 
+    hypothesis:
+      theme: clean
+      openSidebar: true
 
 book:
   title: "Tipos de Estudios Estadísticos"
@@ -19,8 +24,10 @@ book:
   date: "2/9/2026"
   output-file: "estadistica-tipos-estudios"
   sharing: [twitter, linkedin]
-  downloads: [pdf]
+  downloads: [pdf, epub]
+  favicon: "img/logos/favicon.ico"
   sidebar:
+    logo: img/logos/aprendeconalf.png
     tools:
       - icon: house-fill
         href: https://aprendeconalf.es
@@ -59,10 +66,30 @@ format:
       dark: [darkly, custom-dark.scss]
       light: [flatly, custom.scss]
     html-math-method: mathjax
+    default-image-extension: svg
     code-tools: true
     code-fold: show
   pdf:
     documentclass: scrreport
     papersize: a4
+    default-image-extension: pdf
+    template-partials:
+      - before-body.tex
+    titlegraphic: img/logos/sticker.png
+    institution: CEU San Pablo
+    email: asalber@ceu.es
+    web: https://aprendeconalf.es
+    logo: img/logos/aprendeconalf.png
+    include-in-header:
+      - preamble.tex
+      - macros.tex
+    keep-tex: true
+    #mainfont: TeX Gyre Termes
+    #mainfontoptions:
+    #  - Numbers=Lowercase
+    #  - Numbers=Proportional    
+    
+  epub:
+    cover-image: img/logos/sticker.png
+    html-math-method: mathml
     toc: true
-    keep-tex: false
